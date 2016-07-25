@@ -1,5 +1,5 @@
 public struct Server {
-    public let server: Host
+    public let host: Host
     public let port: Int
     public let parser: S4.RequestParser.Type
     public let serializer: S4.ResponseSerializer.Type
@@ -9,14 +9,14 @@ public struct Server {
     public let bufferSize: Int = 2048
 
     public init(
-        server: Host,
+        host: Host,
         port: Int,
         parser: S4.RequestParser.Type,
         serializer: S4.ResponseSerializer.Type,
         middleware: [Middleware],
         responder: Responder
         ) throws {
-        self.server = server
+        self.host = host
         self.port = port
         self.parser = parser
         self.serializer = serializer

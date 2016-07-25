@@ -17,6 +17,10 @@ public final class TCPConnection : Connection {
         self.ip = try IP(remoteAddress: host, port: port, deadline: deadline)
     }
 
+    public func open() throws {
+        try open(timingOut: .never)
+    }
+
     public func open(timingOut deadline: Double) throws {
         self.socket = tcpconnect(ip.address, deadline.int64milliseconds)
         try ensureLastOperationSucceeded()

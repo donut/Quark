@@ -108,6 +108,7 @@ public final class FallibleChannel<T> : Sequence {
     }
 
     /// Receive a value from channel.
+    @discardableResult
     public func receive() throws -> T? {
         if closed && buffer.count <= 0 {
             return nil
@@ -124,6 +125,7 @@ public final class FallibleChannel<T> : Sequence {
     }
 
     /// Receive a result from channel.
+    @discardableResult
     public func receiveResult() -> ChannelResult<T>? {
         if closed && buffer.count <= 0 {
             return nil

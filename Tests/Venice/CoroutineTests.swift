@@ -97,6 +97,98 @@ class CoroutineTests : XCTestCase {
         XCTAssert(size == 1)
         XCTAssert(c == 65)
     }
+
+    func testSyncPerformanceVenice() {
+        self.measure {
+            let numberOfSyncs = 10000
+            let channel = Channel<Void>()
+            for _ in 0 ..< numberOfSyncs {
+                co {
+                    channel.send()
+                }
+                channel.receive()
+            }
+        }
+    }
+
+    func testManyCoroutines() {
+        self.measure {
+            let numberOfCoroutines = 10000
+            for _ in 0 ..< numberOfCoroutines { co {} }
+        }
+    }
+
+    func testThousandWhispers() {
+        self.measure {
+            func whisper(_ left: SendingChannel<Int>, _ right: ReceivingChannel<Int>) {
+                left.send(1 + right.receive()!)
+            }
+
+            let numberOfWhispers = 10000
+
+            let leftmost = Channel<Int>()
+            var right = leftmost
+            var left = leftmost
+
+            for _ in 0 ..< numberOfWhispers {
+                right = Channel<Int>()
+                co(whisper(left.sendingChannel, right.receivingChannel))
+                left = right
+            }
+
+            co(right.send(1))
+            XCTAssert(leftmost.receive() == numberOfWhispers + 1)
+        }
+    }
+
+    func testManyContextSwitches() {
+        self.measure {
+            let numberOfContextSwitches = 10000
+            let count = numberOfContextSwitches / 2
+            co {
+                for _ in 0 ..< count {
+                    yield
+                }
+            }
+            for _ in 0 ..< count {
+                yield
+            }
+        }
+    }
+
+    func testSendReceiveManyMessages() {
+        self.measure {
+            let numberOfMessages = 10000
+            let channel = Channel<Int>(bufferSize: numberOfMessages)
+            for _ in 0 ..< numberOfMessages {
+                channel.send(0)
+            }
+            for _ in 0 ..< numberOfMessages {
+                channel.receive()
+            }
+        }
+    }
+
+    func testManyRoundTrips() {
+        self.measure {
+            let numberOfRoundTrips = 10000
+            let input = Channel<Int>()
+            let output = Channel<Int>()
+            let initiaValue = 1969
+            var value = initiaValue
+            co {
+                while true {
+                    let value = output.receive()!
+                    input.send(value)
+                }
+            }
+            for _ in 0 ..< numberOfRoundTrips {
+                output.send(value)
+                value = input.receive()!
+            }
+            XCTAssert(value == initiaValue)
+        }
+    }
 }
 
 extension CoroutineTests {

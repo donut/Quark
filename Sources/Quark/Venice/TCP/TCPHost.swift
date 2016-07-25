@@ -1,6 +1,6 @@
 import CLibvenice
 
-public final class TCPServer : Host {
+public final class TCPHost : Host {
     private let socket: tcpsock?
 
     public init(host: String, port: Int, backlog: Int = 128, reusePort: Bool = false) throws {

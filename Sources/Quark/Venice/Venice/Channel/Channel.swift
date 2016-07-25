@@ -66,6 +66,7 @@ public final class Channel<T> : Sequence {
     }
 
     /// Receives a value from the channel.
+    @discardableResult
     public func receive() -> T? {
         if closed && buffer.count <= 0 {
             return nil

@@ -1,7 +1,7 @@
 extension Server {
     public init(host: String = "0.0.0.0", port: Int = 8080, reusePort: Bool = false, parser: S4.RequestParser.Type = RequestParser.self, serializer: S4.ResponseSerializer.Type = ResponseSerializer.self, middleware: [Middleware], responder: Responder) throws {
         try self.init(
-            server: try TCPServer(host: host, port: port, reusePort: reusePort),
+            host: try TCPHost(host: host, port: port, reusePort: reusePort),
             port: port,
             parser: parser,
             serializer: serializer,
@@ -25,7 +25,7 @@ extension Server {
     public func start(_ failure: (ErrorProtocol) -> Void = Server.log) throws {
         printHeader()
         while true {
-            let stream = try server.accept(timingOut: .never)
+            let stream = try host.accept(timingOut: .never)
             co { do { try self.process(stream: stream) } catch { failure(error) } }
         }
     }
