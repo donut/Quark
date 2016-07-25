@@ -200,6 +200,12 @@ extension CoroutineTests {
             ("testWakeUp", testWakeUp),
             ("testNap", testNap),
             ("testPollFileDescriptor", testPollFileDescriptor),
+            ("testSyncPerformanceVenice", testSyncPerformanceVenice),
+            ("testManyCoroutines", testManyCoroutines),
+            ("testThousandWhispers", testThousandWhispers),
+            ("testManyContextSwitches", testManyContextSwitches),
+            ("testSendReceiveManyMessages", testSendReceiveManyMessages),
+            ("testManyRoundTrips", testManyRoundTrips),
         ]
     }
 }
