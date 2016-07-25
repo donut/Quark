@@ -1,6 +1,6 @@
 has_source_changes = !git.modified_files.grep(/Sources/).empty?
 has_test_changes = !git.modified_files.grep(/Tests/).empty?
-trivial_changes = pr_title.include? "#trivial" || !has_source_changes
+big_pr = lines_of_code > 500
 github = env.request_source.client
 organization, repository = env.ci_source.repo_slug.split("/")
 
@@ -18,7 +18,7 @@ if pr_title.include? "[WIP]"
     warn "PR is classed as Work in Progress"
 end
 
-if lines_of_code > 500
+if big_pr
     warn "Big PR"
 end
 
@@ -30,8 +30,8 @@ if pr_body.length < 5
   fail "Please provide a summary in the Pull Request description"
 end
 
-if !trivial_changes && !git.modified_files.include?("CHANGELOG.md")
-  fail "Please include a CHANGELOG entry. \nYou can find it at CHANGELOG.md"
+if has_source_changes && big_pr && !git.modified_files.include?("CHANGELOG.md")
+  warn "Please include a CHANGELOG entry. \nYou can find it at CHANGELOG.md"
 end
 
 git.added_files.select {|f| f != "Dangerfile" && File.read(f) =~ /all rights reserved/i}.each {|f| fail("#{f} includes all rights reserved")}
