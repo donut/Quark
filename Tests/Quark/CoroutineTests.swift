@@ -98,3 +98,16 @@ class CoroutineTests : XCTestCase {
         XCTAssert(c == 65)
     }
 }
+
+extension CoroutineTests {
+    static var allTests : [(String, (CoroutineTests) -> () throws -> Void)] {
+        return [
+            ("testStackPreallocation", testStackPreallocation),
+            ("testCo", testCo),
+            ("testStackdeallocationWorks", testStackdeallocationWorks),
+            ("testWakeUp", testWakeUp),
+            ("testNap", testNap),
+            ("testPollFileDescriptor", testPollFileDescriptor),
+        ]
+    }
+}
