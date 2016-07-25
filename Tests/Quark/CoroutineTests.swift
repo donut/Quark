@@ -60,7 +60,13 @@ class CoroutineTests : XCTestCase {
         var event: PollEvent
         var size: Int
         let fds = UnsafeMutablePointer<Int32>(allocatingCapacity: 2)
-        let result = socketpair(AF_UNIX, SOCK_STREAM, 0, fds)
+
+        #if os(Linux)
+            let result = socketpair(AF_UNIX, Int32(SOCK_STREAM.rawValue), 0, fds)
+        #else
+            let result = socketpair(AF_UNIX, SOCK_STREAM, 0, fds)
+        #endif
+
         XCTAssert(result == 0)
 
         event = try poll(fds[0], for: .writing)

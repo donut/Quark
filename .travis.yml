@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 language: swift
 sudo: required
 osx_image: xcode8
