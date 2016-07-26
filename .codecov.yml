@@ -20,6 +20,7 @@ coverage:
   ignore:
     - "Sources/ExampleDomain/*"
     - "Sources/ExampleApplication/*"
+    - "Sources/Mustache/*"
 
   notify:
     slack:
