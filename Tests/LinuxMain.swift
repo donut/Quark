@@ -20,7 +20,7 @@ XCTMain([
     testCase(RoutesTests.allTests),
     // Core
     testCase(InternalTests.allTests),
-    testCase(MappableExampleTests.allTests),
+    testCase(MappableTests.allTests),
     testCase(PerformanceTests.allTests),
     testCase(PublicTests.allTests),
 ])

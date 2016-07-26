@@ -5,7 +5,7 @@ private struct HashedType : Hashable {
     }
 }
 
-private func ==(lhs: HashedType, rhs: HashedType) -> Bool {
+private func == (lhs: HashedType, rhs: HashedType) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
