@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tag Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Tag" class="dashAnchor"></a>
+    <a title="Tag Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Quark Docs</a> (43% documented)</p>
+        <p class="header-right"><a href="https://github.com/QuarkX/Quark"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Quark Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Tag Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Context.html">Context</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MustacheBox.html">MustacheBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Template.html">Template</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TemplateRepository.html">TemplateRepository</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark20DefaultConfigurationVS_13Configuration">DefaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark15logicalCPUCountSi">logicalCPUCount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark5yieldT_">yield</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums.html#/s:O5Quark11ContentType">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TagType.html">TagType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Body.html">Body</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Ps10Collection">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Vs5Int32">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sq">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Set.html">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Vs5UInt8">UInt8</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTPMP_PMP__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3Boxu0_Rxs23BidirectionalCollection_S_15MustacheBoxablewx13IndexDistancezSiWx8Iterator7Element_zGSqq__WxS2_18IntegerLiteralType_zSiWxS2_6Stride_zSiWxS2_19_DisabledRangeIndex_zSiWxS2_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs23BidirectionalCollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT7boxableGSqPS_15MustacheBoxable___CS_11MustacheBox">Box(boxable:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT10dictionaryGSqGVs10DictionarySSx___CS_11MustacheBox">Box(dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT9didRenderFT3tagPS_3Tag_3boxCS_11MustacheBox6stringGSqSS__T__S1_">Box(didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6filterFzT3boxCS_11MustacheBox18partialApplicationSb_S0__S0_">Box(filter:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT18optionalDictionaryGSqGVs10DictionarySSGSqx____CS_11MustacheBox">Box(optionalDictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6renderFzT4infoVS_13RenderingInfo_VS_9Rendering_CS_11MustacheBox">Box(render:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs10CollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT3setGSqx__CS_11MustacheBox">Box(set:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT5valueGSqP__9boolValueGSqSb_14keyedSubscriptGSqFT3keySS_CS_11MustacheBox_6filterGSqFzT3boxS0_18partialApplicationSb_S0__6renderGSqFzT4infoVS_13RenderingInfo_VS_9Rendering_10willRenderGSqFT3tagPS_3Tag_3boxS0__S0__9didRenderGSqFT3tagPS3__3boxS0_6stringGSqSS__T___S0_">Box(value:boolValue:keyedSubscript:filter:render:willRender:didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT10willRenderFT3tagPS_3Tag_3boxCS_11MustacheBox_S1__S1_">Box(willRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzVS_9RenderingS0_FzT3boxCS_11MustacheBox18partialApplicationSb_S1_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzTCS_11MustacheBoxVS_13RenderingInfo_VS_9RenderingFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzGSqx_CS_11MustacheBoxFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzCS_11MustacheBoxS0_FzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzTGSqx_VS_13RenderingInfo_VS_9RenderingFzT3boxCS_11MustacheBox18partialApplicationSb_S2_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFSSSSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFT_SSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark14VariadicFilterFFzGSaCS_11MustacheBox_S0_FzT3boxS0_18partialApplicationSb_S0_">VariadicFilter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5afterFTSd7routineFT_T__T_">after(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFKT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFFT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx11constructorFzVVS_8Property11DescriptionP__x">construct(_:constructor:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx10dictionaryGVs10DictionarySSP___x">construct(_:dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10escapeHTMLFSSSS">escapeHTML(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5everyFTSd7routineFT4doneFT_T__T__T_">every(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4forkFT_Vs5Int32">fork()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3getFzTSS4fromP__P_">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3geturFzTSS4fromP__x">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3napFT3forSd_T_">nap(for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4pollFzTVs5Int323forVS_9PollEvent9timingOutSd_S1_">poll(_:for:timingOut:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark26preallocateCoroutineStacksFT10stackCountSi9stackSizeSi_T_">preallocateCoroutineStacks(stackCount:stackSize:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzPMP_GSaVVS_8Property11Description_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzP_GSaVS_8Property_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3seturFzTP_3keySS3forRx_T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forRP__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forPs9AnyObject__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5valueFTP_2isPMP__Sb">value(_:is:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4wakeFT2atSd_T_">wake(at:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MustacheBoxable.html">MustacheBoxable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tag.html">Tag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TemplateRepositoryDataSource.html">TemplateRepositoryDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheError.html">MustacheError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Property.html">Property</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rendering.html">Rendering</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RenderingInfo.html">RenderingInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardLibrary.html">StandardLibrary</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark17DidRenderFunction">DidRenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14FilterFunction">FilterFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark22KeyedSubscriptFunction">KeyedSubscriptFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14RenderFunction">RenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark16TagDelimiterPair">TagDelimiterPair</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark10TemplateID">TemplateID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark18WillRenderFunction">WillRenderFunction</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Tag</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Tag</span><span class="p">:</span> <span class="kd">class</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                </div>
+              </div>
+            <p>Tag instances represent Mustache tags that render values:</p>
+
+<ul>
+<li>variable tags: <code>{{name}}</code> and <code>{{{body}}}</code></li>
+<li>section tags: <code>{{#user}}...{{/user}}</code></li>
+</ul>
+
+<p>You may meet the Tag class when you implement your own <code><a href="../Typealiases.html#/s:5Quark14RenderFunction">RenderFunction</a></code>,
+<code><a href="../Typealiases.html#/s:5Quark18WillRenderFunction">WillRenderFunction</a></code> or <code><a href="../Typealiases.html#/s:5Quark17DidRenderFunction">DidRenderFunction</a></code>, or filters that perform custom
+rendering (see <code><a href="../Typealiases.html#/s:5Quark14FilterFunction">FilterFunction</a></code>).</p>
+
+<p>See also:</p>
+
+<ul>
+<li>RenderFunction</li>
+<li>WillRenderFunction</li>
+<li>DidRenderFunction</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP5Quark3Tag4typeOS_7TagType"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP5Quark3Tag4typeOS_7TagType">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type of the tag: variable or section:</p>
+
+<pre class="highlight plaintext"><code>let render: RenderFunction = { (info: RenderingInfo) in
+    switch info.tag.type {
+    case .Variable:
+        return Rendering("variable")
+    case .Section:
+        return Rendering("section")
+    }
+}
+
+let template = try! Template(string: "{{object}}, {{#object}}...{{/object}}")
+
+// Renders "variable, section"
+try! template.render(Box(["object": Box(render)]))
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">TagType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP5Quark3Tag19innerTemplateStringSS"></a>
+                    <a name="//apple_ref/swift/Property/innerTemplateString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP5Quark3Tag19innerTemplateStringSS">innerTemplateString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The literal and unprocessed inner content of the tag.</p>
+
+<p>A section tag such as <code>{{# person }}Hello {{ name }}!{{/ person }}</code> returns
+<q>Hello {{ name }}!</q>.</p>
+
+<p>Variable tags such as <code>{{ name }}</code> have no inner content: their inner
+template string is the empty string.</p>
+
+<pre class="highlight plaintext"><code>// {{# pluralize(count) }}...{{/ }} renders the plural form of the section
+// content if the `count` argument is greater than 1.
+let pluralize = Filter { (count: Int?, info: RenderingInfo) in
+
+    // Pluralize the inner content of the section tag:
+    var string = info.tag.innerTemplateString
+    if count &gt; 1 {
+        string += "s"  // naive
+    }
+
+    return Rendering(string)
+}
+
+let template = try! Template(string: "I have {{ cats.count }} {{# pluralize(cats.count) }}cat{{/ }}.")
+template.registerInBaseContext("pluralize", Box(pluralize))
+
+// Renders "I have 3 cats."
+let data = ["cats": ["Kitty", "Pussy", "Melba"]]
+try! template.render(Box(data))
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">innerTemplateString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP5Quark3Tag16tagDelimiterPairTSSSS_"></a>
+                    <a name="//apple_ref/swift/Property/tagDelimiterPair" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP5Quark3Tag16tagDelimiterPairTSSSS_">tagDelimiterPair</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delimiters of the tag.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">tagDelimiterPair</span><span class="p">:</span> <span class="kt">TagDelimiterPair</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP5Quark3Tag6renderFzT7contextCS_7Context_VS_9Rendering"></a>
+                    <a name="//apple_ref/swift/Method/render(context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP5Quark3Tag6renderFzT7contextCS_7Context_VS_9Rendering">render(context:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the rendering of the tag&rsquo;s inner content. All inner tags are
+evaluated with the provided context.</p>
+
+<p>This method does not return a String, but a Rendering value that wraps both
+the rendered string and its content type (HTML or Text).</p>
+
+<p>The contentType is HTML, unless specified otherwise by <code><a href="../Structs/Configuration.html">Configuration</a></code>, or
+a <code>{{% CONTENT_TYPE:TEXT }}</code> pragma tag.</p>
+
+<pre class="highlight plaintext"><code>// The strong RenderFunction below wraps a section in a &lt;strong&gt; HTML tag.
+let strong: RenderFunction = { (info: RenderingInfo) -&gt; Rendering in
+    let rendering = try info.tag.render(info.context)
+    return Rendering("&lt;strong&gt;\(rendering.string)&lt;/strong&gt;", .HTML)
+}
+
+let template = try! Template(string: "{{#strong}}Hello {{name}}{{/strong}}")
+template.registerInBaseContext("strong", Box(strong))
+
+// Renders "&lt;strong&gt;Hello Arthur&lt;/strong&gt;"
+try! template.render(Box(["name": Box("Arthur")]))
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">render</span><span class="p">(</span><span class="nv">context</span><span class="p">:</span> <span class="kt">Context</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Rendering</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context stack for evaluating mustache tags.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>If there is a problem rendering the tag, throws an error that describes the problem.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The rendering of the tag.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://zewo.io" target="_blank" rel="external">Zewo</a>. All rights reserved. (Last updated: 2016-07-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

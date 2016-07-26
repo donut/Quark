@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Collection Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/Collection" class="dashAnchor"></a>
+    <a title="Collection Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Quark Docs</a> (20% documented)</p>
+        <p class="header-right"><a href="https://github.com/QuarkX/Quark"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Quark Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Collection Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BasicRoute.html">BasicRoute</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Channel.html">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Context.html">Context</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FallibleChannel.html">FallibleChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FallibleReceivingChannel.html">FallibleReceivingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FallibleSendingChannel.html">FallibleSendingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/File.html">File</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InMemoryRepository.html">InMemoryRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONSerializer.html">JSONSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Mapper.html">Mapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MustacheBox.html">MustacheBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PrettyJSONSerializer.html">PrettyJSONSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ReceivingChannel.html">ReceivingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Repository.html">Repository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestParser.html">RequestParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ResourceRoutes.html">ResourceRoutes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ResponseParser.html">ResponseParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Routes.html">Routes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SelectCaseBuilder.html">SelectCaseBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SendingChannel.html">SendingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Session.html">Session</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SessionInMemoryStorage.html">SessionInMemoryStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SessionMiddleware.html">SessionMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TCPConnection.html">TCPConnection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TCPServer.html">TCPServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Template.html">Template</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TemplateRepository.html">TemplateRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Ticker.html">Ticker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Timer.html">Timer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark20DefaultConfigurationVS_13Configuration">DefaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark15logicalCPUCountSi">logicalCPUCount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark5yieldT_">yield</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AuthenticationResult.html">AuthenticationResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChannelResult.html">ChannelResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/CharactersError.html">CharactersError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentNegotiationMiddlewareError.html">ContentNegotiationMiddlewareError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentType.html">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DatabaseParametersError.html">DatabaseParametersError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FileError.html">FileError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FileMode.html">FileMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/IPError.html">IPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/IPMode.html">IPMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONError.html">JSONError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONParseError.html">JSONParseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONStructuredDataParseError.html">JSONStructuredDataParseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MustacheSerializerError.html">MustacheSerializerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PollError.html">PollError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/QuarkError.html">QuarkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ReflectionError.html">ReflectionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StructuredDataError.html">StructuredDataError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SystemError.html">SystemError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TCPError.html">TCPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TagType.html">TagType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/URIError.html">URIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UnwrapError.html">UnwrapError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Body.html">Body</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Headers.html">Headers</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int32.html">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Message.html">Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Set.html">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/StructuredData.html">StructuredData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/StructuredDataFallibleRepresentable.html">StructuredDataFallibleRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/StructuredDataInitializable.html">StructuredDataInitializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt8.html">UInt8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URI.html">URI</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi1lu0_Rxs10ComparablerFTGVS_4Triexq__GS1_xq___Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVS_16AttributedCookieS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTO2C714StructuredDataS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVS_9MediaTypeS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTOS_4JSONS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVS_6CookieS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeu0_Rxs10ComparablerFTGVS_4Triexq__GS1_xq___Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTV2C73URIS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTPMP_PMP__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVV2C73URI8UserInfoS2__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3Boxu0_Rxs23BidirectionalCollection_S_15MustacheBoxablewx13IndexDistancezSiWx8Iterator7Element_zGSqq__WxS2_18IntegerLiteralType_zSiWxS2_6Stride_zSiWxS2_19_DisabledRangeIndex_zSiWxS2_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs23BidirectionalCollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT7boxableGSqPS_15MustacheBoxable___CS_11MustacheBox">Box(boxable:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT10dictionaryGSqGVs10DictionarySSx___CS_11MustacheBox">Box(dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT9didRenderFT3tagPS_3Tag_3boxCS_11MustacheBox6stringGSqSS__T__S1_">Box(didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6filterFzT3boxCS_11MustacheBox18partialApplicationSb_S0__S0_">Box(filter:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT18optionalDictionaryGSqGVs10DictionarySSGSqx____CS_11MustacheBox">Box(optionalDictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6renderFzT4infoVS_13RenderingInfo_VS_9Rendering_CS_11MustacheBox">Box(render:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs10CollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT3setGSqx__CS_11MustacheBox">Box(set:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT5valueGSqP__9boolValueGSqSb_14keyedSubscriptGSqFT3keySS_CS_11MustacheBox_6filterGSqFzT3boxS0_18partialApplicationSb_S0__6renderGSqFzT4infoVS_13RenderingInfo_VS_9Rendering_10willRenderGSqFT3tagPS_3Tag_3boxS0__S0__9didRenderGSqFT3tagPS3__3boxS0_6stringGSqSS__T___S0_">Box(value:boolValue:keyedSubscript:filter:render:willRender:didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT10willRenderFT3tagPS_3Tag_3boxCS_11MustacheBox_S1__S1_">Box(willRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzGSqx_CS_11MustacheBoxFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzCS_11MustacheBoxS0_FzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzTGSqx_VS_13RenderingInfo_VS_9RenderingFzT3boxCS_11MustacheBox18partialApplicationSb_S2_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzTCS_11MustacheBoxVS_13RenderingInfo_VS_9RenderingFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzVS_9RenderingS0_FzT3boxCS_11MustacheBox18partialApplicationSb_S1_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFT_SSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFSSSSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark14VariadicFilterFFzGSaCS_11MustacheBox_S0_FzT3boxS0_18partialApplicationSb_S0_">VariadicFilter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5afterFTSd7routineFT_T__T_">after(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFKT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFFT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx11constructorFzVVS_8Property11DescriptionP__x">construct(_:constructor:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx10dictionaryGVs10DictionarySSP___x">construct(_:dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4dumpFT_T_">dump()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark28ensureLastOperationSucceededFzT_T_">ensureLastOperationSucceeded()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark12escapeAsJSONFSSSS">escapeAsJSON(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10escapeHTMLFSSSS">escapeHTML(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5everyFTSd7routineFT4doneFT_T__T__T_">every(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6forSelFT5buildFT4whenCS_17SelectCaseBuilder4doneFT_T__T__T_">forSel(build:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9forSelectFFT4whenCS_17SelectCaseBuilder4doneFT_T__T_T_">forSelect(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4forkFT_Vs5Int32">fork()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3getFzTSS4fromP__P_">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3geturFzTSS4fromP__x">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9mediaTypeFT16forFileExtensionSS_GSqVS_9MediaType_">mediaType(forFileExtension:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3napFT3forSd_T_">nap(for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4pollFzTVs5Int323forVS_9PollEvent9timingOutSd_S1_">poll(_:for:timingOut:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark26preallocateCoroutineStacksFT10stackCountSi9stackSizeSi_T_">preallocateCoroutineStacks(stackCount:stackSize:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzP_GSaVS_8Property_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzPMP_GSaVVS_8Property11Description_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3selFFT4whenCS_17SelectCaseBuilder_T_T_">sel(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6selectFFT4whenCS_17SelectCaseBuilder_T_T_">select(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forPs9AnyObject__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forRP__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3seturFzTP_3keySS3forRx_T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5valueFTP_2isPMP__Sb">value(_:is:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4wakeFT2atSd_T_">wake(at:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Appender.html">Appender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DatabaseParameters.html">DatabaseParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileProtocol.html">FileProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Initializable.html">Initializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONRepresentable.html">JSONRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Mappable.html">Mappable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MediaTypeRepresentor.html">MediaTypeRepresentor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MustacheBoxable.html">MustacheBoxable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ParameterRepresentable.html">ParameterRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PathParameterInitializable.html">PathParameterInitializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RepositoryProtocol.html">RepositoryProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:P5Quark19ResourceConvertible">ResourceConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouteMatcher.html">RouteMatcher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouteProtocol.html">RouteProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterProtocol.html">RouterProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterRepresentable.html">RouterRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SessionStorage.html">SessionStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataDictionaryKeyInitializable.html">StructuredDataDictionaryKeyInitializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataDictionaryKeyRepresentable.html">StructuredDataDictionaryKeyRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataParser.html">StructuredDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataSerializer.html">StructuredDataSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tag.html">Tag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TemplateRepositoryDataSource.html">TemplateRepositoryDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AttributedCookie.html">AttributedCookie</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Base64.html">Base64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BasicAuthMiddleware.html">BasicAuthMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BasicResource.html">BasicResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BasicRouter.html">BasicRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChannelGenerator.html">ChannelGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Characters.html">Characters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentMapperMiddleware.html">ContentMapperMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentNegotiationMiddleware.html">ContentNegotiationMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Cookie.html">Cookie</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DefaultController.html">DefaultController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FallibleChannelGenerator.html">FallibleChannelGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileResponder.html">FileResponder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IP.html">IP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONParser.html">JSONParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONStructuredDataParser.html">JSONStructuredDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONStructuredDataSerializer.html">JSONStructuredDataSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LocationInfo.html">LocationInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Log.html">Log</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LogMiddleware.html">LogMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LoggingEvent.html">LoggingEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MediaType.html">MediaType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheError.html">MustacheError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheSerializer.html">MustacheSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PathParameterMiddleware.html">PathParameterMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PollEvent.html">PollEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Property.html">Property</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Quark.html">Quark</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Record.html">Record</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RecoveryMiddleware.html">RecoveryMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RedirectMiddleware.html">RedirectMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rendering.html">Rendering</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RenderingInfo.html">RenderingInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestSerializer.html">RequestSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResponseSerializer.html">ResponseSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Server.html">Server</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ServerParameters.html">ServerParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardLibrary.html">StandardLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardOutputAppender.html">StandardOutputAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TemplateEngineMiddleware.html">TemplateEngineMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Quark4Trie">Trie</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TrieRouteMatcher.html">TrieRouteMatcher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedForm.html">URLEncodedForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormParser.html">URLEncodedFormParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormSerializer.html">URLEncodedFormSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormStructuredDataParser.html">URLEncodedFormStructuredDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormStructuredDataSerializer.html">URLEncodedFormStructuredDataSerializer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark17DidRenderFunction">DidRenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14FilterFunction">FilterFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark22KeyedSubscriptFunction">KeyedSubscriptFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14RenderFunction">RenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark16TagDelimiterPair">TagDelimiterPair</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark10TemplateID">TemplateID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark18WillRenderFunction">WillRenderFunction</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Collection</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Collection</span> <span class="p">:</span> <span class="kt">Indexable</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Fe5QuarkRxs10CollectionWx8Iterator7Element_zVS_9MediaTyperS0_7matchesFT5otherS3__Sb"></a>
+                    <a name="//apple_ref/swift/Method/matches(other:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Fe5QuarkRxs10CollectionWx8Iterator7Element_zVS_9MediaTyperS0_7matchesFT5otherS3__Sb">matches(other:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Collection</span> <span class="p">:</span> <span class="kt">Indexable</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://zewo.io" target="_blank" rel="external">Zewo</a>. All rights reserved. (Last updated: 2016-07-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

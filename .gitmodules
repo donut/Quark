@@ -1,0 +1,4 @@
+[submodule "Quark"]
+	path = Quark
+	url = https://github.com/QuarkX/Quark
+	branch = master

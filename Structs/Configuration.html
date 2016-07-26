@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Configuration Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Configuration" class="dashAnchor"></a>
+    <a title="Configuration Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Quark Docs</a> (43% documented)</p>
+        <p class="header-right"><a href="https://github.com/QuarkX/Quark"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Quark Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Configuration Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Context.html">Context</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MustacheBox.html">MustacheBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Template.html">Template</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TemplateRepository.html">TemplateRepository</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark20DefaultConfigurationVS_13Configuration">DefaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark15logicalCPUCountSi">logicalCPUCount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark5yieldT_">yield</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums.html#/s:O5Quark11ContentType">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TagType.html">TagType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Body.html">Body</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Ps10Collection">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Vs5Int32">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sq">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Set.html">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Vs5UInt8">UInt8</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTPMP_PMP__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3Boxu0_Rxs23BidirectionalCollection_S_15MustacheBoxablewx13IndexDistancezSiWx8Iterator7Element_zGSqq__WxS2_18IntegerLiteralType_zSiWxS2_6Stride_zSiWxS2_19_DisabledRangeIndex_zSiWxS2_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs23BidirectionalCollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT7boxableGSqPS_15MustacheBoxable___CS_11MustacheBox">Box(boxable:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT10dictionaryGSqGVs10DictionarySSx___CS_11MustacheBox">Box(dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT9didRenderFT3tagPS_3Tag_3boxCS_11MustacheBox6stringGSqSS__T__S1_">Box(didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6filterFzT3boxCS_11MustacheBox18partialApplicationSb_S0__S0_">Box(filter:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT18optionalDictionaryGSqGVs10DictionarySSGSqx____CS_11MustacheBox">Box(optionalDictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6renderFzT4infoVS_13RenderingInfo_VS_9Rendering_CS_11MustacheBox">Box(render:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs10CollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT3setGSqx__CS_11MustacheBox">Box(set:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT5valueGSqP__9boolValueGSqSb_14keyedSubscriptGSqFT3keySS_CS_11MustacheBox_6filterGSqFzT3boxS0_18partialApplicationSb_S0__6renderGSqFzT4infoVS_13RenderingInfo_VS_9Rendering_10willRenderGSqFT3tagPS_3Tag_3boxS0__S0__9didRenderGSqFT3tagPS3__3boxS0_6stringGSqSS__T___S0_">Box(value:boolValue:keyedSubscript:filter:render:willRender:didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT10willRenderFT3tagPS_3Tag_3boxCS_11MustacheBox_S1__S1_">Box(willRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzVS_9RenderingS0_FzT3boxCS_11MustacheBox18partialApplicationSb_S1_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzTCS_11MustacheBoxVS_13RenderingInfo_VS_9RenderingFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzGSqx_CS_11MustacheBoxFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzCS_11MustacheBoxS0_FzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzTGSqx_VS_13RenderingInfo_VS_9RenderingFzT3boxCS_11MustacheBox18partialApplicationSb_S2_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFSSSSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFT_SSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark14VariadicFilterFFzGSaCS_11MustacheBox_S0_FzT3boxS0_18partialApplicationSb_S0_">VariadicFilter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5afterFTSd7routineFT_T__T_">after(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFKT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFFT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx11constructorFzVVS_8Property11DescriptionP__x">construct(_:constructor:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx10dictionaryGVs10DictionarySSP___x">construct(_:dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10escapeHTMLFSSSS">escapeHTML(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5everyFTSd7routineFT4doneFT_T__T__T_">every(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4forkFT_Vs5Int32">fork()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3getFzTSS4fromP__P_">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3geturFzTSS4fromP__x">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3napFT3forSd_T_">nap(for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4pollFzTVs5Int323forVS_9PollEvent9timingOutSd_S1_">poll(_:for:timingOut:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark26preallocateCoroutineStacksFT10stackCountSi9stackSizeSi_T_">preallocateCoroutineStacks(stackCount:stackSize:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzPMP_GSaVVS_8Property11Description_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzP_GSaVS_8Property_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3seturFzTP_3keySS3forRx_T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forRP__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forPs9AnyObject__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5valueFTP_2isPMP__Sb">value(_:is:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4wakeFT2atSd_T_">wake(at:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MustacheBoxable.html">MustacheBoxable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tag.html">Tag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TemplateRepositoryDataSource.html">TemplateRepositoryDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheError.html">MustacheError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Property.html">Property</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rendering.html">Rendering</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RenderingInfo.html">RenderingInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardLibrary.html">StandardLibrary</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark17DidRenderFunction">DidRenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14FilterFunction">FilterFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark22KeyedSubscriptFunction">KeyedSubscriptFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14RenderFunction">RenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark16TagDelimiterPair">TagDelimiterPair</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark10TemplateID">TemplateID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark18WillRenderFunction">WillRenderFunction</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Configuration</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Configuration</span></code></pre>
+
+                </div>
+              </div>
+            <p>Configuration exposes properties that affect both the parsing and the rendering
+of Mustache templates.</p>
+
+<p><a href='#what_can_be_configured' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='what_can_be_configured'>What can be configured</h3></p>
+
+<p>Configuration covers:</p>
+
+<ul>
+<li><p><strong>Content type</strong>: HTML templates escape rendered strings, while Text templates
+do not. Text templates are HTML-escaped as a whole when included in HTML
+templates.</p></li>
+<li><p><strong>Context stack</strong>: values stored in a Configuration&rsquo;s context are readily
+available to templates.</p></li>
+<li><p><strong>Tag delimiters</strong>: default Mustache delimiters are <code>{{</code> and <code>}}</code>. These are
+configurable.</p></li>
+</ul>
+
+<p><a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='usage'>Usage</h3></p>
+
+<p>You setup a configuration <em>before</em> loading templates:</p>
+
+<pre class="highlight plaintext"><code>// Template loaded later will not HTML-escape the rendered strings:
+Mustache.DefaultConfiguration.contentType = .Text
+
+// A text template
+let template = try! Template(string: "...")
+</code></pre>
+
+<p><a href='#configuration_levels' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='configuration_levels'>Configuration levels</h3></p>
+
+<p>There are three levels of configuration:</p>
+
+<p><code>Mustache.DefaultConfiguration</code> is a global variable that applies by default:</p>
+
+<pre class="highlight plaintext"><code>Mustache.DefaultConfiguration.contentType = .Text
+
+// A text template
+let template = try! Template(named: "Document")
+</code></pre>
+
+<p><code><a href="../Classes/TemplateRepository.html#/s:vC5Quark18TemplateRepository13configurationVS_13Configuration">TemplateRepository.configuration</a></code> only applies to templates loaded from the
+template repository:</p>
+
+<pre class="highlight plaintext"><code>let repository = TemplateRepository(directoryPath: "/path/to/templates")
+repository.configuration.contentType = .Text
+
+// A text template
+let template = try! repository.template(named: "Document")
+</code></pre>
+
+<p>Templates can also be configured individually. See the documentation of each
+Configuration method for more details.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Factory%20Configuration"></a>
+                <a name="//apple_ref/swift/Section/Factory Configuration" class="dashAnchor"></a>
+                <a href="#/Factory%20Configuration">
+                  <h3 class="section-name">Factory Configuration</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Quark13ConfigurationcFT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Quark13ConfigurationcFT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a factory configuration.</p>
+
+<p>Its contentType is HTML, baseContext empty, tag delimiters <code>{{</code> and <code>}}</code>.</p>
+
+<p>For example:</p>
+
+<pre class="highlight plaintext"><code>// Make sure the template repository uses factory configuration,
+// regardless of changes made to `Mustache.DefaultConfiguration`:
+
+let repository = TemplateRepository(directoryPath: "/path/to/templates")
+repository.configuration = Configuration()
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Content%20Type"></a>
+                <a name="//apple_ref/swift/Section/Content Type" class="dashAnchor"></a>
+                <a href="#/Content%20Type">
+                  <h3 class="section-name">Content Type</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV5Quark13Configuration11contentTypeOS_11ContentType"></a>
+                    <a name="//apple_ref/swift/Property/contentType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV5Quark13Configuration11contentTypeOS_11ContentType">contentType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The content type of strings rendered by templates built with this
+configuration.</p>
+
+<p>It affects the HTML-escaping of your data:</p>
+
+<ul>
+<li><p>The <code>.HTML</code> content type has templates render HTML. This is the default
+behavior. HTML template escape the input of variable tags such as
+<code>{{name}}</code>. Use triple mustache tags <code>{{{content}}}</code> in order to avoid the
+HTML-escaping.</p></li>
+<li><p>The <code>.Text</code> content type has templates render text. They do not
+HTML-escape their input: <code>{{name}}</code> and <code>{{{name}}}</code> have identical,
+non-escaped, renderings.</p></li>
+</ul>
+
+<p>GRMustache safely keeps track of the content type of templates: should a
+HTML template embed a text template, the content of the text template would
+be HTML-escaped, as a whole.</p>
+
+<p>Setting the contentType of a configuration affects the contentType of all
+templates loaded afterwards:</p>
+
+<pre class="highlight plaintext"><code>// Globally, with Mustache.DefaultConfiguration:
+
+Mustache.DefaultConfiguration.contentType = .Text
+let textTemplate = try! Template(named: "Script")
+
+// Locally, using a TemplateRepository:
+
+let repository = TemplateRepository(bundle: NSBundle.mainBundle())
+repository.configuration.contentType = .HTML
+let HTMLTemplate = try! repository.template(named: "HTMLDocument")
+</code></pre>
+
+<p>In order to set the content type of an individual templates, use pragma tags
+right in the content of your templates:</p>
+
+<ul>
+<li><code>{{% CONTENT_TYPE:TEXT }}</code> turns a template into a text template.</li>
+<li><code>{{% CONTENT_TYPE:HTML }}</code> turns a template into a HTML template.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre class="highlight json"><code><span class="p">{</span><span class="err">{!</span><span class="w"> </span><span class="err">This</span><span class="w"> </span><span class="err">template</span><span class="w"> </span><span class="err">renders</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">bash</span><span class="w"> </span><span class="err">script.</span><span class="w"> </span><span class="p">}</span><span class="err">}</span><span class="w">
+</span><span class="p">{</span><span class="err">{%</span><span class="w"> </span><span class="err">CONTENT_TYPE:TEXT</span><span class="w"> </span><span class="p">}</span><span class="err">}</span><span class="w">
+</span><span class="err">export</span><span class="w"> </span><span class="err">LANG=</span><span class="p">{</span><span class="err">{ENV.LANG</span><span class="p">}</span><span class="err">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+
+<p>These pragmas must be found early in the template (before any value tag).
+Should several pragmas be found in a template content, the last one wins.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">contentType</span><span class="p">:</span> <span class="kt">ContentType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Context%20Stack"></a>
+                <a name="//apple_ref/swift/Section/Context Stack" class="dashAnchor"></a>
+                <a href="#/Context%20Stack">
+                  <h3 class="section-name">Context Stack</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV5Quark13Configuration11baseContextCS_7Context"></a>
+                    <a name="//apple_ref/swift/Property/baseContext" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV5Quark13Configuration11baseContextCS_7Context">baseContext</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The base context for templates rendering. All templates built with this
+configuration can access values stored in the base context.</p>
+
+<p>The default base context is empty.</p>
+
+<p>You can set it to some custom context, or extend it with the
+<code>extendBaseContext</code> and <code>registerInBaseContext</code> methods.</p>
+
+<pre class="highlight plaintext"><code>// Globally, with Mustache.DefaultConfiguration:
+
+Mustache.DefaultConfiguration.baseContext = Context(Box(["foo": "bar"]))
+
+// "bar"
+let template1 = try! Template(string: "{{foo}}")
+try! template1.render()
+
+// Locally, using a TemplateRepository:
+
+let repository = TemplateRepository(bundle: NSBundle.mainBundle())
+repository.configuration.baseContext = Context(Box(["foo": "bar"]))
+
+// "bar"
+let template2 = try! repository.template(string: "{{foo}}")
+try! template2.render()
+</code></pre>
+
+<p>The base context can also be set for individual templates:</p>
+
+<pre class="highlight plaintext"><code>let template3 = try! Template(string: "{{foo}}")
+template3.baseContext = Context(Box(["foo": "bar"]))
+
+// "bar"
+try! template3.render()
+</code></pre>
+
+<p>See also:</p>
+
+<ul>
+<li>extendBaseContext</li>
+<li>registerInBaseContext</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">baseContext</span><span class="p">:</span> <span class="kt">Context</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Quark13Configuration17extendBaseContextFT3boxCS_11MustacheBox_T_"></a>
+                    <a name="//apple_ref/swift/Method/extendBaseContext(box:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Quark13Configuration17extendBaseContextFT3boxCS_11MustacheBox_T_">extendBaseContext(box:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Extends the base context with the provided boxed value. All templates built
+with this configuration can access its keys.</p>
+
+<pre class="highlight plaintext"><code>// Globally, with Mustache.DefaultConfiguration:
+
+Mustache.DefaultConfiguration.extendBaseContext(Box(["foo": "bar"]))
+
+// "bar"
+let template1 = try! Template(string: "{{foo}}")
+try! template1.render()
+
+// Locally, using a TemplateRepository:
+
+let repository = TemplateRepository(bundle: NSBundle.mainBundle())
+repository.configuration.extendBaseContext(Box(["foo": "bar"]))
+
+// "bar"
+let template2 = try! repository.template(string: "{{foo}}")
+try! template2.render()
+</code></pre>
+
+<p>The base context can also be extended for individual templates:</p>
+
+<pre class="highlight plaintext"><code>let template3 = try! Template(string: "{{foo}}")
+template3.extendBaseContext(Box(["foo": "bar"]))
+
+// "bar"
+try! template3.render()
+</code></pre>
+
+<p>See also:</p>
+
+<ul>
+<li>baseContext</li>
+<li>registerInBaseContext</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">extendBaseContext</span><span class="p">(</span><span class="nv">box</span><span class="p">:</span> <span class="kt">MustacheBox</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>box</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The box pushed on the top of the context stack.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Quark13Configuration21registerInBaseContextFT3keySSCS_11MustacheBox_T_"></a>
+                    <a name="//apple_ref/swift/Method/registerInBaseContext(key:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Quark13Configuration21registerInBaseContextFT3keySSCS_11MustacheBox_T_">registerInBaseContext(key:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Registers a key in the base context. All renderings will be able to access
+the provided box through this key.</p>
+
+<p>Registered keys are looked up first when evaluating Mustache tags.</p>
+
+<pre class="highlight plaintext"><code>// Globally, with Mustache.DefaultConfiguration:
+
+Mustache.DefaultConfiguration.registerInBaseContext("foo", Box("bar"))
+
+// Renders "bar"
+let template1 = try! Template(string: "{{foo}}")
+try! template1.render()
+
+// Renders "bar" again, because the registered key "foo" has priority.
+try! template1.render(Box(["foo": "qux"]))
+
+// Locally, using a TemplateRepository:
+
+let repository = TemplateRepository(bundle: NSBundle.mainBundle())
+repository.configuration.registerInBaseContext("foo", Box("bar"))
+
+// "bar"
+let template2 = try! repository.template(string: "{{foo}}")
+try! template2.render()
+</code></pre>
+
+<p>Keys can also be registered in the base context of individual templates:</p>
+
+<pre class="highlight plaintext"><code>let template3 = try! Template(string: "{{foo}}")
+template3.registerInBaseContext("foo", Box("bar"))
+
+// "bar"
+try! template3.render()
+</code></pre>
+
+<p>See also:</p>
+
+<ul>
+<li>baseContext</li>
+<li>extendBaseContext</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">registerInBaseContext</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">box</span><span class="p">:</span> <span class="kt">MustacheBox</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An identifier.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>box</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The box registered for .</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Tag%20delimiters"></a>
+                <a name="//apple_ref/swift/Section/Tag delimiters" class="dashAnchor"></a>
+                <a href="#/Tag%20delimiters">
+                  <h3 class="section-name">Tag delimiters</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV5Quark13Configuration16tagDelimiterPairTSSSS_"></a>
+                    <a name="//apple_ref/swift/Property/tagDelimiterPair" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV5Quark13Configuration16tagDelimiterPairTSSSS_">tagDelimiterPair</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delimiters for Mustache tags. All templates built with this
+configuration are parsed using those delimiters.</p>
+
+<p>The default value is <code>(&quot;{{&quot;, &quot;}}&quot;)</code>.</p>
+
+<p>Setting the tagDelimiterPair of a configuration affects all templates loaded
+afterwards:</p>
+
+<pre class="highlight plaintext"><code>// Globally, with Mustache.DefaultConfiguration:
+
+Mustache.DefaultConfiguration.tagDelimiterPair = ("&lt;%", "%&gt;")
+let template1 = try! Template(string: "&lt;% name %&gt;)
+
+// Locally, using a TemplateRepository:
+
+let repository = TemplateRepository()
+repository.configuration.tagDelimiterPair = ("[[", "]]")
+let HTMLTemplate = try! repository.template(string: "[[ name ]]")
+</code></pre>
+
+<p>You can also change the delimiters right in your templates using a <q>Set
+Delimiter tag</q>: <code>{{=[[ ]]=}}</code> changes delimiters to <code>[[</code> and <code>]]</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">tagDelimiterPair</span><span class="p">:</span> <span class="kt">TagDelimiterPair</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://zewo.io" target="_blank" rel="external">Zewo</a>. All rights reserved. (Last updated: 2016-07-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

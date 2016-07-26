@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Context Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Context" class="dashAnchor"></a>
+    <a title="Context Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Quark Docs</a> (43% documented)</p>
+        <p class="header-right"><a href="https://github.com/QuarkX/Quark"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Quark Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Context Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Context.html">Context</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MustacheBox.html">MustacheBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Template.html">Template</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TemplateRepository.html">TemplateRepository</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark20DefaultConfigurationVS_13Configuration">DefaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark15logicalCPUCountSi">logicalCPUCount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark5yieldT_">yield</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums.html#/s:O5Quark11ContentType">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TagType.html">TagType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Body.html">Body</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Ps10Collection">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Vs5Int32">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sq">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Set.html">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Vs5UInt8">UInt8</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTPMP_PMP__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3Boxu0_Rxs23BidirectionalCollection_S_15MustacheBoxablewx13IndexDistancezSiWx8Iterator7Element_zGSqq__WxS2_18IntegerLiteralType_zSiWxS2_6Stride_zSiWxS2_19_DisabledRangeIndex_zSiWxS2_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs23BidirectionalCollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT7boxableGSqPS_15MustacheBoxable___CS_11MustacheBox">Box(boxable:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT10dictionaryGSqGVs10DictionarySSx___CS_11MustacheBox">Box(dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT9didRenderFT3tagPS_3Tag_3boxCS_11MustacheBox6stringGSqSS__T__S1_">Box(didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6filterFzT3boxCS_11MustacheBox18partialApplicationSb_S0__S0_">Box(filter:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT18optionalDictionaryGSqGVs10DictionarySSGSqx____CS_11MustacheBox">Box(optionalDictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6renderFzT4infoVS_13RenderingInfo_VS_9Rendering_CS_11MustacheBox">Box(render:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs10CollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT3setGSqx__CS_11MustacheBox">Box(set:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT5valueGSqP__9boolValueGSqSb_14keyedSubscriptGSqFT3keySS_CS_11MustacheBox_6filterGSqFzT3boxS0_18partialApplicationSb_S0__6renderGSqFzT4infoVS_13RenderingInfo_VS_9Rendering_10willRenderGSqFT3tagPS_3Tag_3boxS0__S0__9didRenderGSqFT3tagPS3__3boxS0_6stringGSqSS__T___S0_">Box(value:boolValue:keyedSubscript:filter:render:willRender:didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT10willRenderFT3tagPS_3Tag_3boxCS_11MustacheBox_S1__S1_">Box(willRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzVS_9RenderingS0_FzT3boxCS_11MustacheBox18partialApplicationSb_S1_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzTCS_11MustacheBoxVS_13RenderingInfo_VS_9RenderingFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzGSqx_CS_11MustacheBoxFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzCS_11MustacheBoxS0_FzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzTGSqx_VS_13RenderingInfo_VS_9RenderingFzT3boxCS_11MustacheBox18partialApplicationSb_S2_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFSSSSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFT_SSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark14VariadicFilterFFzGSaCS_11MustacheBox_S0_FzT3boxS0_18partialApplicationSb_S0_">VariadicFilter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5afterFTSd7routineFT_T__T_">after(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFKT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFFT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx11constructorFzVVS_8Property11DescriptionP__x">construct(_:constructor:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx10dictionaryGVs10DictionarySSP___x">construct(_:dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10escapeHTMLFSSSS">escapeHTML(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5everyFTSd7routineFT4doneFT_T__T__T_">every(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4forkFT_Vs5Int32">fork()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3getFzTSS4fromP__P_">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3geturFzTSS4fromP__x">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3napFT3forSd_T_">nap(for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4pollFzTVs5Int323forVS_9PollEvent9timingOutSd_S1_">poll(_:for:timingOut:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark26preallocateCoroutineStacksFT10stackCountSi9stackSizeSi_T_">preallocateCoroutineStacks(stackCount:stackSize:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzPMP_GSaVVS_8Property11Description_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzP_GSaVS_8Property_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3seturFzTP_3keySS3forRx_T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forRP__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forPs9AnyObject__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5valueFTP_2isPMP__Sb">value(_:is:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4wakeFT2atSd_T_">wake(at:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MustacheBoxable.html">MustacheBoxable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tag.html">Tag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TemplateRepositoryDataSource.html">TemplateRepositoryDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheError.html">MustacheError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Property.html">Property</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rendering.html">Rendering</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RenderingInfo.html">RenderingInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardLibrary.html">StandardLibrary</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark17DidRenderFunction">DidRenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14FilterFunction">FilterFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark22KeyedSubscriptFunction">KeyedSubscriptFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14RenderFunction">RenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark16TagDelimiterPair">TagDelimiterPair</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark10TemplateID">TemplateID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark18WillRenderFunction">WillRenderFunction</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Context</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">final</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">Context</span></code></pre>
+
+                </div>
+              </div>
+            <p>A Context represents a state of the Mustache <q>context stack</q>.</p>
+
+<p>The context stack grows and shrinks as the Mustache engine enters and leaves
+Mustache sections.</p>
+
+<p>The top of the context stack is called the <q>current context</q>. It is the value
+rendered by the <code>{{.}}</code> tag:</p>
+
+<pre class="highlight plaintext"><code>// Renders "Kitty, Pussy, Melba, "
+let template = try! Template(string: "{{#cats}}{{.}}, {{/cats}}")
+try! template.render(Box(["cats": ["Kitty", "Pussy", "Melba"]]))
+</code></pre>
+
+<p>Key lookup starts with the current context and digs down the stack until if
+finds a value:</p>
+
+<pre class="highlight plaintext"><code>// Renders "&lt;child&gt;, &lt;parent&gt;, "
+let template = try! Template(string: "{{#children}}&lt;{{name}}&gt;, {{/children}}")
+let data = [
+  "name": "parent",
+  "children": [
+      ["name": "child"],
+      [:]    // a child without a name
+  ]
+]
+try! template.render(Box(data))
+</code></pre>
+
+<p>See also:</p>
+
+<ul>
+<li>Configuration</li>
+<li>TemplateRepository</li>
+<li>RenderFunction</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Creating%20Contexts"></a>
+                <a name="//apple_ref/swift/Section/Creating Contexts" class="dashAnchor"></a>
+                <a href="#/Creating%20Contexts">
+                  <h3 class="section-name">Creating Contexts</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7ContextcFT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7ContextcFT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Builds an empty Context.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7ContextcFT3boxCS_11MustacheBox_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(box:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7ContextcFT3boxCS_11MustacheBox_S0_">init(box:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Builds a context that contains the provided box.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">box</span><span class="p">:</span> <span class="kt">MustacheBox</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>box</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A box.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new context that contains .</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7ContextcFT13registeredKeySS3boxCS_11MustacheBox_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(registeredKey:box:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7ContextcFT13registeredKeySS3boxCS_11MustacheBox_S0_">init(registeredKey:box:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Builds a context with a registered key. Registered keys are looked up first
+when evaluating Mustache tags.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">registeredKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">box</span><span class="p">:</span> <span class="kt">MustacheBox</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An identifier.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>box</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A box.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new context with  registered for .</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Deriving%20New%20Contexts"></a>
+                <a name="//apple_ref/swift/Section/Deriving New Contexts" class="dashAnchor"></a>
+                <a href="#/Deriving%20New%20Contexts">
+                  <h3 class="section-name">Deriving New Contexts</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7Context15extendedContextFCS_11MustacheBoxS0_"></a>
+                    <a name="//apple_ref/swift/Method/extendedContext(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7Context15extendedContextFCS_11MustacheBoxS0_">extendedContext(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">extendedContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">box</span><span class="p">:</span> <span class="kt">MustacheBox</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Context</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>box</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A box.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new context with  pushed at the top of the stack.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7Context7contextFT17withRegisteredKeySS3boxCS_11MustacheBox_S0_"></a>
+                    <a name="//apple_ref/swift/Method/context(withRegisteredKey:box:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7Context7contextFT17withRegisteredKeySS3boxCS_11MustacheBox_S0_">context(withRegisteredKey:box:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">context</span><span class="p">(</span><span class="n">withRegisteredKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">box</span><span class="p">:</span> <span class="kt">MustacheBox</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Context</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An identifier.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>box</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A box.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new context with  registered for .</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Fetching%20Values%20from%20the%20Context%20Stack"></a>
+                <a name="//apple_ref/swift/Section/Fetching Values from the Context Stack" class="dashAnchor"></a>
+                <a href="#/Fetching%20Values%20from%20the%20Context%20Stack">
+                  <h3 class="section-name">Fetching Values from the Context Stack</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC5Quark7Context6topBoxCS_11MustacheBox"></a>
+                    <a name="//apple_ref/swift/Property/topBox" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC5Quark7Context6topBoxCS_11MustacheBox">topBox</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the top box of the context stack, the one that would be rendered by
+the <code>{{.}}</code> tag.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">topBox</span><span class="p">:</span> <span class="kt">MustacheBox</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7Context11mustacheBoxFT6forKeySS_CS_11MustacheBox"></a>
+                    <a name="//apple_ref/swift/Method/mustacheBox(forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7Context11mustacheBoxFT6forKeySS_CS_11MustacheBox">mustacheBox(forKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the boxed value stored in the context stack for the given key.</p>
+
+<p>The following search pattern is used:</p>
+
+<ol>
+<li><p>If the key is <q>registered</q>, returns the registered box for that key.</p></li>
+<li><p>Otherwise, searches the context stack for a box that has a non-empty
+box for the key (see <code>InspectFunction</code>).</p></li>
+<li><p>If none of the above situations occurs, returns the empty box.</p>
+<pre class="highlight plaintext"><code>let data = ["name": "Groucho Marx"]
+let context = Context(Box(data))
+
+// "Groucho Marx"
+context.mustacheBoxForKey("name").value
+</code></pre></li>
+</ol>
+
+<p>If you want the value for a full Mustache expression such as <code>user.name</code> or
+<code>uppercase(user.name)</code>, use the <code>mustacheBoxForExpression</code> method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">mustacheBox</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">MustacheBox</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The MustacheBox for .</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Quark7Context11mustacheBoxFzT19forExpressionStringSS_CS_11MustacheBox"></a>
+                    <a name="//apple_ref/swift/Method/mustacheBox(forExpressionString:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Quark7Context11mustacheBoxFzT19forExpressionStringSS_CS_11MustacheBox">mustacheBox(forExpressionString:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Evaluates a Mustache expression such as <code>name</code>, or <code>uppercase(user.name)</code>.</p>
+
+<pre class="highlight plaintext"><code>let data = ["person": ["name": "Albert Einstein"]]
+let context = Context(Box(data))
+
+// "Albert Einstein"
+try! context.mustacheBoxForExpression("person.name").value
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">mustacheBox</span><span class="p">(</span><span class="n">forExpressionString</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">MustacheBox</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The expression string.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>If there is a problem parsing or evaluating the expression, throws an error that describes the problem.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value of the expression.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC5Quark7Context16debugDescriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/debugDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC5Quark7Context16debugDescriptionSS">debugDescription</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A textual representation of <code>self</code>, suitable for debugging.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debugDescription</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://zewo.io" target="_blank" rel="external">Zewo</a>. All rights reserved. (Last updated: 2016-07-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

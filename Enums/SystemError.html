@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SystemError Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/SystemError" class="dashAnchor"></a>
+    <a title="SystemError Enum Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Quark Docs</a> (20% documented)</p>
+        <p class="header-right"><a href="https://github.com/QuarkX/Quark"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Quark Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SystemError Enum Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BasicRoute.html">BasicRoute</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Channel.html">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Context.html">Context</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FallibleChannel.html">FallibleChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FallibleReceivingChannel.html">FallibleReceivingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FallibleSendingChannel.html">FallibleSendingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/File.html">File</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InMemoryRepository.html">InMemoryRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONSerializer.html">JSONSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Mapper.html">Mapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MustacheBox.html">MustacheBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PrettyJSONSerializer.html">PrettyJSONSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ReceivingChannel.html">ReceivingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Repository.html">Repository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestParser.html">RequestParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ResourceRoutes.html">ResourceRoutes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ResponseParser.html">ResponseParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Routes.html">Routes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SelectCaseBuilder.html">SelectCaseBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SendingChannel.html">SendingChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Session.html">Session</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SessionInMemoryStorage.html">SessionInMemoryStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SessionMiddleware.html">SessionMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TCPConnection.html">TCPConnection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TCPServer.html">TCPServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Template.html">Template</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TemplateRepository.html">TemplateRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Ticker.html">Ticker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Timer.html">Timer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark20DefaultConfigurationVS_13Configuration">DefaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark15logicalCPUCountSi">logicalCPUCount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v5Quark5yieldT_">yield</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AuthenticationResult.html">AuthenticationResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChannelResult.html">ChannelResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/CharactersError.html">CharactersError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentNegotiationMiddlewareError.html">ContentNegotiationMiddlewareError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentType.html">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DatabaseParametersError.html">DatabaseParametersError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FileError.html">FileError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FileMode.html">FileMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/IPError.html">IPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/IPMode.html">IPMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONError.html">JSONError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONParseError.html">JSONParseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONStructuredDataParseError.html">JSONStructuredDataParseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MustacheSerializerError.html">MustacheSerializerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PollError.html">PollError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/QuarkError.html">QuarkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ReflectionError.html">ReflectionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StructuredDataError.html">StructuredDataError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SystemError.html">SystemError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TCPError.html">TCPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TagType.html">TagType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/URIError.html">URIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UnwrapError.html">UnwrapError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Body.html">Body</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Headers.html">Headers</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int32.html">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Message.html">Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Set.html">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/StructuredData.html">StructuredData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/StructuredDataFallibleRepresentable.html">StructuredDataFallibleRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/StructuredDataInitializable.html">StructuredDataInitializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt8.html">UInt8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URI.html">URI</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi1lu0_Rxs10ComparablerFTGVS_4Triexq__GS1_xq___Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVS_16AttributedCookieS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTO2C714StructuredDataS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVS_9MediaTypeS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTOS_4JSONS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVS_6CookieS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeu0_Rxs10ComparablerFTGVS_4Triexq__GS1_xq___Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTV2C73URIS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTPMP_PMP__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Quarkoi2eeFTVV2C73URI8UserInfoS2__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3Boxu0_Rxs23BidirectionalCollection_S_15MustacheBoxablewx13IndexDistancezSiWx8Iterator7Element_zGSqq__WxS2_18IntegerLiteralType_zSiWxS2_6Stride_zSiWxS2_19_DisabledRangeIndex_zSiWxS2_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs23BidirectionalCollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT5arrayGSqx__CS_11MustacheBox">Box(array:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT7boxableGSqPS_15MustacheBoxable___CS_11MustacheBox">Box(boxable:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT10dictionaryGSqGVs10DictionarySSx___CS_11MustacheBox">Box(dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT9didRenderFT3tagPS_3Tag_3boxCS_11MustacheBox6stringGSqSS__T__S1_">Box(didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6filterFzT3boxCS_11MustacheBox18partialApplicationSb_S0__S0_">Box(filter:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxS_15MustacheBoxablerFT18optionalDictionaryGSqGVs10DictionarySSGSqx____CS_11MustacheBox">Box(optionalDictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT6renderFzT4infoVS_13RenderingInfo_VS_9Rendering_CS_11MustacheBox">Box(render:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxuRxs10CollectionWx8Iterator7Element_S_15MustacheBoxablewx13IndexDistancezSiWxS4_18IntegerLiteralType_zSiWxS4_6Stride_zSiWxS4_19_DisabledRangeIndex_zSiWxS4_S6_S5__zSirFT3setGSqx__CS_11MustacheBox">Box(set:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT5valueGSqP__9boolValueGSqSb_14keyedSubscriptGSqFT3keySS_CS_11MustacheBox_6filterGSqFzT3boxS0_18partialApplicationSb_S0__6renderGSqFzT4infoVS_13RenderingInfo_VS_9Rendering_10willRenderGSqFT3tagPS_3Tag_3boxS0__S0__9didRenderGSqFT3tagPS3__3boxS0_6stringGSqSS__T___S0_">Box(value:boolValue:keyedSubscript:filter:render:willRender:didRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3BoxFT10willRenderFT3tagPS_3Tag_3boxCS_11MustacheBox_S1__S1_">Box(willRender:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzGSqx_CS_11MustacheBoxFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzCS_11MustacheBoxS0_FzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterurFFzTGSqx_VS_13RenderingInfo_VS_9RenderingFzT3boxCS_11MustacheBox18partialApplicationSb_S2_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzTCS_11MustacheBoxVS_13RenderingInfo_VS_9RenderingFzT3boxS0_18partialApplicationSb_S0_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6FilterFFzVS_9RenderingS0_FzT3boxCS_11MustacheBox18partialApplicationSb_S1_">Filter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFT_SSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6LambdaFFSSSSFzT4infoVS_13RenderingInfo_VS_9Rendering">Lambda(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark14VariadicFilterFFzGSaCS_11MustacheBox_S0_FzT3boxS0_18partialApplicationSb_S0_">VariadicFilter(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5afterFTSd7routineFT_T__T_">after(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFKT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark2coFFT_T_T_">co(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx11constructorFzVVS_8Property11DescriptionP__x">construct(_:constructor:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9constructurFzTMx10dictionaryGVs10DictionarySSP___x">construct(_:dictionary:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4dumpFT_T_">dump()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark28ensureLastOperationSucceededFzT_T_">ensureLastOperationSucceeded()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark12escapeAsJSONFSSSS">escapeAsJSON(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10escapeHTMLFSSSS">escapeHTML(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5everyFTSd7routineFT4doneFT_T__T__T_">every(_:routine:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6forSelFT5buildFT4whenCS_17SelectCaseBuilder4doneFT_T__T__T_">forSel(build:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9forSelectFFT4whenCS_17SelectCaseBuilder4doneFT_T__T_T_">forSelect(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4forkFT_Vs5Int32">fork()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3getFzTSS4fromP__P_">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3geturFzTSS4fromP__x">get(_:from:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark9mediaTypeFT16forFileExtensionSS_GSqVS_9MediaType_">mediaType(forFileExtension:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3napFT3forSd_T_">nap(for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4pollFzTVs5Int323forVS_9PollEvent9timingOutSd_S1_">poll(_:for:timingOut:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark26preallocateCoroutineStacksFT10stackCountSi9stackSizeSi_T_">preallocateCoroutineStacks(stackCount:stackSize:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzP_GSaVS_8Property_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark10propertiesFzPMP_GSaVVS_8Property11Description_">properties(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3selFFT4whenCS_17SelectCaseBuilder_T_T_">sel(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark6selectFFT4whenCS_17SelectCaseBuilder_T_T_">select(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forPs9AnyObject__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3setFzTP_3keySS3forRP__T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark3seturFzTP_3keySS3forRx_T_">set(_:key:for:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark5valueFTP_2isPMP__Sb">value(_:is:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Quark4wakeFT2atSd_T_">wake(at:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Appender.html">Appender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DatabaseParameters.html">DatabaseParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileProtocol.html">FileProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Initializable.html">Initializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONRepresentable.html">JSONRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Mappable.html">Mappable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MediaTypeRepresentor.html">MediaTypeRepresentor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MustacheBoxable.html">MustacheBoxable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ParameterRepresentable.html">ParameterRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PathParameterInitializable.html">PathParameterInitializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RepositoryProtocol.html">RepositoryProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:P5Quark19ResourceConvertible">ResourceConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouteMatcher.html">RouteMatcher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouteProtocol.html">RouteProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterProtocol.html">RouterProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterRepresentable.html">RouterRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SessionStorage.html">SessionStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataDictionaryKeyInitializable.html">StructuredDataDictionaryKeyInitializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataDictionaryKeyRepresentable.html">StructuredDataDictionaryKeyRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataParser.html">StructuredDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StructuredDataSerializer.html">StructuredDataSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tag.html">Tag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TemplateRepositoryDataSource.html">TemplateRepositoryDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AttributedCookie.html">AttributedCookie</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Base64.html">Base64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BasicAuthMiddleware.html">BasicAuthMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BasicResource.html">BasicResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BasicRouter.html">BasicRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChannelGenerator.html">ChannelGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Characters.html">Characters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentMapperMiddleware.html">ContentMapperMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentNegotiationMiddleware.html">ContentNegotiationMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Cookie.html">Cookie</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DefaultController.html">DefaultController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FallibleChannelGenerator.html">FallibleChannelGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileResponder.html">FileResponder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IP.html">IP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONParser.html">JSONParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONStructuredDataParser.html">JSONStructuredDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONStructuredDataSerializer.html">JSONStructuredDataSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LocationInfo.html">LocationInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Log.html">Log</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LogMiddleware.html">LogMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LoggingEvent.html">LoggingEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MediaType.html">MediaType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheError.html">MustacheError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MustacheSerializer.html">MustacheSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PathParameterMiddleware.html">PathParameterMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PollEvent.html">PollEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Property.html">Property</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Quark.html">Quark</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Record.html">Record</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RecoveryMiddleware.html">RecoveryMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RedirectMiddleware.html">RedirectMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rendering.html">Rendering</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RenderingInfo.html">RenderingInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestSerializer.html">RequestSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResponseSerializer.html">ResponseSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Server.html">Server</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ServerParameters.html">ServerParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardLibrary.html">StandardLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardOutputAppender.html">StandardOutputAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TemplateEngineMiddleware.html">TemplateEngineMiddleware</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Quark4Trie">Trie</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TrieRouteMatcher.html">TrieRouteMatcher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedForm.html">URLEncodedForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormParser.html">URLEncodedFormParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormSerializer.html">URLEncodedFormSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormStructuredDataParser.html">URLEncodedFormStructuredDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLEncodedFormStructuredDataSerializer.html">URLEncodedFormStructuredDataSerializer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark17DidRenderFunction">DidRenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14FilterFunction">FilterFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark22KeyedSubscriptFunction">KeyedSubscriptFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark14RenderFunction">RenderFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark16TagDelimiterPair">TagDelimiterPair</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark10TemplateID">TemplateID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Quark18WillRenderFunction">WillRenderFunction</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SystemError</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21operationNotPermittedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationNotPermitted" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21operationNotPermittedFMS0_S0_">operationNotPermitted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21noSuchFileOrDirectoryFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noSuchFileOrDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21noSuchFileOrDirectoryFMS0_S0_">noSuchFileOrDirectory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError13noSuchProcessFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noSuchProcess" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError13noSuchProcessFMS0_S0_">noSuchProcess</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21interruptedSystemCallFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/interruptedSystemCall" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21interruptedSystemCallFMS0_S0_">interruptedSystemCall</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError16inputOutputErrorFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/inputOutputError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError16inputOutputErrorFMS0_S0_">inputOutputError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19deviceNotConfiguredFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/deviceNotConfigured" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19deviceNotConfiguredFMS0_S0_">deviceNotConfigured</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19argumentListTooLongFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/argumentListTooLong" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19argumentListTooLongFMS0_S0_">argumentListTooLong</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21executableFormatErrorFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/executableFormatError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21executableFormatErrorFMS0_S0_">executableFormatError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17badFileDescriptorFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/badFileDescriptor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17badFileDescriptorFMS0_S0_">badFileDescriptor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError16noChildProcessesFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noChildProcesses" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError16noChildProcessesFMS0_S0_">noChildProcesses</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError23resourceDeadlockAvoidedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/resourceDeadlockAvoided" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError23resourceDeadlockAvoidedFMS0_S0_">resourceDeadlockAvoided</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError20cannotAllocateMemoryFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/cannotAllocateMemory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError20cannotAllocateMemoryFMS0_S0_">cannotAllocateMemory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError16permissionDeniedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/permissionDenied" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError16permissionDeniedFMS0_S0_">permissionDenied</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError10badAddressFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/badAddress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError10badAddressFMS0_S0_">badAddress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19blockDeviceRequiredFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/blockDeviceRequired" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19blockDeviceRequiredFMS0_S0_">blockDeviceRequired</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError20deviceOrResourceBusyFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/deviceOrResourceBusy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError20deviceOrResourceBusyFMS0_S0_">deviceOrResourceBusy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError10fileExistsFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/fileExists" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError10fileExistsFMS0_S0_">fileExists</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError15crossDeviceLinkFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/crossDeviceLink" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError15crossDeviceLinkFMS0_S0_">crossDeviceLink</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError29operationNotSupportedByDeviceFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationNotSupportedByDevice" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError29operationNotSupportedByDeviceFMS0_S0_">operationNotSupportedByDevice</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError13notADirectoryFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/notADirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError13notADirectoryFMS0_S0_">notADirectory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError12isADirectoryFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/isADirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError12isADirectoryFMS0_S0_">isADirectory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError15invalidArgumentFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/invalidArgument" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError15invalidArgumentFMS0_S0_">invalidArgument</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError24tooManyOpenFilesInSystemFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/tooManyOpenFilesInSystem" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError24tooManyOpenFilesInSystemFMS0_S0_">tooManyOpenFilesInSystem</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError16tooManyOpenFilesFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/tooManyOpenFiles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError16tooManyOpenFilesFMS0_S0_">tooManyOpenFiles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError40inappropriateInputOutputControlForDeviceFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/inappropriateInputOutputControlForDevice" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError40inappropriateInputOutputControlForDeviceFMS0_S0_">inappropriateInputOutputControlForDevice</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError12textFileBusyFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/textFileBusy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError12textFileBusyFMS0_S0_">textFileBusy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError12fileTooLargeFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/fileTooLarge" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError12fileTooLargeFMS0_S0_">fileTooLarge</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19noSpaceLeftOnDeviceFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noSpaceLeftOnDevice" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19noSpaceLeftOnDeviceFMS0_S0_">noSpaceLeftOnDevice</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError11illegalSeekFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/illegalSeek" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError11illegalSeekFMS0_S0_">illegalSeek</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError18readOnlyFileSystemFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/readOnlyFileSystem" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError18readOnlyFileSystemFMS0_S0_">readOnlyFileSystem</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError12tooManyLinksFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/tooManyLinks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError12tooManyLinksFMS0_S0_">tooManyLinks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError10brokenPipeFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/brokenPipe" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError10brokenPipeFMS0_S0_">brokenPipe</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError28numericalArgumentOutOfDomainFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/numericalArgumentOutOfDomain" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError28numericalArgumentOutOfDomainFMS0_S0_">numericalArgumentOutOfDomain</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError14resultTooLargeFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/resultTooLarge" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError14resultTooLargeFMS0_S0_">resultTooLarge</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError30resourceTemporarilyUnavailableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/resourceTemporarilyUnavailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError30resourceTemporarilyUnavailableFMS0_S0_">resourceTemporarilyUnavailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19operationWouldBlockFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationWouldBlock" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19operationWouldBlockFMS0_S0_">operationWouldBlock</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError22operationNowInProgressFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationNowInProgress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError22operationNowInProgressFMS0_S0_">operationNowInProgress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError26operationAlreadyInProgressFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationAlreadyInProgress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError26operationAlreadyInProgressFMS0_S0_">operationAlreadyInProgress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError26socketOperationOnNonSocketFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/socketOperationOnNonSocket" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError26socketOperationOnNonSocketFMS0_S0_">socketOperationOnNonSocket</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError26destinationAddressRequiredFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/destinationAddressRequired" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError26destinationAddressRequiredFMS0_S0_">destinationAddressRequired</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError14messageTooLongFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/messageTooLong" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError14messageTooLongFMS0_S0_">messageTooLong</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError26protocolWrongTypeForSocketFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/protocolWrongTypeForSocket" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError26protocolWrongTypeForSocketFMS0_S0_">protocolWrongTypeForSocket</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError20protocolNotAvailableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/protocolNotAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError20protocolNotAvailableFMS0_S0_">protocolNotAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError20protocolNotSupportedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/protocolNotSupported" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError20protocolNotSupportedFMS0_S0_">protocolNotSupported</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError22socketTypeNotSupportedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/socketTypeNotSupported" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError22socketTypeNotSupportedFMS0_S0_">socketTypeNotSupported</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21operationNotSupportedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationNotSupported" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21operationNotSupportedFMS0_S0_">operationNotSupported</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError26protocolFamilyNotSupportedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/protocolFamilyNotSupported" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError26protocolFamilyNotSupportedFMS0_S0_">protocolFamilyNotSupported</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError41addressFamilyNotSupportedByProtocolFamilyFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/addressFamilyNotSupportedByProtocolFamily" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError41addressFamilyNotSupportedByProtocolFamilyFMS0_S0_">addressFamilyNotSupportedByProtocolFamily</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19addressAlreadyInUseFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/addressAlreadyInUse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19addressAlreadyInUseFMS0_S0_">addressAlreadyInUse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError28cannotAssignRequestedAddressFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/cannotAssignRequestedAddress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError28cannotAssignRequestedAddressFMS0_S0_">cannotAssignRequestedAddress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError13networkIsDownFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/networkIsDown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError13networkIsDownFMS0_S0_">networkIsDown</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError20networkIsUnreachableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/networkIsUnreachable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError20networkIsUnreachableFMS0_S0_">networkIsUnreachable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError31networkDroppedConnectionOnResetFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/networkDroppedConnectionOnReset" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError31networkDroppedConnectionOnResetFMS0_S0_">networkDroppedConnectionOnReset</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError29softwareCausedConnectionAbortFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/softwareCausedConnectionAbort" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError29softwareCausedConnectionAbortFMS0_S0_">softwareCausedConnectionAbort</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21connectionResetByPeerFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/connectionResetByPeer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21connectionResetByPeerFMS0_S0_">connectionResetByPeer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError22noBufferSpaceAvailableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noBufferSpaceAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError22noBufferSpaceAvailableFMS0_S0_">noBufferSpaceAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError24socketIsAlreadyConnectedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/socketIsAlreadyConnected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError24socketIsAlreadyConnectedFMS0_S0_">socketIsAlreadyConnected</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError20socketIsNotConnectedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/socketIsNotConnected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError20socketIsNotConnectedFMS0_S0_">socketIsNotConnected</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError29cannotSendAfterSocketShutdownFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/cannotSendAfterSocketShutdown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError29cannotSendAfterSocketShutdownFMS0_S0_">cannotSendAfterSocketShutdown</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17tooManyReferencesFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/tooManyReferences" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17tooManyReferencesFMS0_S0_">tooManyReferences</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17operationTimedOutFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationTimedOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17operationTimedOutFMS0_S0_">operationTimedOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17connectionRefusedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/connectionRefused" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17connectionRefusedFMS0_S0_">connectionRefused</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError28tooManyLevelsOfSymbolicLinksFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/tooManyLevelsOfSymbolicLinks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError28tooManyLevelsOfSymbolicLinksFMS0_S0_">tooManyLevelsOfSymbolicLinks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError15fileNameTooLongFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/fileNameTooLong" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError15fileNameTooLongFMS0_S0_">fileNameTooLong</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError10hostIsDownFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/hostIsDown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError10hostIsDownFMS0_S0_">hostIsDown</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError13noRouteToHostFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noRouteToHost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError13noRouteToHostFMS0_S0_">noRouteToHost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17directoryNotEmptyFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/directoryNotEmpty" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17directoryNotEmptyFMS0_S0_">directoryNotEmpty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError12tooManyUsersFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/tooManyUsers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError12tooManyUsersFMS0_S0_">tooManyUsers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17diskQuotaExceededFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/diskQuotaExceeded" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17diskQuotaExceededFMS0_S0_">diskQuotaExceeded</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError15staleFileHandleFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/staleFileHandle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError15staleFileHandleFMS0_S0_">staleFileHandle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError14objectIsRemoteFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/objectIsRemote" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError14objectIsRemoteFMS0_S0_">objectIsRemote</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError16noLocksAvailableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noLocksAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError16noLocksAvailableFMS0_S0_">noLocksAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError22functionNotImplementedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/functionNotImplemented" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError22functionNotImplementedFMS0_S0_">functionNotImplemented</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError31valueTooLargeForDefinedDataTypeFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/valueTooLargeForDefinedDataType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError31valueTooLargeForDefinedDataTypeFMS0_S0_">valueTooLargeForDefinedDataType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17operationCanceledFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/operationCanceled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17operationCanceledFMS0_S0_">operationCanceled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17identifierRemovedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/identifierRemoved" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17identifierRemovedFMS0_S0_">identifierRemoved</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError22noMessageOfDesiredTypeFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noMessageOfDesiredType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError22noMessageOfDesiredTypeFMS0_S0_">noMessageOfDesiredType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19illegalByteSequenceFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/illegalByteSequence" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19illegalByteSequenceFMS0_S0_">illegalByteSequence</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError10badMessageFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/badMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError10badMessageFMS0_S0_">badMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17multihopAttemptedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/multihopAttempted" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17multihopAttemptedFMS0_S0_">multihopAttempted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError15noDataAvailableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/noDataAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError15noDataAvailableFMS0_S0_">noDataAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError18linkHasBeenSeveredFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/linkHasBeenSevered" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError18linkHasBeenSeveredFMS0_S0_">linkHasBeenSevered</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError21outOfStreamsResourcesFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/outOfStreamsResources" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError21outOfStreamsResourcesFMS0_S0_">outOfStreamsResources</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError16deviceNotAStreamFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/deviceNotAStream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError16deviceNotAStreamFMS0_S0_">deviceNotAStream</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError13protocolErrorFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/protocolError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError13protocolErrorFMS0_S0_">protocolError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError12timerExpiredFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/timerExpired" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError12timerExpiredFMS0_S0_">timerExpired</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError19stateNotRecoverableFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/stateNotRecoverable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError19stateNotRecoverableFMS0_S0_">stateNotRecoverable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError17previousOwnerDiedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/previousOwnerDied" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError17previousOwnerDiedFMS0_S0_">previousOwnerDied</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemError5otherFMS0_FT11errorNumberVs5Int32_S0_"></a>
+                    <a name="//apple_ref/swift/Element/other" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemError5otherFMS0_FT11errorNumberVs5Int32_S0_">other</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO5Quark11SystemErrorcFT11errorNumberVs5Int32_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(errorNumber:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO5Quark11SystemErrorcFT11errorNumberVs5Int32_GSqS0__">init(errorNumber:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO5Quark11SystemError11errorNumberVs5Int32"></a>
+                    <a name="//apple_ref/swift/Property/errorNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO5Quark11SystemError11errorNumberVs5Int32">errorNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFO5Quark11SystemError11descriptionFT3forVs5Int32_SS"></a>
+                    <a name="//apple_ref/swift/Method/description(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFO5Quark11SystemError11descriptionFT3forVs5Int32_SS">description(for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs23CustomStringConvertible11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs23CustomStringConvertible11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvO5Quark11SystemError18lastOperationErrorGSqS0__"></a>
+                    <a name="//apple_ref/swift/Variable/lastOperationError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvO5Quark11SystemError18lastOperationErrorGSqS0__">lastOperationError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://zewo.io" target="_blank" rel="external">Zewo</a>. All rights reserved. (Last updated: 2016-07-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

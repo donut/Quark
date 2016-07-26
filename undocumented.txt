@@ -1,0 +1,356 @@
+Quark.swift
+	public enum QuarkError : ErrorProtocol
+	public enum QuarkError : ErrorProtocol
+	public struct Quark
+	public protocol ParameterRepresentable
+	public struct ServerParameters : ParameterRepresentable
+	public protocol DatabaseParameters : ParameterRepresentable
+	public enum DatabaseParametersError : ErrorProtocol
+	public protocol DatabaseParameters : ParameterRepresentable
+Server.swift
+	public struct Server
+	public struct Server
+	public struct Server
+FileResponder.swift
+	public struct FileResponder : Responder
+	public struct FileResponder : Responder
+Controller.swift
+	public protocol Controller
+	public protocol Controller
+	public struct DefaultController<M where M : StructuredDataInitializable, M : StructuredDataFallibleRepresentable> : Controller
+BasicResource.swift
+	public struct BasicResource : RouterProtocol
+	public struct BasicResource : RouterProtocol
+PathParameterInitializable.swift
+	public protocol PathParameterInitializable
+	public init(pathParameter: String) throws
+	public init(pathParameter: String) throws
+Resource.swift
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+	public protocol Resource : RouterRepresentable
+ResourceConvertible.swift
+	public protocol ResourceConvertible : StructuredDataInitializable, StructuredDataFallibleRepresentable {}
+ResourceRoutes.swift
+	public final class ResourceRoutes : Routes
+	public final class ResourceRoutes : Routes
+InMemoryRepository.swift
+	public final class InMemoryRepository<Model> : RepositoryProtocol
+Record.swift
+	public struct Record<Model>
+Repository.swift
+	public protocol RepositoryProtocol
+	public final class Repository<Model> : RepositoryProtocol
+File.swift
+	public enum FileError : ErrorProtocol
+	public enum FileError : ErrorProtocol
+	public final class File
+	public final class File
+	public final class File
+	public final class File
+	public final class File
+IP.swift
+	public enum IPError : ErrorProtocol
+	public enum IPError : ErrorProtocol
+	public enum IPMode
+	public struct IP
+	public struct IP
+POSIX.swift
+	public enum SystemError : ErrorProtocol
+	public enum SystemError : ErrorProtocol
+	public enum SystemError : ErrorProtocol
+	public enum SystemError : ErrorProtocol
+	public enum SystemError : ErrorProtocol
+	public enum SystemError : ErrorProtocol
+	public func ensureLastOperationSucceeded() throws
+TCPConnection.swift
+	public final class TCPConnection : Connection
+	public final class TCPConnection : Connection
+TCPError.swift
+	public enum TCPError : ErrorProtocol
+	public enum TCPError : ErrorProtocol
+TCPServer.swift
+	public final class TCPServer : Host
+Base64.swift
+	public struct Base64
+	public struct Base64
+FileProtocol.swift
+	public enum FileMode
+	public protocol FileProtocol
+	public protocol FileProtocol
+	public protocol FileProtocol
+JSON.swift
+	public enum JSONError : ErrorProtocol
+	public enum JSON
+	public func ==(lhs: JSON, rhs: JSON) -> Bool
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public enum JSON
+	public protocol JSONRepresentable
+	public func makeJSON() -> JSON
+	public func makeJSON() -> JSON
+	public func makeJSON() -> JSON
+	public func makeJSON() -> JSON
+	public func makeJSON() -> JSON
+	public func makeJSON() -> JSON
+	public enum JSON
+	public enum JSON
+JSONParser.swift
+	public enum JSONParseError : ErrorProtocol, CustomStringConvertible
+	public struct JSONParser
+	public func escapeAsJSON(_ source : String) -> String
+JSONSerializer.swift
+	public class JSONSerializer
+	public final class PrettyJSONSerializer : JSONSerializer
+JSONStructuredDataParser.swift
+	public enum JSONStructuredDataParseError : ErrorProtocol, CustomStringConvertible
+	public struct JSONStructuredDataParser : StructuredDataParser
+JSONStructuredDataSerializer.swift
+	public struct JSONStructuredDataSerializer : StructuredDataSerializer
+Appender.swift
+	public protocol Appender
+LocationInfo.swift
+	public struct LocationInfo
+	public struct LocationInfo
+Log.swift
+	public struct Log
+	public final class Logger
+LoggingEvent.swift
+	public struct LoggingEvent
+StandardOutputAppender.swift
+	public struct StandardOutputAppender : Appender
+MediaType.swift
+	public protocol MediaTypeRepresentor
+	public struct MediaType : CustomStringConvertible
+	public func matches(other mediaType: MediaType) -> Bool
+	public struct MediaType : CustomStringConvertible
+	public func ==(lhs: MediaType, rhs: MediaType) -> Bool
+	public func mediaType(forFileExtension fileExtension: String) -> MediaType?
+Construct.swift
+	public protocol Initializable : class
+Properties.swift
+	public let key: String
+	public let value: Any
+	public let key: String
+	public let type: Any.Type
+ReflectionError.swift
+	public enum ReflectionError : ErrorProtocol, CustomStringConvertible
+String.swift
+	public init?(pointer: UnsafePointer<Int8>, length: Int)
+	public func split(separator: Character, maxSplits: Int = .max, omittingEmptySubsequences: Bool = true) -> [String]
+	public func trim() -> String
+	public func trim(_ characters: Characters) -> String
+	public func trimLeft(_ characterSet: Characters) -> String
+	public func trimRight(_ characterSet: Characters) -> String
+	public func index(of string: String) -> String.CharacterView.Index?
+	public func contains(_ string: String) -> Bool
+	public func split(byString separator: String) -> [String]
+	public mutating func replace(string: String, with: String)
+	public enum CharactersError : ErrorProtocol
+	public struct Characters: ArrayLiteralConvertible
+	public func starts(with prefix: String) -> Bool
+	public func ends(with suffix: String) -> Bool
+	public func dropLastPathComponent() -> String
+	public init(percentEncoded: String) throws
+	public func percentEncoded(allowing allowed: Characters) throws -> String
+	public func hexadecimal(uppercased: Bool = true) -> String
+Mappable.swift
+	public protocol Mappable : StructuredDataInitializable
+	public protocol Mappable : StructuredDataInitializable
+	public protocol Mappable : StructuredDataInitializable
+Mapper.swift
+	public final class Mapper
+	public final class Mapper
+	public final class Mapper
+	public final class Mapper
+	public final class Mapper
+	public enum UnwrapError: ErrorProtocol
+StructuredData.swift
+	public enum StructuredDataError : ErrorProtocol
+	public protocol StructuredDataParser
+	public protocol StructuredDataParser
+	public protocol StructuredDataSerializer
+	public func ==(lhs: StructuredData, rhs: StructuredData) -> Bool
+StructuredDataInitializable.swift
+	public init(structuredData: StructuredData) throws
+	public init(structuredData: StructuredData) throws
+	public init(structuredData: StructuredData) throws
+	public init(structuredData: StructuredData) throws
+	public init(structuredData: StructuredData) throws
+	public init(structuredData: StructuredData) throws
+	public protocol StructuredDataDictionaryKeyInitializable
+	public init(structuredDataDictionaryKey: String)
+	public init(structuredData: StructuredData) throws
+StructuredDataRepresentable.swift
+	public var structuredData: StructuredData
+	public var structuredData: StructuredData
+	public var structuredData: StructuredData
+	public var structuredData: StructuredData
+	public var structuredData: StructuredData
+	public var structuredDataArray: [StructuredData]
+	public var structuredData: StructuredData
+	public protocol StructuredDataDictionaryKeyRepresentable
+	public var structuredDataDictionaryKey: String
+	public var structuredDataDictionary: [String: StructuredData]
+	public var structuredData: StructuredData
+	public func asStructuredData() throws -> StructuredData
+	public func asStructuredData() throws -> StructuredData
+	public func asStructuredData() throws -> StructuredData
+URI.swift
+	public enum URIError : ErrorProtocol
+	public func ==(lhs: URI, rhs: URI) -> Bool
+	public func ==(lhs: URI.UserInfo, rhs: URI.UserInfo) -> Bool
+URLEncodedForm.swift
+	public struct URLEncodedForm
+	public struct URLEncodedForm
+	public struct URLEncodedForm
+URLEncodedFormParser.swift
+	public struct URLEncodedFormParser
+URLEncodedFormSerializer.swift
+	public struct URLEncodedFormSerializer
+URLEncodedFormStructuredDataParser.swift
+	public struct URLEncodedFormStructuredDataParser : StructuredDataParser
+URLEncodedFormStructuredDataSerializer.swift
+	public struct URLEncodedFormStructuredDataSerializer : StructuredDataSerializer
+AttributedCookie.swift
+	public struct AttributedCookie
+	public struct AttributedCookie
+	public func ==(lhs: AttributedCookie, rhs: AttributedCookie) -> Bool
+	public struct AttributedCookie
+	public struct AttributedCookie
+Cookie.swift
+	public struct Cookie
+	public struct Cookie
+	public func ==(lhs: Cookie, rhs: Cookie) -> Bool
+	public struct Cookie
+	public struct Cookie
+	public struct Cookie
+RequestParser.swift
+	public final class RequestParser : S4.RequestParser
+ResponseParser.swift
+	public final class ResponseParser : S4.ResponseParser
+BasicRouter.swift
+	public struct BasicRouter : RouterProtocol
+	public struct BasicRouter : RouterProtocol
+PathParameterMiddleware.swift
+	public struct PathParameterMiddleware : Middleware
+Router.swift
+	public protocol Router : RouterRepresentable
+	public protocol Router : RouterRepresentable
+	public protocol Router : RouterRepresentable
+	public protocol Router : RouterRepresentable
+RouterProtocol.swift
+	public protocol RouterRepresentable : ResponderRepresentable
+	public protocol RouterRepresentable : ResponderRepresentable
+	public protocol RouterProtocol : Responder, RouterRepresentable
+	public protocol RouterProtocol : Responder, RouterRepresentable
+	public protocol RouterProtocol : Responder, RouterRepresentable
+	public protocol RouteProtocol : Responder
+	public protocol RouteMatcher
+	public protocol RouteProtocol : Responder
+	public final class BasicRoute : RouteProtocol
+	public final class BasicRoute : RouteProtocol
+Routes.swift
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+	public class Routes
+Trie.swift
+	public struct Trie<Element : Comparable, Payload>
+	public func ==<Element, Payload where Element : Comparable>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool
+	public func <<Element, Payload where Element : Comparable>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool
+TrieRouteMatcher.swift
+	public struct TrieRouteMatcher : RouteMatcher
+	public struct TrieRouteMatcher : RouteMatcher
+RequestSerializer.swift
+	public struct RequestSerializer : S4.RequestSerializer
+ResponseSerializer.swift
+	public struct ResponseSerializer : S4.ResponseSerializer
+BasicAuthMiddleware.swift
+	public enum AuthenticationResult
+	public struct BasicAuthMiddleware : Middleware
+ContentMapperMiddleware.swift
+	public struct ContentMapperMiddleware : Middleware
+ContentNegotiatonMiddleware.swift
+	public enum ContentNegotiationMiddlewareError : ErrorProtocol
+	public struct ContentNegotiationMiddleware : Middleware
+LogMiddleware.swift
+	public struct LogMiddleware : Middleware
+RecoveryMiddleware.swift
+	public struct RecoveryMiddleware : Middleware
+RedirectMiddleware.swift
+	public struct RedirectMiddleware : Middleware
+Session.swift
+	public final class Session
+SessionMiddleware.swift
+	public final class SessionMiddleware: Middleware
+SessionStorage.swift
+	public protocol SessionStorage : class
+	public final class SessionInMemoryStorage : SessionStorage
+TemplateEngineMiddleware.swift
+	public struct TemplateEngineMiddleware : Middleware
+MustacheSerializer.swift
+	public enum MustacheSerializerError : ErrorProtocol
+	public struct MustacheSerializer : StructuredDataSerializer
+Channel.swift
+	public struct ChannelGenerator<T> : IteratorProtocol
+	public final class Channel<T> : Sequence
+ReceivingChannel.swift
+	public final class ReceivingChannel<T> : Sequence
+SendingChannel.swift
+	public final class SendingChannel<T>
+Coroutine.swift
+	public var int64milliseconds: Int64
+	public func dump()
+FallibleChannel.swift
+	public struct FallibleChannelGenerator<T> : IteratorProtocol
+	public enum ChannelResult<T>
+	public final class FallibleChannel<T> : Sequence
+FallibleReceivingChannel.swift
+	public final class FallibleReceivingChannel<T> : Sequence
+FallibleSendingChannel.swift
+	public final class FallibleSendingChannel<T>
+Poll.swift
+	public enum PollError : ErrorProtocol
+	public struct PollEvent : OptionSet
+Select.swift
+	public class SelectCaseBuilder
+	public func select(_ build: @noescape (when: SelectCaseBuilder) -> Void)
+	public func sel(_ build: @noescape (when: SelectCaseBuilder) -> Void)
+	public func forSelect(_ build: @noescape (when: SelectCaseBuilder, done: (Void) -> Void) -> Void)
+	public func forSel(build: @noescape (when: SelectCaseBuilder, done: (Void) -> Void) -> Void)
+Ticker.swift
+	public final class Ticker
+Timer.swift
+	public final class Timer
+Common.swift
+	case Text
+	case HTML
+	case TemplateNotFound
+	case ParseError
+	case RenderError
+	public init(kind: Kind, message: String? = nil, templateID: TemplateID? = nil, lineNumber: Int? = nil, underlyingError: ErrorProtocol? = nil)
