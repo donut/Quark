@@ -70,7 +70,7 @@ extension Message {
     public var storageDescription: String {
         var string = "Storage:\n"
 
-        if storage.count == 0 {
+        if storage.isEmpty {
             string += "-"
         }
 

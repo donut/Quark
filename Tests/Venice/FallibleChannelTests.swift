@@ -11,7 +11,7 @@ class FallibleChannelTests : XCTestCase {
             yield
             channel.send(333)
         }
-        XCTAssert(try! channel.receive() == 333)
+        XCTAssert(try channel.receive() == 333)
     }
 
     func testReceiverWaitsForSenderError() {
@@ -28,7 +28,7 @@ class FallibleChannelTests : XCTestCase {
         co {
             channel.send(444)
         }
-        XCTAssert(try! channel.receive() == 444)
+        XCTAssert(try channel.receive() == 444)
     }
 
     func testSenderWaitsForReceiverError() {
@@ -45,7 +45,7 @@ class FallibleChannelTests : XCTestCase {
             channel.send(888)
         }
         co(send(channel.sendingChannel))
-        XCTAssert(try! channel.receive() == 888)
+        XCTAssert(try channel.receive() == 888)
     }
 
     func testSendingChannelError() {
@@ -60,7 +60,7 @@ class FallibleChannelTests : XCTestCase {
     func testReceivingChannel() {
         let channel = FallibleChannel<Int>()
         func receive(_ channel: FallibleReceivingChannel<Int>) {
-            XCTAssert(try! channel.receive() == 999)
+            XCTAssert(try channel.receive() == 999)
         }
         co{
             channel.send(999)
@@ -87,9 +87,9 @@ class FallibleChannelTests : XCTestCase {
         co {
             channel.send(999)
         }
-        XCTAssert(try! channel.receive() == 888)
+        XCTAssert(try channel.receive() == 888)
         yield
-        XCTAssert(try! channel.receive() == 999)
+        XCTAssert(try channel.receive() == 999)
     }
 
     func testTwoSimultaneousSendersError() {
@@ -129,12 +129,12 @@ class FallibleChannelTests : XCTestCase {
         channel.send(NastyError())
     }
 
-    func testTypedChannels() {
+    func testTypedChannels() throws {
         let stringChannel = FallibleChannel<String>()
         co {
             stringChannel.send("yo")
         }
-        XCTAssert(try! stringChannel.receive() == "yo")
+        XCTAssert(try stringChannel.receive() == "yo")
 
         struct Foo { let bar: Int; let baz: Int }
 
@@ -142,7 +142,7 @@ class FallibleChannelTests : XCTestCase {
         co {
             fooChannel.send(Foo(bar: 555, baz: 222))
         }
-        let foo = try! fooChannel.receive()
+        let foo = try fooChannel.receive()
         XCTAssert(foo?.bar == 555 && foo?.baz == 222)
     }
 
@@ -166,14 +166,14 @@ class FallibleChannelTests : XCTestCase {
         let channel = FallibleChannel<Int>(bufferSize: 2)
         channel.send(222)
         channel.send(333)
-        XCTAssert(try! channel.receive() == 222)
-        XCTAssert(try! channel.receive() == 333)
+        XCTAssert(try channel.receive() == 222)
+        XCTAssert(try channel.receive() == 333)
         channel.send(444)
-        XCTAssert(try! channel.receive() == 444)
+        XCTAssert(try channel.receive() == 444)
         channel.send(555)
         channel.send(666)
-        XCTAssert(try! channel.receive() == 555)
-        XCTAssert(try! channel.receive() == 666)
+        XCTAssert(try channel.receive() == 555)
+        XCTAssert(try channel.receive() == 666)
     }
 
     func testMessageBufferingError() {
@@ -193,58 +193,58 @@ class FallibleChannelTests : XCTestCase {
     func testSimpleChannelClose() {
         let channel1 = FallibleChannel<Int>()
         channel1.close()
-        XCTAssert(try! channel1.receive() == nil)
-        XCTAssert(try! channel1.receive() == nil)
-        XCTAssert(try! channel1.receive() == nil)
+        XCTAssert(try channel1.receive() == nil)
+        XCTAssert(try channel1.receive() == nil)
+        XCTAssert(try channel1.receive() == nil)
 
         let channel2 = FallibleChannel<Int>(bufferSize: 10)
         channel2.close()
-        XCTAssert(try! channel2.receive() == nil)
-        XCTAssert(try! channel2.receive() == nil)
-        XCTAssert(try! channel2.receive() == nil)
+        XCTAssert(try channel2.receive() == nil)
+        XCTAssert(try channel2.receive() == nil)
+        XCTAssert(try channel2.receive() == nil)
 
         let channel3 = FallibleChannel<Int>(bufferSize: 10)
         channel3.send(999)
         channel3.close()
-        XCTAssert(try! channel3.receive() == 999)
-        XCTAssert(try! channel3.receive() == nil)
-        XCTAssert(try! channel3.receive() == nil)
+        XCTAssert(try channel3.receive() == 999)
+        XCTAssert(try channel3.receive() == nil)
+        XCTAssert(try channel3.receive() == nil)
 
         let channel4 = FallibleChannel<Int>(bufferSize: 1)
         channel4.send(222)
         channel4.close()
-        XCTAssert(try! channel4.receive() == 222)
-        XCTAssert(try! channel4.receive() == nil)
-        XCTAssert(try! channel4.receive() == nil)
+        XCTAssert(try channel4.receive() == 222)
+        XCTAssert(try channel4.receive() == nil)
+        XCTAssert(try channel4.receive() == nil)
     }
 
 
     func testSimpleChannelCloseError() {
         let channel1 = FallibleChannel<Int>()
         channel1.close()
-        XCTAssert(try! channel1.receive() == nil)
-        XCTAssert(try! channel1.receive() == nil)
-        XCTAssert(try! channel1.receive() == nil)
+        XCTAssert(try channel1.receive() == nil)
+        XCTAssert(try channel1.receive() == nil)
+        XCTAssert(try channel1.receive() == nil)
 
         let channel2 = FallibleChannel<Int>(bufferSize: 10)
         channel2.close()
-        XCTAssert(try! channel2.receive() == nil)
-        XCTAssert(try! channel2.receive() == nil)
-        XCTAssert(try! channel2.receive() == nil)
+        XCTAssert(try channel2.receive() == nil)
+        XCTAssert(try channel2.receive() == nil)
+        XCTAssert(try channel2.receive() == nil)
 
         let channel3 = FallibleChannel<Int>(bufferSize: 10)
         channel3.send(Error())
         channel3.close()
         assert(channel: channel3, catchesErrorOfType: Error.self)
-        XCTAssert(try! channel3.receive() == nil)
-        XCTAssert(try! channel3.receive() == nil)
+        XCTAssert(try channel3.receive() == nil)
+        XCTAssert(try channel3.receive() == nil)
 
         let channel4 = FallibleChannel<Int>(bufferSize: 1)
         channel4.send(NastyError())
         channel4.close()
         assert(channel: channel4, catchesErrorOfType: NastyError.self)
-        XCTAssert(try! channel4.receive() == nil)
-        XCTAssert(try! channel4.receive() == nil)
+        XCTAssert(try channel4.receive() == nil)
+        XCTAssert(try channel4.receive() == nil)
     }
 
     func testChannelCloseUnblocks() {
@@ -259,8 +259,8 @@ class FallibleChannelTests : XCTestCase {
             channel2.send(0)
         }
         channel1.close()
-        XCTAssert(try! channel2.receive() == 0)
-        XCTAssert(try! channel2.receive() == 0)
+        XCTAssert(try channel2.receive() == 0)
+        XCTAssert(try channel2.receive() == 0)
     }
 
     func testChannelCloseUnblocksError() {
@@ -285,8 +285,8 @@ class FallibleChannelTests : XCTestCase {
         co {
             channel.send(2)
         }
-        XCTAssert(try! channel.receive() == 1)
-        XCTAssert(try! channel.receive() == 2)
+        XCTAssert(try channel.receive() == 1)
+        XCTAssert(try channel.receive() == 2)
     }
 
     func testBlockedSenderAndItemInTheError() {
@@ -342,7 +342,7 @@ class FallibleChannelTests : XCTestCase {
         //     signal(SIGABRT) { _ in
         //         _exit(0)
         //     }
-        //     try! channel.receive()
+        //     try channel.receive()
         //     XCTFail()
         // }
         // var exitCode: Int32 = 0
@@ -423,7 +423,7 @@ class FallibleChannelTests : XCTestCase {
         co {
             channel.sendingChannel.send(.value(333))
         }
-        XCTAssert(try! channel.receive() == 333)
+        XCTAssert(try channel.receive() == 333)
     }
 
 }

@@ -1,6 +1,11 @@
 import XCTest
 import Quark
 
+struct Foo {
+    let bar: Int
+    let baz: Int
+}
+
 class ChannelTests : XCTestCase {
     func testReceiverWaitsForSender() {
         let channel = Channel<Int>()
@@ -33,7 +38,7 @@ class ChannelTests : XCTestCase {
         func receive(_ channel: ReceivingChannel<Int>) {
             XCTAssert(channel.receive() == 999)
         }
-        co{
+        co {
             channel.send(999)
         }
         receive(channel.receivingChannel)
@@ -70,8 +75,6 @@ class ChannelTests : XCTestCase {
             stringChannel.send("yo")
         }
         XCTAssert(stringChannel.receive() == "yo")
-
-        struct Foo { let bar: Int; let baz: Int }
 
         let fooChannel = Channel<Foo>()
         co {

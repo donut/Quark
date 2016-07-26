@@ -7,8 +7,8 @@ public func construct<T>(_ type: T.Type = T.self, constructor: (Property.Descrip
     guard Metadata(type: T.self).isStructOrClass else { throw ReflectionError.notStructOrClass(type: T.self) }
     if Metadata(type: T.self)?.kind == .struct {
         return try constructValueType(constructor)
-    } else if let initializable = T.self as? Initializable.Type {
-        return try constructReferenceType(initializable.init() as! T, constructor: constructor)
+    } else if let initializable = T.self as? Initializable.Type, value = initializable.init() as? T {
+        return try constructReferenceType(value, constructor: constructor)
     } else {
         throw ReflectionError.classNotInitializable(type: T.self)
     }

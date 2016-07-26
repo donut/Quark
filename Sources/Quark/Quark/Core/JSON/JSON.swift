@@ -264,7 +264,7 @@ public enum JSON {
 
 extension JSON : Equatable {}
 
-public func ==(lhs: JSON, rhs: JSON) -> Bool {
+public func == (lhs: JSON, rhs: JSON) -> Bool {
     switch lhs {
     case .nullValue:
         switch rhs {
@@ -342,7 +342,9 @@ extension JSON : StringInterpolationConvertible {
         var string = ""
 
         for s in strings {
-            string += s.string!
+            if let segment = s.string {
+                string += segment
+            }
         }
 
         self = .stringValue(String(string))

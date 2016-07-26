@@ -116,7 +116,7 @@ public struct ContentNegotiationMiddleware : Middleware {
 
         if let content = response.content {
             do {
-                let mediaTypes = request.accept.count > 0 ? request.accept : self.mediaTypes
+                let mediaTypes = !request.accept.isEmpty ? request.accept : self.mediaTypes
                 let (mediaType, body) = try serialize(content, mediaTypes: mediaTypes)
                 response.content = nil
                 response.contentType = mediaType

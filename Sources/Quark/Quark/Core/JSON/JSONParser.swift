@@ -60,7 +60,7 @@ class GenericJSONParser<ByteSequence : Collection where ByteSequence.Iterator.El
     func parse() throws -> JSON {
         let JSON = try parseValue()
         skipWhitespaces()
-        if (cur == end) {
+        if cur == end {
             return JSON
         } else {
             throw JSONParseError.extraTokenError(
@@ -134,7 +134,7 @@ extension GenericJSONParser {
             switch currentChar {
             case Char(ascii: "\\"):
                 advance()
-                if (cur == end) {
+                if cur == end {
                     throw JSONParseError.invalidStringError(
                         reason: "unexpected end of a string literal",
                         lineNumber: lineNumber,
@@ -168,7 +168,7 @@ extension GenericJSONParser {
         }
 
         buffer.append(0)
-        let s = String(validatingUTF8: buffer)!
+        let s = String(cString: buffer)
         return .stringValue(s)
     }
 

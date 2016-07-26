@@ -528,7 +528,7 @@ extension StructuredData {
 
 extension StructuredData : Equatable {}
 
-public func ==(lhs: StructuredData, rhs: StructuredData) -> Bool {
+public func == (lhs: StructuredData, rhs: StructuredData) -> Bool {
     switch (lhs, rhs) {
     case (.null, .null): return true
     case let (.int(l), .int(r)) where l == r: return true

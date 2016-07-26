@@ -47,7 +47,7 @@ extension AttributedCookie : Hashable {
     }
 }
 
-public func ==(lhs: AttributedCookie, rhs: AttributedCookie) -> Bool {
+public func == (lhs: AttributedCookie, rhs: AttributedCookie) -> Bool {
     return lhs.name == rhs.name
 }
 

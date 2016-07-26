@@ -1,3 +1,7 @@
+public enum BodyStreamError: ErrorProtocol {
+    case receiveUnsupported
+}
+
 final class BodyStream : Stream {
     var closed = false
     let transport: Stream
@@ -11,10 +15,7 @@ final class BodyStream : Stream {
     }
 
     func receive(upTo byteCount: Int, timingOut deadline: Double = .never) throws -> Data {
-        enum Error: ErrorProtocol {
-            case receiveUnsupported
-        }
-        throw Error.receiveUnsupported
+        throw BodyStreamError.receiveUnsupported
     }
 
     func send(_ data: Data, timingOut deadline: Double = .never) throws {

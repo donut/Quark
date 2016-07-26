@@ -56,14 +56,17 @@ public final class SessionMiddleware: Middleware {
         return session
     }
 
-    private func add(session: Session,  toRequest request: inout Request) {
+    private func add(session: Session, toRequest request: inout Request) {
         request.storage[SessionMiddleware.cookieName] = session
     }
 }
 
 extension Request {
     public var session: Session {
-        return storage[SessionMiddleware.cookieName] as! Session
+        guard let session = storage[SessionMiddleware.cookieName] as? Session else {
+            fatalError("SessionMiddleware should be applied to the chain. Quark guarantees that so this error should never happen within Quark.")
+        }
+        return session
     }
 }
 

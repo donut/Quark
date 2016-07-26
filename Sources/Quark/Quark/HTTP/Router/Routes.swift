@@ -12,7 +12,7 @@ public class Routes {
 }
 
 extension Routes {
-    public func compose(_ path: String, middleware: Middleware..., resource: RouterRepresentable)  {
+    public func compose(_ path: String, middleware: Middleware..., resource: RouterRepresentable) {
         compose(path, middleware: middleware, router: resource)
     }
 

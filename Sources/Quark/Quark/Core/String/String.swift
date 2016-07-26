@@ -4,6 +4,11 @@
     import Darwin.C
 #endif
 
+public enum StringError : ErrorProtocol {
+    case invalidString
+    case utf8EncodingFailed
+}
+
 extension String {
     public init?(pointer: UnsafePointer<Int8>, length: Int) {
         var buffer = [Int8](repeating: 0, count: length + 1)
@@ -290,10 +295,6 @@ extension String {
 
 extension String {
     public init(percentEncoded: String) throws {
-        struct Error: ErrorProtocol, CustomStringConvertible {
-            let description: String
-        }
-
         let spaceCharacter: UInt8 = 32
         let percentCharacter: UInt8 = 37
         let plusCharacter: UInt8 = 43
@@ -313,7 +314,7 @@ extension String {
                 let hexString = "\(unicodeA)\(unicodeB)"
 
                 guard let character = Int(hexString, radix: 16) else {
-                    throw Error(description: "Invalid string")
+                    throw StringError.invalidString
                 }
 
                 decodedBytes.append(UInt8(character))
@@ -340,7 +341,7 @@ extension String {
             case .scalarValue(let char): string.append(char)
             case .emptyInput: finished = true
             case .error:
-                throw Error(description: "UTF-8 decoding failed")
+                throw StringError.utf8EncodingFailed
             }
         }
 

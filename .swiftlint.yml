@@ -1,24 +1,52 @@
 disabled_rules:
   - line_length
+  - file_length
   - type_name
-  - todo
-  - valid_docs
-  - function_parameter_count
   - cyclomatic_complexity
-  - function_body_length
+  - colon
   - conditional_binding_cascade
 
 opt_in_rules:
   - empty_count
   - force_unwrapping
+#  - missing_docs # let's prepare for this!
 
-force_cast: warning
-file_length:
-  warning: 400
-  error: 600
+excluded:
+  - Sources/Quark/Quark/Template/Mustache # todo: remove
+  - Sources/Quark/Mustache
+  - Packages
+  - Tests/Venice/FallibleChannelTests.swift
+  - Tests/Venice/SelectTests.swift
+
+closing_brace: error
+comma: error
+control_statement: error
+leading_whitespace: error
+legacy_cggeometry_functions: error
+legacy_constant: error
+legacy_constructor: error
+nesting: error
+opening_brace: error
+operator_whitespace: error
+return_arrow_whitespace: error
+statement_position: error
+trailing_newline: error
+trailing_semicolon: error
+trailing_whitespace: error
+valid_docs: error
+
+type_body_length:
+  warning: 200
+  error: 200
+
+function_body_length:
+  warning: 100
+  error: 100
+
+function_parameter_count:
+  warning: 5
+  error: 7
 
 variable_name:
-  max_length: 100
-  excluded:
-  - a
-  - b
+  min_length: 1
+  max_length: 35

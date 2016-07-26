@@ -118,20 +118,20 @@ extension Trie {
         var lower = 0
         var higher = children.count - 1
 
-        while (lower <= higher) {
+        while lower <= higher {
             let middle = (lower + higher) / 2
             let child = children[middle]
             guard let current = child.prefix else { continue }
 
-            if (current == target) {
+            if current == target {
                 return child.findLast(iterator)
             }
 
-            if (current < target) {
+            if current < target {
                 lower = middle + 1
             }
 
-            if (current > target) {
+            if current > target {
                 higher = middle - 1
             }
         }

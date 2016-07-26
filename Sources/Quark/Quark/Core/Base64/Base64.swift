@@ -24,7 +24,7 @@ let ascii: [Byte] = [
 
 public struct Base64 {
     public static func decode(_ string: String) throws -> Data {
-        if string.utf8.count % 4 != 0    {
+        if string.utf8.count % 4 != 0 {
             throw Base64Error.invalidInput
         }
 

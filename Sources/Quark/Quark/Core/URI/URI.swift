@@ -195,10 +195,10 @@ extension URI : Hashable {
     }
 }
 
-public func ==(lhs: URI, rhs: URI) -> Bool {
+public func == (lhs: URI, rhs: URI) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-public func ==(lhs: URI.UserInfo, rhs: URI.UserInfo) -> Bool {
+public func == (lhs: URI.UserInfo, rhs: URI.UserInfo) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
