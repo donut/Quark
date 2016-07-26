@@ -1,12 +1,12 @@
 Quark.swift
 	public enum QuarkError : ErrorProtocol
 	public enum QuarkError : ErrorProtocol
-	public struct Quark
-	public protocol ParameterRepresentable
-	public struct ServerParameters : ParameterRepresentable
-	public protocol DatabaseParameters : ParameterRepresentable
-	public enum DatabaseParametersError : ErrorProtocol
-	public protocol DatabaseParameters : ParameterRepresentable
+	public var configuration: StructuredData = nil
+	public func configure<C : Configuration>(_ configure: (C) throws -> ResponderRepresentable)
+	public func getenvString(_ key: String) -> String?
+	public enum Error: ErrorProtocol
+	public enum Error : ErrorProtocol
+	public func system(_ arguments: [String], environment: [String:String] = [:]) throws
 Server.swift
 	public struct Server
 	public struct Server
@@ -81,6 +81,9 @@ TCPServer.swift
 Base64.swift
 	public struct Base64
 	public struct Base64
+Environment.swift
+	public var environment = Environment()
+	public struct Environment
 FileProtocol.swift
 	public enum FileMode
 	public protocol FileProtocol
@@ -151,6 +154,8 @@ ReflectionError.swift
 	public enum ReflectionError : ErrorProtocol, CustomStringConvertible
 String.swift
 	public init?(pointer: UnsafePointer<Int8>, length: Int)
+	public func capitalized() -> String
+	public mutating func capitalize()
 	public func split(separator: Character, maxSplits: Int = .max, omittingEmptySubsequences: Bool = true) -> [String]
 	public func trim() -> String
 	public func trim(_ characters: Characters) -> String
@@ -347,10 +352,3 @@ Ticker.swift
 	public final class Ticker
 Timer.swift
 	public final class Timer
-Common.swift
-	case Text
-	case HTML
-	case TemplateNotFound
-	case ParseError
-	case RenderError
-	public init(kind: Kind, message: String? = nil, templateID: TemplateID? = nil, lineNumber: Int? = nil, underlyingError: ErrorProtocol? = nil)
