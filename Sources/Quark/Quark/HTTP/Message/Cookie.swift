@@ -14,6 +14,8 @@ extension Cookie : Hashable {
     }
 }
 
+extension Cookie : Equatable {}
+
 public func == (lhs: Cookie, rhs: Cookie) -> Bool {
     return lhs.name == rhs.name
 }

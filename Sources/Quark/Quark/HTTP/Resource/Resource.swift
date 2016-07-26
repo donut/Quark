@@ -1,10 +1,10 @@
 public protocol Resource : RouterRepresentable {
-    associatedtype ID : PathParameterInitializable = String
+    associatedtype ID : PathParameterConvertible = String
     associatedtype Model : StructuredDataInitializable, StructuredDataFallibleRepresentable = StructuredData
 
-    associatedtype DetailID : PathParameterInitializable = ID
-    associatedtype UpdateID : PathParameterInitializable = ID
-    associatedtype DestroyID : PathParameterInitializable = ID
+    associatedtype DetailID : PathParameterConvertible = ID
+    associatedtype UpdateID : PathParameterConvertible = ID
+    associatedtype DestroyID : PathParameterConvertible = ID
 
     associatedtype CreateInput : StructuredDataInitializable = Model
     associatedtype UpdateInput : StructuredDataInitializable = Model

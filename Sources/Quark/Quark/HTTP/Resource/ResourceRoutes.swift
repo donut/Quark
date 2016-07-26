@@ -31,7 +31,7 @@ extension ResourceRoutes {
         addRoute(method: .post, path: "", middleware: [contentMapper] + middleware, responder: responder)
     }
 
-    public func detail<ID: PathParameterInitializable>(
+    public func detail<ID: PathParameterConvertible>(
         middleware: [Middleware] = [],
         action: (Request, ID) throws -> Response) {
         let responder = BasicResponder { request in
@@ -41,7 +41,7 @@ extension ResourceRoutes {
         addRoute(method: .get, path: "/:id", middleware: middleware, responder: responder)
     }
 
-    public func update<ID: PathParameterInitializable, Content: StructuredDataInitializable>(
+    public func update<ID: PathParameterConvertible, Content: StructuredDataInitializable>(
         middleware: [Middleware] = [],
         action: (Request, ID, Content) throws -> Response) {
         let contentMapper = ContentMapperMiddleware(mappingTo: Content.self)
@@ -55,7 +55,7 @@ extension ResourceRoutes {
         addRoute(method: .patch, path: "/:id", middleware: [contentMapper] + middleware, responder: responder)
     }
 
-    public func destroy<ID: PathParameterInitializable>(
+    public func destroy<ID: PathParameterConvertible>(
         middleware: [Middleware] = [],
         action: (Request, ID) throws -> Response) {
         let responder = BasicResponder { request in

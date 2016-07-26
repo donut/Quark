@@ -1,18 +1,27 @@
-public protocol PathParameterInitializable {
+public protocol PathParameterConvertible {
     init(pathParameter: String) throws
+    var pathParameter: String { get }
 }
 
-extension String : PathParameterInitializable {
+extension String : PathParameterConvertible {
     public init(pathParameter: String) throws {
         self.init(pathParameter)
     }
+
+    public var pathParameter: String {
+        return self
+    }
 }
 
-extension Int : PathParameterInitializable {
+extension Int : PathParameterConvertible {
     public init(pathParameter: String) throws {
         guard let int = Int(pathParameter) else {
             throw ClientError.badRequest
         }
         self.init(int)
+    }
+
+    public var pathParameter: String {
+        return String(self)
     }
 }

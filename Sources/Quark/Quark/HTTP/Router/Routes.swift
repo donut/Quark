@@ -78,42 +78,42 @@ extension Routes {
     }
 
     public func get<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
@@ -124,52 +124,57 @@ extension Routes {
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .get, path: path, middleware: middleware, respond: respond)
     }
@@ -191,42 +196,42 @@ extension Routes {
     }
 
     public func head<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
@@ -237,52 +242,57 @@ extension Routes {
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .head, path: path, middleware: middleware, respond: respond)
     }
@@ -304,42 +314,42 @@ extension Routes {
     }
 
     public func post<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
@@ -350,52 +360,57 @@ extension Routes {
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .post, path: path, middleware: middleware, respond: respond)
     }
@@ -417,28 +432,28 @@ extension Routes {
     }
 
     public func put<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
@@ -447,12 +462,12 @@ extension Routes {
     }
 
     public func put<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
@@ -463,52 +478,57 @@ extension Routes {
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .put, path: path, middleware: middleware, respond: respond)
     }
@@ -530,42 +550,42 @@ extension Routes {
     }
 
     public func patch<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
@@ -576,52 +596,57 @@ extension Routes {
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
     }
@@ -643,42 +668,42 @@ extension Routes {
     }
 
     public func delete<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
@@ -689,52 +714,57 @@ extension Routes {
         >(
         _ path: String = "",
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
     }
@@ -756,42 +786,42 @@ extension Routes {
     }
 
     public func options<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
@@ -800,54 +830,59 @@ extension Routes {
     public func options<
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
-        _ path: String = "",
+        _ path: String,
         middleware: [Middleware] = [],
+        content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
         addRoute(method: .options, path: path, middleware: middleware, respond: respond)
     }
@@ -879,7 +914,7 @@ extension Routes {
 
 extension Routes {
     public func addRoute<
-        A: PathParameterInitializable
+        A: PathParameterConvertible
         >(
         method: Method,
         path: String,
@@ -902,8 +937,8 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible
         >(
         method: Method,
         path: String,
@@ -927,9 +962,9 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible
         >(
         method: Method,
         path: String,
@@ -954,10 +989,10 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible
         >(
         method: Method,
         path: String,
@@ -1000,7 +1035,7 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
+        A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
         method: Method,
@@ -1029,8 +1064,8 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
         method: Method,
@@ -1059,9 +1094,9 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
         method: Method,
@@ -1092,10 +1127,10 @@ extension Routes {
     }
 
     public func addRoute<
-        A: PathParameterInitializable,
-        B: PathParameterInitializable,
-        C: PathParameterInitializable,
-        D: PathParameterInitializable,
+        A: PathParameterConvertible,
+        B: PathParameterConvertible,
+        C: PathParameterConvertible,
+        D: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
         method: Method,
