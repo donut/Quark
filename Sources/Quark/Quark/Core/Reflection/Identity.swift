@@ -16,6 +16,6 @@ public func value(_ value: Any, is type: Any.Type) -> Bool {
 }
 
 /// Tests equality of any two existential types
-public func == (lhs: Any.Type, rhs: Any.Type) -> Bool {
+public func ==(lhs: Any.Type, rhs: Any.Type) -> Bool {
     return Metadata(type: lhs) == Metadata(type: rhs)
 }
