@@ -24,6 +24,11 @@ public struct RequestSerializer : S4.RequestSerializer {
         case .receiver(let receiver):
             while !receiver.closed {
                 let data = try receiver.receive(upTo: 2014)
+
+                if data.isEmpty {
+                    break
+                }
+
                 try stream.send(String(data.count, radix: 16).data)
                 try stream.send(newLine)
                 try stream.send(data)

@@ -29,59 +29,6 @@ public struct TrieRouteMatcher : RouteMatcher {
         }
     }
 
-    func searchForRoute(head: Trie<String, RouteProtocol>, components: IndexingIterator<[String]>, parameters: inout [String: String]) -> RouteProtocol? {
-
-        var components = components
-
-        // if no more components, we hit the end of the path and
-        // may have matched something
-        guard let component = components.next() else {
-            return head.payload
-        }
-
-        // store each possible path (ie both a static and a parameter)
-        // and then go through them all
-        var paths = [Trie<String, RouteProtocol>]()
-
-        for child in head.children {
-
-            // matched static
-            if child.prefix == component {
-                paths.append(child)
-                continue
-            }
-
-            // matched parameter
-            if child.prefix?.characters.first == ":" {
-                paths.append(child)
-                let param = String(child.prefix!.characters.dropFirst())
-                parameters[param] = component
-                continue
-            }
-
-            // matched wildstar
-            if child.prefix == "*" {
-                paths.append(child)
-                continue
-            }
-        }
-
-        // go through all the paths and recursively try to match them. if
-        // any of them match, the route has been matched
-        for path in paths {
-
-            if let route = path.payload where path.prefix == "*" {
-                return route
-            }
-
-            let matched = searchForRoute(head: path, components: components, parameters: &parameters)
-            if let matched = matched { return matched }
-        }
-
-        // we went through all the possible paths and still found nothing. 404
-        return nil
-    }
-
     public func match(_ request: Request) -> RouteProtocol? {
         guard let path = request.path else {
             return nil
@@ -112,6 +59,57 @@ public struct TrieRouteMatcher : RouteMatcher {
             actions: route.actions.mapValues({parametersMiddleware.chain(to: $0)}),
             fallback: route.fallback
         )
+    }
+
+    func searchForRoute(head: Trie<String, RouteProtocol>, components: IndexingIterator<[String]>, parameters: inout [String: String]) -> RouteProtocol? {
+
+        var components = components
+
+        // if no more components, we hit the end of the path and
+        // may have matched something
+        guard let component = components.next() else {
+            return head.payload
+        }
+
+        // store each possible path (ie both a static and a parameter)
+        // and then go through them all
+        var paths = [Trie<String, RouteProtocol>]()
+
+        for child in head.children {
+            // matched static
+            if child.prefix == component {
+                paths.append(child)
+                continue
+            }
+
+            // matched parameter
+            if child.prefix?.characters.first == ":" {
+                paths.append(child)
+                let parameter = String(child.prefix!.characters.dropFirst())
+                parameters[parameter] = component
+                continue
+            }
+
+            // matched wildcard
+            if child.prefix == "*" {
+                paths.append(child)
+                continue
+            }
+        }
+
+        // go through all the paths and recursively try to match them. if
+        // any of them match, the route has been matched
+        for path in paths {
+            if let route = path.payload where path.prefix == "*" {
+                return route
+            }
+
+            let matched = searchForRoute(head: path, components: components, parameters: &parameters)
+            if let matched = matched { return matched }
+        }
+
+        // we went through all the possible paths and still found nothing. 404
+        return nil
     }
 }
 
