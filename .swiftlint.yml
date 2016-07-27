@@ -8,7 +8,6 @@ disabled_rules:
 
 opt_in_rules:
   - empty_count
-  - force_unwrapping
 #  - missing_docs # let's prepare for this!
 
 excluded:
