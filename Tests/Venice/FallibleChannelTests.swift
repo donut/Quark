@@ -1,8 +1,8 @@
 import XCTest
 import Quark
 
-struct Error : ErrorProtocol {}
-struct NastyError : ErrorProtocol {}
+struct NormalError : Error {}
+struct NastyError : Error {}
 
 class FallibleChannelTests : XCTestCase {
     func testReceiverWaitsForSender() {
@@ -18,7 +18,7 @@ class FallibleChannelTests : XCTestCase {
         let channel = FallibleChannel<Int>()
         co {
             yield
-            channel.send(Error())
+            channel.send(NormalError())
         }
         assert(channel: channel, catchesErrorOfType: Error.self)
     }
@@ -34,7 +34,7 @@ class FallibleChannelTests : XCTestCase {
     func testSenderWaitsForReceiverError() {
         let channel = FallibleChannel<Int>()
         co {
-            channel.send(Error())
+            channel.send(NormalError())
         }
         assert(channel: channel, catchesErrorOfType: Error.self)
     }
@@ -51,7 +51,7 @@ class FallibleChannelTests : XCTestCase {
     func testSendingChannelError() {
         let channel = FallibleChannel<Int>()
         func send(_ channel: FallibleSendingChannel<Int>) {
-            channel.send(Error())
+            channel.send(NormalError())
         }
         co(send(channel.sendingChannel))
         assert(channel: channel, catchesErrorOfType: Error.self)
@@ -74,7 +74,7 @@ class FallibleChannelTests : XCTestCase {
             assert(channel: channel, catchesErrorOfType: Error.self)
         }
         co{
-            channel.send(Error())
+            channel.send(NormalError())
         }
         receive(channel.receivingChannel)
     }
@@ -95,7 +95,7 @@ class FallibleChannelTests : XCTestCase {
     func testTwoSimultaneousSendersError() {
         let channel = FallibleChannel<Int>()
         co {
-            channel.send(Error())
+            channel.send(NormalError())
         }
         co {
             channel.send(NastyError())
@@ -125,7 +125,7 @@ class FallibleChannelTests : XCTestCase {
         co {
             self.assert(channel: channel, catchesErrorOfType: NastyError.self)
         }
-        channel.send(Error())
+        channel.send(NormalError())
         channel.send(NastyError())
     }
 
@@ -149,7 +149,7 @@ class FallibleChannelTests : XCTestCase {
     func testTypedChannelsError() {
         let stringChannel = FallibleChannel<String>()
         co {
-            stringChannel.send(Error())
+            stringChannel.send(NormalError())
         }
         assert(channel: stringChannel, catchesErrorOfType: Error.self)
 
@@ -178,13 +178,13 @@ class FallibleChannelTests : XCTestCase {
 
     func testMessageBufferingError() {
         let channel = FallibleChannel<Int>(bufferSize: 2)
-        channel.send(Error())
+        channel.send(NormalError())
         channel.send(NastyError())
         assert(channel: channel, catchesErrorOfType: Error.self)
         assert(channel: channel, catchesErrorOfType: NastyError.self)
-        channel.send(Error())
+        channel.send(NormalError())
         assert(channel: channel, catchesErrorOfType: Error.self)
-        channel.send(Error())
+        channel.send(NormalError())
         channel.send(NastyError())
         assert(channel: channel, catchesErrorOfType: Error.self)
         assert(channel: channel, catchesErrorOfType: NastyError.self)
@@ -233,7 +233,7 @@ class FallibleChannelTests : XCTestCase {
         XCTAssert(try channel2.receive() == nil)
 
         let channel3 = FallibleChannel<Int>(bufferSize: 10)
-        channel3.send(Error())
+        channel3.send(NormalError())
         channel3.close()
         assert(channel: channel3, catchesErrorOfType: Error.self)
         XCTAssert(try channel3.receive() == nil)
@@ -268,7 +268,7 @@ class FallibleChannelTests : XCTestCase {
         let channel2 = FallibleChannel<Int>()
         co {
             XCTAssert(try! channel1.receive() == nil)
-            channel2.send(Error())
+            channel2.send(NormalError())
         }
         co {
             XCTAssert(try! channel1.receive() == nil)
@@ -291,7 +291,7 @@ class FallibleChannelTests : XCTestCase {
 
     func testBlockedSenderAndItemInTheError() {
         let channel = FallibleChannel<Int>(bufferSize: 1)
-        channel.send(Error())
+        channel.send(NormalError())
         co {
             channel.send(NastyError())
         }
@@ -325,7 +325,7 @@ class FallibleChannelTests : XCTestCase {
         //     signal(SIGABRT) { _ in
         //         _exit(0)
         //     }
-        //     channel.send(Error())
+        //     channel.send(NormalError())
         //     XCTFail()
         // }
         // var exitCode: Int32 = 0
@@ -369,18 +369,18 @@ class FallibleChannelTests : XCTestCase {
 
     func testChannelIterationError() {
         let channel =  FallibleChannel<Int>(bufferSize: 2)
-        channel.send(Error())
-        channel.send(Error())
+        channel.send(NormalError())
+        channel.send(NormalError())
         channel.close()
         for result in channel {
-            var error: ErrorProtocol? = nil
+            var error: Error? = nil
             result.failure { e in
                 error = e
             }
             result.success { _ in
                 XCTAssert(false)
             }
-            XCTAssert(error is Error)
+            XCTAssert(error is NormalError)
         }
     }
 
@@ -403,16 +403,16 @@ class FallibleChannelTests : XCTestCase {
 
     func testReceivingChannelIterationError() {
         let channel =  FallibleChannel<Int>(bufferSize: 2)
-        channel.send(Error())
-        channel.send(Error())
+        channel.send(NormalError())
+        channel.send(NormalError())
         func receive(_ channel: FallibleReceivingChannel<Int>) {
             channel.close()
             for result in channel {
-                var error: ErrorProtocol? = nil
+                var error: Error? = nil
                 result.failure { e in
                     error = e
                 }
-                XCTAssert(error is Error)
+                XCTAssert(error is NormalError)
             }
         }
         receive(channel.receivingChannel)

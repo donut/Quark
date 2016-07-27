@@ -1,6 +1,6 @@
 import Mustache
 
-public enum MustacheSerializerError : ErrorProtocol {
+public enum MustacheSerializerError : Error {
     case unsupportedTemplateEncoding
 }
 

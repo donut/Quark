@@ -119,7 +119,7 @@ public final class TCPConnection : Connection {
     }
 
     deinit {
-        if let socket = socket where !closed {
+        if let socket = socket, !closed {
             tcpclose(socket)
         }
     }

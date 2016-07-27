@@ -61,7 +61,7 @@ extension Server {
         }
     }
 
-    private static func recover(error: ErrorProtocol) -> Response? {
+    private static func recover(error: Error) -> Response? {
         switch error {
         case ClientError.badRequest:
             return Response(status: .badRequest)
@@ -146,7 +146,7 @@ extension Server {
         }
     }
 
-    public static func log(error: ErrorProtocol) -> Void {
+    public static func log(error: Error) -> Void {
         print("Error: \(error)")
     }
 

@@ -5,7 +5,7 @@ public struct BasicResource : RouterProtocol {
     public let matcher: RouteMatcher
 
     init(
-        recover: ((ErrorProtocol) throws -> Response),
+        recover: ((Error) throws -> Response),
         middleware: [Middleware],
         routes: ResourceRoutes
         ) {

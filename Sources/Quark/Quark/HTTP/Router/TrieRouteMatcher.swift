@@ -70,7 +70,7 @@ public struct TrieRouteMatcher : RouteMatcher {
         // any of them match, the route has been matched
         for path in paths {
 
-            if let route = path.payload where path.prefix == "*" {
+            if let route = path.payload, path.prefix == "*" {
                 return route
             }
 

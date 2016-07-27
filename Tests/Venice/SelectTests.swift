@@ -319,15 +319,15 @@ class SelectTests : XCTestCase {
     func testReceivingErrorFromFallibleChannel() {
         let channel = FallibleChannel<Int>()
         co {
-            channel.send(Error())
+            channel.send(NormalError())
         }
         sel { when in
             when.receive(from: channel) { result in
-                var error: ErrorProtocol? = nil
+                var error: Error? = nil
                 result.failure { e in
                     error = e
                 }
-                XCTAssert(error is Error)
+                XCTAssert(error is NormalError)
             }
         }
     }
@@ -351,15 +351,15 @@ class SelectTests : XCTestCase {
     func testReceivingErrorFromFallibleSendingChannel() {
         let channel = FallibleChannel<Int>()
         co {
-            channel.send(Error())
+            channel.send(NormalError())
         }
         sel { when in
             when.receive(from: channel.receivingChannel) { result in
-                var error: ErrorProtocol? = nil
+                var error: Error? = nil
                 result.failure { e in
                     error = e
                 }
-                XCTAssert(error is Error)
+                XCTAssert(error is NormalError)
             }
         }
     }
@@ -392,7 +392,7 @@ class SelectTests : XCTestCase {
             self.assert(channel: channel, catchesErrorOfType: Error.self)
         }
         sel { when in
-            when.send(Error(), to: channel) {}
+            when.send(NormalError(), to: channel) {}
         }
     }
 
@@ -413,7 +413,7 @@ class SelectTests : XCTestCase {
             self.assert(channel: channel, catchesErrorOfType: Error.self)
         }
         sel { when in
-            when.send(Error(), to: channel.sendingChannel) {}
+            when.send(NormalError(), to: channel.sendingChannel) {}
         }
     }
 

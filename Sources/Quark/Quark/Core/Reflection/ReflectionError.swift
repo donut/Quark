@@ -1,4 +1,4 @@
-public enum ReflectionError : ErrorProtocol, CustomStringConvertible {
+public enum ReflectionError : Error, CustomStringConvertible {
     case notStructOrClass(type: Any.Type)
     case classNotInitializable(type: Any.Type)
     case valueIsNotType(value: Any, type: Any.Type)

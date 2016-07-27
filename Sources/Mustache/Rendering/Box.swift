@@ -1211,11 +1211,11 @@ public func Box<T: MustacheBoxable>(dictionary: [String: T]?) -> MustacheBox {
     if let dictionary = dictionary {
         return MustacheBox(
             converter: MustacheBox.Converter(
-                dictionaryValue: dictionary.reduce([String: MustacheBox](), combine: { (b, item: (key: String, value: T)) in
+                dictionaryValue: dictionary.reduce([String: MustacheBox]()) { (b, item: (key: String, value: T)) in
                     var boxDictionary = b
                     boxDictionary[item.key] = Box(boxable: item.value)
                     return boxDictionary
-                })),
+            }),
             value: dictionary,
             keyedSubscript: { (key: String) in
                 return Box(boxable: dictionary[key])
@@ -1274,25 +1274,26 @@ dictionary, whatever the actual type of the raw boxed value.
 - returns: A MustacheBox that wraps *dictionary*.
 */
 public func Box<T: MustacheBoxable>(optionalDictionary dictionary: [String: T?]?) -> MustacheBox {
-    if let dictionary = dictionary {
-        return MustacheBox(
-            converter: MustacheBox.Converter(
-                dictionaryValue: dictionary.reduce([String: MustacheBox](), combine: { (b, item: (key: String, value: T?)) in
-                    var boxDictionary = b
-                    boxDictionary[item.key] = Box(value: item.value)
-                    return boxDictionary
-                })),
-            value: dictionary,
-            keyedSubscript: { (key: String) in
-                if let value = dictionary[key] {
-                    return Box(value: value)
-                } else {
-                    return Box()
-                }
-        })
-    } else {
+    guard let dictionary = dictionary else {
         return Box()
     }
+
+    return MustacheBox(
+        converter: MustacheBox.Converter(
+            dictionaryValue: dictionary.reduce([String: MustacheBox]()) { (b, item) in
+                var boxDictionary = b
+                boxDictionary[item.key] = Box(value: item.value)
+                return boxDictionary
+            }),
+        value: dictionary,
+        keyedSubscript: { (key: String) in
+            if let value = dictionary[key] {
+                return Box(value: value)
+            } else {
+                return Box()
+            }
+        }
+    )
 }
 
 // =============================================================================

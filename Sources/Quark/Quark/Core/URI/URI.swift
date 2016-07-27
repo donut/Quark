@@ -1,6 +1,6 @@
 import CURIParser
 
-public enum URIError : ErrorProtocol {
+public enum URIError : Error {
     case invalidURI
 }
 
@@ -81,9 +81,9 @@ extension URI {
     @inline(__always) private static func parse(userInfoString: String) -> URI.UserInfo? {
         let userInfoElements = userInfoString.split(separator: ":")
         if userInfoElements.count == 2 {
-            if let
-                username = try? String(percentEncoded: userInfoElements[0]),
-                password = try? String(percentEncoded: userInfoElements[1]) {
+            if
+                let username = try? String(percentEncoded: userInfoElements[0]),
+                let password = try? String(percentEncoded: userInfoElements[1]) {
                     return URI.UserInfo(
                         username: username,
                         password: password
@@ -105,9 +105,9 @@ extension URI {
                     queries[key] = values + [nil]
                 }
             } else if queryElements.count == 2 {
-                if let
-                    key = try? String(percentEncoded: queryElements[0]),
-                    value = try? String(percentEncoded: queryElements[1]) {
+                if
+                    let key = try? String(percentEncoded: queryElements[0]),
+                    let value = try? String(percentEncoded: queryElements[1]) {
                     let values = queries[key] ?? []
                     queries[key] = values + ([value] as [String?])
                 }

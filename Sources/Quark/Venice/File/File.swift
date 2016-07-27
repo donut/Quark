@@ -1,6 +1,6 @@
 import CLibvenice
 
-public enum FileError : ErrorProtocol {
+public enum FileError : Error {
     case failedToSendCompletely(remaining: Data)
     case failedToReceiveCompletely(received: Data)
 }
@@ -8,8 +8,8 @@ public enum FileError : ErrorProtocol {
 extension FileError : CustomStringConvertible {
     public var description: String {
         switch self {
-        case failedToSendCompletely: return "Failed to send completely"
-        case failedToReceiveCompletely: return "Failed to receive completely"
+        case .failedToSendCompletely: return "Failed to send completely"
+        case .failedToReceiveCompletely: return "Failed to receive completely"
         }
     }
 }
@@ -88,7 +88,7 @@ public final class File {
     }
 
 	deinit {
-        if let file = file where !closed {
+        if let file = file, !closed {
             fileclose(file)
         }
 	}

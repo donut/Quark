@@ -9,7 +9,7 @@ extension StructuredDataInitializable {
             }
             switch dictionary[property.key] ?? .null {
             case .null:
-                guard let nilLiteralConvertible = property.type as? NilLiteralConvertible.Type else {
+                guard let nilLiteralConvertible = property.type as? ExpressibleByNilLiteral.Type else {
                     throw ReflectionError.requiredValueMissing(key: property.key)
                 }
                 return nilLiteralConvertible.init(nilLiteral: ())

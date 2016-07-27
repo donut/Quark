@@ -16,8 +16,8 @@ public func construct<T>(_ type: T.Type = T.self, constructor: (Property.Descrip
 
 private func constructValueType<T>(_ constructor: (Property.Description) throws -> Any) throws -> T {
     guard Metadata(type: T.self)?.kind == .struct else { throw ReflectionError.notStructOrClass(type: T.self) }
-    let pointer = UnsafeMutablePointer<T>(allocatingCapacity: 1)
-    defer { pointer.deallocateCapacity(1) }
+    let pointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
+    defer { pointer.deallocate(capacity: 1) }
     var values = [Any]()
     try constructType(storage: UnsafeMutablePointer(pointer), values: &values, properties: properties(T.self), constructor: constructor)
     return pointer.move()
@@ -48,7 +48,7 @@ private func constructorForDictionary(_ dictionary: [String: Any]) -> (Property.
     return { property in
         if let value = dictionary[property.key] {
             return value
-        } else if let nilLiteralConvertible = property.type as? NilLiteralConvertible.Type {
+        } else if let nilLiteralConvertible = property.type as? ExpressibleByNilLiteral.Type {
             return nilLiteralConvertible.init(nilLiteral: ())
         } else {
             throw ReflectionError.requiredValueMissing(key: property.key)

@@ -25,7 +25,12 @@ public func ==<Element, Payload where Element : Comparable>(lhs: Trie<Element, P
 }
 
 public func <<Element, Payload where Element : Comparable>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool {
-    return lhs.prefix < rhs.prefix
+    switch (lhs.prefix, rhs.prefix) {
+        case (.none, .none): return false
+        case (.none, .some): return true
+        case (.some, .none): return false
+        case let (lhs?, rhs?): return lhs < rhs
+    }
 }
 
 extension Trie : Comparable { }
@@ -54,11 +59,11 @@ extension Trie {
 
         let children = self.children
             .map { $0.pretty(depth: depth + 1) }
-            .reduce("", combine: { $0 + $1})
+            .reduce("", { $0 + $1})
 
         let pretty = "- \(key)\(payload)" + "\n" + "\(children)"
 
-        let indentation = (0..<depth).reduce("", combine: {$0.0 + "  "})
+        let indentation = (0..<depth).reduce("", {$0.0 + "  "})
 
         return "\(indentation)\(pretty)"
     }
@@ -183,13 +188,13 @@ extension Trie where Payload: Equatable {
 }
 
 extension Trie {
-    mutating func sort(_ isOrderedBefore: (Trie<Element, Payload>, Trie<Element, Payload>) -> Bool) {
+    mutating func sort(by isOrderedBefore: (Trie<Element, Payload>, Trie<Element, Payload>) -> Bool) {
         self.children = children.map { child in
             var child = child
-            child.sort(isOrderedBefore)
+            child.sort(by: isOrderedBefore)
             return child
         }
 
-        self.children.sort(isOrderedBefore: isOrderedBefore)
+        self.children.sort(by: isOrderedBefore)
     }
 }

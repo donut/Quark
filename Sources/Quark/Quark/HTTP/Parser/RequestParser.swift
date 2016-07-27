@@ -41,8 +41,8 @@ public final class RequestParser : S4.RequestParser {
 
     public init(stream: Stream) {
         self.stream = stream
-        self.context = RequestContext(allocatingCapacity: 1)
-        self.context.initialize(with: RequestParserContext { request in
+        self.context = RequestContext.allocate(capacity: 1)
+        self.context.initialize(to: RequestParserContext { request in
             self.request = request
         })
 
@@ -50,7 +50,7 @@ public final class RequestParser : S4.RequestParser {
     }
 
     deinit {
-        context.deallocateCapacity(1)
+        context.deallocate(capacity: 1)
     }
 
     func resetParser() {

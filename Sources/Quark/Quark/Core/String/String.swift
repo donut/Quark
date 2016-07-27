@@ -4,7 +4,7 @@
     import Darwin.C
 #endif
 
-public enum StringError : ErrorProtocol {
+public enum StringError : Error {
     case invalidString
     case utf8EncodingFailed
 }
@@ -142,11 +142,11 @@ extension String.CharacterView {
     }
 }
 
-public enum CharactersError : ErrorProtocol {
+public enum CharactersError : Error {
     case characterIsNotUTF8
 }
 
-public struct Characters: ArrayLiteralConvertible {
+public struct Characters: ExpressibleByArrayLiteral {
 	public static var whitespaceAndNewline: Characters {
 		return [" ", "\t", "\r", "\n"]
 	}

@@ -3,7 +3,7 @@ import Quark
 
 typealias MappableDictionary = [String : Any]
 
-enum MappableError : ErrorProtocol {
+enum MappableError : Error {
     case missingRequiredValue(key: String)
 }
 

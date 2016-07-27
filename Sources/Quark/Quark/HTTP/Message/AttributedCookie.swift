@@ -31,10 +31,10 @@ public struct AttributedCookie {
         self.init(
             name: name,
             value: value,
-            domain: domain,
-            path: path,
             expires: expires,
             maxAge: maxAge,
+            domain: domain,
+            path: path,
             secure: secure,
             HTTPOnly:  HTTPOnly
         )
@@ -87,7 +87,7 @@ extension AttributedCookie {
     public static func parse(_ string: String) -> AttributedCookie? {
         let cookieStringTokens = string.split(separator: ";")
 
-        guard let cookieTokens = cookieStringTokens.first?.split(separator: "=") where cookieTokens.count == 2 else {
+        guard let cookieTokens = cookieStringTokens.first?.split(separator: "="), cookieTokens.count == 2 else {
             return nil
         }
 

@@ -1,6 +1,6 @@
 // This file has been modified from its original project Swift-JsonSerializer
 
-public enum JSONError : ErrorProtocol {
+public enum JSONError : Error {
     case incompatibleType
 }
 
@@ -118,44 +118,44 @@ public enum JSON {
 
     public func get<T>() -> T? {
         switch self {
-        case nullValue:
+        case .nullValue:
             return nil
-        case booleanValue(let bool):
+        case .booleanValue(let bool):
             return bool as? T
-        case numberValue(let number):
+        case .numberValue(let number):
             return number as? T
-        case stringValue(let string):
+        case .stringValue(let string):
             return string as? T
-        case arrayValue(let array):
+        case .arrayValue(let array):
             return array as? T
-        case objectValue(let object):
+        case .objectValue(let object):
             return object as? T
         }
     }
 
     public func get<T>() throws -> T {
         switch self {
-        case booleanValue(let bool):
+        case .booleanValue(let bool):
             if let value = bool as? T {
                 return value
             }
 
-        case numberValue(let number):
+        case .numberValue(let number):
             if let value = number as? T {
                 return value
             }
 
-        case stringValue(let string):
+        case .stringValue(let string):
             if let value = string as? T {
                 return value
             }
 
-        case arrayValue(let array):
+        case .arrayValue(let array):
             if let value = array as? T {
                 return value
             }
 
-        case objectValue(let object):
+        case .objectValue(let object):
             if let value = object as? T {
                 return value
             }
@@ -299,31 +299,31 @@ public func == (lhs: JSON, rhs: JSON) -> Bool {
     }
 }
 
-extension JSON : NilLiteralConvertible {
+extension JSON : ExpressibleByNilLiteral {
     public init(nilLiteral value: Void) {
         self = .nullValue
     }
 }
 
-extension JSON : BooleanLiteralConvertible {
+extension JSON : ExpressibleByBooleanLiteral {
     public init(booleanLiteral value: BooleanLiteralType) {
         self = .booleanValue(value)
     }
 }
 
-extension JSON : IntegerLiteralConvertible {
+extension JSON : ExpressibleByIntegerLiteral {
     public init(integerLiteral value: IntegerLiteralType) {
         self = .numberValue(Double(value))
     }
 }
 
-extension JSON : FloatLiteralConvertible {
+extension JSON : ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
         self = .numberValue(Double(value))
     }
 }
 
-extension JSON : StringLiteralConvertible {
+extension JSON : ExpressibleByStringLiteral {
     public init(unicodeScalarLiteral value: String) {
         self = .stringValue(value)
     }
@@ -337,7 +337,7 @@ extension JSON : StringLiteralConvertible {
     }
 }
 
-extension JSON : StringInterpolationConvertible {
+extension JSON : ExpressibleByStringInterpolation {
     public init(stringInterpolation strings: JSON...) {
         var string = ""
 
@@ -355,13 +355,13 @@ extension JSON : StringInterpolationConvertible {
     }
 }
 
-extension JSON : ArrayLiteralConvertible {
+extension JSON : ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: JSONRepresentable...) {
         self = .arrayValue(elements.map { $0.makeJSON() })
     }
 }
 
-extension JSON : DictionaryLiteralConvertible {
+extension JSON : ExpressibleByDictionaryLiteral {
     public init(dictionaryLiteral elements: (String, JSONRepresentable)...) {
         var dictionary = [String: JSON](minimumCapacity: elements.count)
 

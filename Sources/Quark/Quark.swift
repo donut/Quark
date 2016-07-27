@@ -1,7 +1,7 @@
 @_exported import C7
 @_exported import S4
 
-public enum QuarkError : ErrorProtocol {
+public enum QuarkError : Error {
     case invalidConfiguration(description: String)
     case invalidArgument(description: String)
 }
@@ -110,7 +110,7 @@ private func loadConfigurationFile() throws -> StructuredData {
     arguments += ["Configuration.swift"]
 
     // Xcode's PATH doesn't include swiftenv shims.
-    if let xpc = environment["XPC_SERVICE_NAME"] where xpc.contains("com.apple.dt.Xcode") {
+    if let xpc = environment["XPC_SERVICE_NAME"], xpc.contains("com.apple.dt.Xcode") {
         environment["PATH"] = environment["HOME"]! + "/.swiftenv/shims:" + environment["PATH"]!
     }
 
@@ -232,12 +232,12 @@ public func getenvString(_ key: String) -> String? {
     return out == nil ? nil : String(validatingUTF8: out!)  //FIXME locale may not be UTF8
 }
 
-public enum Error: ErrorProtocol {
+public enum ConsoleError: Error {
     case exitStatus(Int32, [String])
     case exitSignal
 }
 
-extension Error: CustomStringConvertible {
+extension ConsoleError: CustomStringConvertible {
     public var description: String {
         switch self {
         case .exitStatus(let code, let args):
@@ -257,7 +257,7 @@ public func system(_ arguments: [String], environment: [String:String] = [:]) th
         let pid = try posix_spawnp(arguments[0], args: arguments, environment: environment)
         let exitStatus = try waitpid(pid)
         guard exitStatus == 0 else {
-            throw Error.exitStatus(exitStatus, arguments)
+            throw ConsoleError.exitStatus(exitStatus, arguments)
         }
     } catch let underlyingError as SystemError {
         throw underlyingError

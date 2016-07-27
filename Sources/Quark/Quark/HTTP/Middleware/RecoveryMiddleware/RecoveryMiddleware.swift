@@ -1,7 +1,7 @@
 public struct RecoveryMiddleware : Middleware {
-    let recover: (ErrorProtocol) throws -> Response
+    let recover: (Error) throws -> Response
 
-    public init(_ recover: (ErrorProtocol) throws -> Response = RecoveryMiddleware.defaultRecover) {
+    public init(_ recover: (Error) throws -> Response = RecoveryMiddleware.defaultRecover) {
         self.recover = recover
     }
 
@@ -13,7 +13,7 @@ public struct RecoveryMiddleware : Middleware {
         }
     }
 
-    public static func defaultRecover(error: ErrorProtocol) throws -> Response {
+    public static func defaultRecover(error: Error) throws -> Response {
         switch error {
         case ClientError.badRequest:
             return Response(status: .badRequest)

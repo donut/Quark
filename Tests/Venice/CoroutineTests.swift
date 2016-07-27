@@ -59,7 +59,7 @@ class CoroutineTests : XCTestCase {
     func testPollFileDescriptor() throws {
         var event: PollEvent
         var size: Int
-        let fds = UnsafeMutablePointer<Int32>(allocatingCapacity: 2)
+        let fds = UnsafeMutablePointer<Int32>.allocate(capacity: 2)
 
         #if os(Linux)
             let result = socketpair(AF_UNIX, Int32(SOCK_STREAM.rawValue), 0, fds)

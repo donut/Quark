@@ -1,9 +1,10 @@
+public enum MapperError: Error {
+    case cantInitFromRawValue
+    case noStructuredData(key: String)
+    case incompatibleSequence
+}
+
 public final class Mapper {
-    public enum Error: ErrorProtocol {
-        case cantInitFromRawValue
-        case noStrutcuredData(key: String)
-        case incompatibleSequence
-    }
 
     public init(structuredData: StructuredData) {
         self.structuredData = structuredData
@@ -22,17 +23,17 @@ extension Mapper {
         if let nested = structuredData[key] {
             return try unwrap(T(structuredData: nested))
         }
-        throw Error.noStrutcuredData(key: key)
+        throw MapperError.noStructuredData(key: key)
     }
 
     public func map<T: RawRepresentable where T.RawValue: StructuredDataInitializable>(from key: String) throws -> T {
         guard let rawValue = try structuredData[key].flatMap({ try T.RawValue(structuredData: $0) }) else {
-            throw Error.cantInitFromRawValue
+            throw MapperError.cantInitFromRawValue
         }
         if let value = T(rawValue: rawValue) {
             return value
         }
-        throw Error.cantInitFromRawValue
+        throw MapperError.cantInitFromRawValue
     }
 }
 
@@ -72,7 +73,7 @@ extension Mapper {
     public func map<T: RawRepresentable where T.RawValue: StructuredDataInitializable>(optionalFrom key: String) -> T? {
         do {
             if let rawValue = try structuredData[key].flatMap({ try T.RawValue(structuredData: $0) }),
-                value = T(rawValue: rawValue) {
+                let value = T(rawValue: rawValue) {
                 return value
             }
             return nil
@@ -99,7 +100,7 @@ extension Mapper {
     }
 }
 
-public enum UnwrapError: ErrorProtocol {
+public enum UnwrapError: Error {
     case tryingToUnwrapNil
 }
 

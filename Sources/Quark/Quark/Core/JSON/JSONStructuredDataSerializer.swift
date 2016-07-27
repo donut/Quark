@@ -1,7 +1,7 @@
 // This file has been modified from its original project Swift-JsonSerializer
 
 public struct JSONStructuredDataSerializer : StructuredDataSerializer {
-    enum Error: ErrorProtocol {
+    enum JSONStructuredDataSerializerError: Error {
         case invalidStructuredData
     }
 
@@ -20,7 +20,7 @@ public struct JSONStructuredDataSerializer : StructuredDataSerializer {
         case .string(let text): return escapeAsJSON(text)
         case .array(let array): return try serialize(array: array)
         case .dictionary(let dictionary): return try serialize(dictionary: dictionary)
-        default: throw Error.invalidStructuredData
+        default: throw JSONStructuredDataSerializerError.invalidStructuredData
         }
     }
 

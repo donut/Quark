@@ -42,8 +42,8 @@ public final class ResponseParser : S4.ResponseParser {
 
     public init(stream: Stream) {
         self.stream = stream
-        self.context = ResponseContext(allocatingCapacity: 1)
-        self.context.initialize(with: ResponseParserContext { response in
+        self.context = ResponseContext.allocate(capacity: 1)
+        self.context.initialize(to: ResponseParserContext { response in
             self.response = response
             })
 
@@ -51,7 +51,7 @@ public final class ResponseParser : S4.ResponseParser {
     }
 
     deinit {
-        context.deallocateCapacity(1)
+        context.deallocate(capacity: 1)
     }
 
     func resetParser() {

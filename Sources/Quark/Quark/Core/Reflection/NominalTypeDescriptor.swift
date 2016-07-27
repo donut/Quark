@@ -2,7 +2,8 @@ struct NominalTypeDescriptor : PointerType {
     var pointer: UnsafePointer<_NominalTypeDescriptor>
 
     var mangledName: String {
-        return String(cString: relativePointer(base: pointer, offset: pointer.pointee.mangledName))
+        let mangledNamePointer: UnsafePointer<CChar> = relativePointer(base: pointer, offset: pointer.pointee.mangledName)
+        return String(cString: mangledNamePointer)
     }
 
     var numberOfFields: Int {

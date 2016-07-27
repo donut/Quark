@@ -6,7 +6,7 @@
     import Darwin.C
 #endif
 
-public enum JSONParseError : ErrorProtocol, CustomStringConvertible {
+public enum JSONParseError : Error, CustomStringConvertible {
     case unexpectedTokenError(reason: String, lineNumber: Int, columnNumber: Int)
     case insufficientTokenError(reason: String, lineNumber: Int, columnNumber: Int)
     case extraTokenError(reason: String, lineNumber: Int, columnNumber: Int)
@@ -16,17 +16,17 @@ public enum JSONParseError : ErrorProtocol, CustomStringConvertible {
 
     public var description: String {
         switch self {
-        case unexpectedTokenError(let r, let l, let c):
+        case .unexpectedTokenError(let r, let l, let c):
             return "UnexpectedTokenError!\nLine: \(l)\nColumn: \(c)]\nReason: \(r)"
-        case insufficientTokenError(let r, let l, let c):
+        case .insufficientTokenError(let r, let l, let c):
             return "InsufficientTokenError!\nLine: \(l)\nColumn: \(c)]\nReason: \(r)"
-        case extraTokenError(let r, let l, let c):
+        case .extraTokenError(let r, let l, let c):
             return "ExtraTokenError!\nLine: \(l)\nColumn: \(c)]\nReason: \(r)"
-        case nonStringKeyError(let r, let l, let c):
+        case .nonStringKeyError(let r, let l, let c):
             return "NonStringKeyError!\nLine: \(l)\nColumn: \(c)]\nReason: \(r)"
-        case invalidStringError(let r, let l, let c):
+        case .invalidStringError(let r, let l, let c):
             return "InvalidStringError!\nLine: \(l)\nColumn: \(c)]\nReason: \(r)"
-        case invalidNumberError(let r, let l, let c):
+        case .invalidNumberError(let r, let l, let c):
             return "InvalidNumberError!\nLine: \(l)\nColumn: \(c)]\nReason: \(r)"
         }
     }

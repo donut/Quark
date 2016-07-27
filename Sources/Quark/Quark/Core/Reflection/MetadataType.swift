@@ -13,7 +13,7 @@ extension MetadataType {
 
     init?(type: Any.Type) {
         self.init(pointer: unsafeBitCast(type, to: UnsafePointer<Int>.self))
-        if let kind = self.dynamicType.kind where kind != self.kind {
+        if let kind = self.dynamicType.kind, kind != self.kind {
             return nil
         }
     }

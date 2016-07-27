@@ -1,4 +1,4 @@
-public enum StructuredDataError : ErrorProtocol {
+public enum StructuredDataError : Error {
     case incompatibleType
     case notStructuredDataInitializable(Any.Type)
     case notStructuredDataRepresentable(Any.Type)
@@ -213,7 +213,7 @@ extension StructuredData {
 extension StructuredData {
     public subscript(index: Int) -> StructuredData? {
         get {
-            guard let array = arrayValue where array.indices.contains(index) else {
+            guard let array = arrayValue, array.indices.contains(index) else {
                 return nil
             }
             return array[index]
@@ -254,7 +254,7 @@ extension StructuredData {
                 keys.removeFirst()
 
                 if keys.isEmpty {
-                    if let existingStructuredData = self[first], newStructuredData = structuredData {
+                    if let existingStructuredData = self[first], let newStructuredData = structuredData {
                         var combinedDictionary: [String: StructuredData] = [:]
                         if case .dictionary(let existingDictionary) = existingStructuredData, case .dictionary(let newDictionary) = newStructuredData {
                             for (key, value) in existingDictionary {
@@ -577,31 +577,31 @@ public func == (lhs: StructuredData, rhs: StructuredData) -> Bool {
 
 // MARK: Literal Convertibles
 
-extension StructuredData : NilLiteralConvertible {
+extension StructuredData : ExpressibleByNilLiteral {
     public init(nilLiteral value: Void) {
         self = .null
     }
 }
 
-extension StructuredData : BooleanLiteralConvertible {
+extension StructuredData : ExpressibleByBooleanLiteral {
     public init(booleanLiteral value: BooleanLiteralType) {
         self = .bool(value)
     }
 }
 
-extension StructuredData : IntegerLiteralConvertible {
+extension StructuredData : ExpressibleByIntegerLiteral {
     public init(integerLiteral value: IntegerLiteralType) {
         self = .int(value)
     }
 }
 
-extension StructuredData : FloatLiteralConvertible {
+extension StructuredData : ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
         self = .double(value)
     }
 }
 
-extension StructuredData : StringLiteralConvertible {
+extension StructuredData : ExpressibleByStringLiteral {
     public init(unicodeScalarLiteral value: String) {
         self = .string(value)
     }
@@ -615,7 +615,7 @@ extension StructuredData : StringLiteralConvertible {
     }
 }
 
-extension StructuredData : StringInterpolationConvertible {
+extension StructuredData : ExpressibleByStringInterpolation {
     public init(stringInterpolation strings: StructuredData...) {
         self = .string(strings.reduce("") { $0 + ($1.stringValue ?? "") })
     }
@@ -625,13 +625,13 @@ extension StructuredData : StringInterpolationConvertible {
     }
 }
 
-extension StructuredData : ArrayLiteralConvertible {
+extension StructuredData : ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: StructuredData...) {
         self = .array(elements)
     }
 }
 
-extension StructuredData : DictionaryLiteralConvertible {
+extension StructuredData : ExpressibleByDictionaryLiteral {
     public init(dictionaryLiteral elements: (String, StructuredData)...) {
         var dictionary = [String: StructuredData](minimumCapacity: elements.count)
 

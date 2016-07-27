@@ -1,4 +1,4 @@
-enum Base64Error : ErrorProtocol {
+enum Base64Error : Error {
     case invalidInput
 }
 
