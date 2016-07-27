@@ -15,7 +15,7 @@ extension ResourceRoutes {
         let responder = BasicResponder { request in
             return try action(request)
         }
-        addRoute(method: .get, path: "", middleware: middleware, responder: responder)
+        add(method: .get, path: "", middleware: middleware, responder: responder)
     }
 
     public func create<Content: StructuredDataInitializable>(
@@ -28,7 +28,7 @@ extension ResourceRoutes {
             }
             return try action(request, content)
         }
-        addRoute(method: .post, path: "", middleware: [contentMapper] + middleware, responder: responder)
+        add(method: .post, path: "", middleware: [contentMapper] + middleware, responder: responder)
     }
 
     public func detail<ID: PathParameterConvertible>(
@@ -38,7 +38,7 @@ extension ResourceRoutes {
             let id = try ID(pathParameter: request.pathParameters["id"]!)
             return try action(request, id)
         }
-        addRoute(method: .get, path: "/:id", middleware: middleware, responder: responder)
+        add(method: .get, path: "/:id", middleware: middleware, responder: responder)
     }
 
     public func update<ID: PathParameterConvertible, Content: StructuredDataInitializable>(
@@ -52,7 +52,7 @@ extension ResourceRoutes {
             }
             return try action(request, id, content)
         }
-        addRoute(method: .patch, path: "/:id", middleware: [contentMapper] + middleware, responder: responder)
+        add(method: .patch, path: "/:id", middleware: [contentMapper] + middleware, responder: responder)
     }
 
     public func destroy<ID: PathParameterConvertible>(
@@ -62,6 +62,6 @@ extension ResourceRoutes {
             let id = try ID(pathParameter: request.pathParameters["id"]!)
             return try action(request, id)
         }
-        addRoute(method: .delete, path: "/:id", middleware: middleware, responder: responder)
+        add(method: .delete, path: "/:id", middleware: middleware, responder: responder)
     }
 }

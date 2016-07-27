@@ -28,7 +28,7 @@ extension Routes {
 
         for route in router.routes {
             for (method, _) in route.actions {
-                addRoute(
+                add(
                     method: method,
                     path: path + route.path,
                     middleware: middleware,
@@ -74,7 +74,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .get, path: path, middleware: middleware, responder: responder)
+        add(method: .get, path: path, middleware: middleware, responder: responder)
     }
 
     public func get<
@@ -83,7 +83,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -93,7 +93,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -104,7 +104,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -116,7 +116,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -126,7 +126,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -137,7 +137,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -149,7 +149,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -162,7 +162,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 
     public func get<
@@ -176,7 +176,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .get, path: path, middleware: middleware, respond: respond)
+        add(method: .get, path: path, middleware: middleware, respond: respond)
     }
 }
 
@@ -192,7 +192,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .head, path: path, middleware: middleware, responder: responder)
+        add(method: .head, path: path, middleware: middleware, responder: responder)
     }
 
     public func head<
@@ -201,7 +201,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -211,7 +211,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -222,7 +222,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -234,7 +234,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -244,7 +244,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -255,7 +255,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -267,7 +267,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -280,7 +280,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 
     public func head<
@@ -294,7 +294,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .head, path: path, middleware: middleware, respond: respond)
+        add(method: .head, path: path, middleware: middleware, respond: respond)
     }
 }
 
@@ -310,7 +310,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .post, path: path, middleware: middleware, responder: responder)
+        add(method: .post, path: path, middleware: middleware, responder: responder)
     }
 
     public func post<
@@ -319,7 +319,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -329,7 +329,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -340,7 +340,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -352,7 +352,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -362,7 +362,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -373,7 +373,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -385,7 +385,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -398,7 +398,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 
     public func post<
@@ -412,7 +412,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .post, path: path, middleware: middleware, respond: respond)
+        add(method: .post, path: path, middleware: middleware, respond: respond)
     }
 }
 
@@ -428,7 +428,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .put, path: path, middleware: middleware, responder: responder)
+        add(method: .put, path: path, middleware: middleware, responder: responder)
     }
 
     public func put<
@@ -437,7 +437,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -447,7 +447,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -458,7 +458,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -470,7 +470,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -480,7 +480,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -491,7 +491,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -503,7 +503,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -516,7 +516,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 
     public func put<
@@ -530,7 +530,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .put, path: path, middleware: middleware, respond: respond)
+        add(method: .put, path: path, middleware: middleware, respond: respond)
     }
 }
 
@@ -546,7 +546,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .patch, path: path, middleware: middleware, responder: responder)
+        add(method: .patch, path: path, middleware: middleware, responder: responder)
     }
 
     public func patch<
@@ -555,7 +555,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -565,7 +565,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -576,7 +576,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -588,7 +588,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -598,7 +598,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -609,7 +609,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -621,7 +621,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -634,7 +634,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 
     public func patch<
@@ -648,7 +648,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .patch, path: path, middleware: middleware, respond: respond)
+        add(method: .patch, path: path, middleware: middleware, respond: respond)
     }
 }
 
@@ -664,7 +664,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .delete, path: path, middleware: middleware, responder: responder)
+        add(method: .delete, path: path, middleware: middleware, responder: responder)
     }
 
     public func delete<
@@ -673,7 +673,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -683,7 +683,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -694,7 +694,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -706,7 +706,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -716,7 +716,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -727,7 +727,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -739,7 +739,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -752,7 +752,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 
     public func delete<
@@ -766,7 +766,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .delete, path: path, middleware: middleware, respond: respond)
+        add(method: .delete, path: path, middleware: middleware, respond: respond)
     }
 }
 
@@ -782,7 +782,7 @@ extension Routes {
         _ path: String = "",
         middleware: [Middleware] = [],
         responder: Responder) {
-        addRoute(method: .options, path: path, middleware: middleware, responder: responder)
+        add(method: .options, path: path, middleware: middleware, responder: responder)
     }
 
     public func options<
@@ -791,7 +791,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -801,7 +801,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -812,7 +812,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -824,7 +824,7 @@ extension Routes {
         _ path: String,
         middleware: [Middleware] = [],
         respond: (Request, A, B, C, D) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -834,7 +834,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, T) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -845,7 +845,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, T) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -857,7 +857,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, T) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -870,7 +870,7 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, T) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 
     public func options<
@@ -884,36 +884,36 @@ extension Routes {
         middleware: [Middleware] = [],
         content: T.Type = T.self,
         respond: (Request, A, B, C, D, T) throws -> Response) {
-        addRoute(method: .options, path: path, middleware: middleware, respond: respond)
+        add(method: .options, path: path, middleware: middleware, respond: respond)
     }
 }
 
 extension Routes {
-    public func methods(methods: Set<Method>, path: String, middleware: Middleware..., responder: Responder) {
+    public func add(methods: Set<Method>, path: String, middleware: Middleware..., responder: Responder) {
         for method in methods {
-            addRoute(method: method, path: path, middleware: middleware, responder: responder)
+            add(method: method, path: path, middleware: middleware, responder: responder)
         }
     }
 
-    public func methods(methods: Set<Method>, path: String, middleware: Middleware..., respond: Respond) {
+    public func add(methods: Set<Method>, path: String, middleware: Middleware..., respond: Respond) {
         for method in methods {
-            addRoute(method: method, path: path, middleware: middleware, responder: BasicResponder(respond))
+            add(method: method, path: path, middleware: middleware, responder: BasicResponder(respond))
         }
     }
 }
 
 extension Routes {
     public func fallback(_ path: String, middleware: Middleware..., responder: Responder) {
-        addRouteFallback(path: path, middleware: middleware, responder: responder)
+        fallback(path: path, middleware: middleware, responder: responder)
     }
 
     public func fallback(_ path: String, middleware: Middleware..., respond: Respond) {
-        addRouteFallback(path: path, middleware: middleware, responder: BasicResponder(respond))
+        fallback(path: path, middleware: middleware, responder: BasicResponder(respond))
     }
 }
 
 extension Routes {
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible
         >(
         method: Method,
@@ -933,10 +933,10 @@ extension Routes {
             return try respond(request, a)
         }
 
-        addRoute(method: method, path: path, middleware: middleware, responder: responder)
+        add(method: method, path: path, middleware: middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         B: PathParameterConvertible
         >(
@@ -958,10 +958,10 @@ extension Routes {
             return try respond(request, a, b)
         }
 
-        addRoute(method: method, path: path, middleware: middleware, responder: responder)
+        add(method: method, path: path, middleware: middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         B: PathParameterConvertible,
         C: PathParameterConvertible
@@ -985,10 +985,10 @@ extension Routes {
             return try respond(request, a, b, c)
         }
 
-        addRoute(method: method, path: path, middleware: middleware, responder: responder)
+        add(method: method, path: path, middleware: middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         B: PathParameterConvertible,
         C: PathParameterConvertible,
@@ -1014,10 +1014,10 @@ extension Routes {
             return try respond(request, a, b, c, d)
         }
 
-        addRoute(method: method, path: path, middleware: middleware, responder: responder)
+        add(method: method, path: path, middleware: middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         T: StructuredDataInitializable
         >(
         method: Method,
@@ -1031,10 +1031,10 @@ extension Routes {
             }
             return try respond(request: request, content: content)
         }
-        addRoute(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
+        add(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         T: StructuredDataInitializable
         >(
@@ -1060,10 +1060,10 @@ extension Routes {
             return try respond(request, a, content)
         }
 
-        addRoute(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
+        add(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         B: PathParameterConvertible,
         T: StructuredDataInitializable
@@ -1090,10 +1090,10 @@ extension Routes {
             return try respond(request, a, b, content)
         }
 
-        addRoute(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
+        add(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         B: PathParameterConvertible,
         C: PathParameterConvertible,
@@ -1123,10 +1123,10 @@ extension Routes {
             return try respond(request, a, b, c, content)
         }
 
-        addRoute(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
+        add(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
     }
 
-    public func addRoute<
+    public func add<
         A: PathParameterConvertible,
         B: PathParameterConvertible,
         C: PathParameterConvertible,
@@ -1158,7 +1158,7 @@ extension Routes {
             return try respond(request, a, b, c, d, content)
         }
 
-        addRoute(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
+        add(method: method, path: path, middleware: [contentMapper] + middleware, responder: responder)
     }
 
     private func parseParameters(keys: [String], pathParameters: [String: String], count: Int) throws -> [String] {
@@ -1201,7 +1201,7 @@ extension Routes {
 }
 
 extension Routes {
-    public func addRouteFallback(path: String, middleware: [Middleware], responder: Responder) {
+    public func fallback(path: String, middleware: [Middleware], responder: Responder) {
         let fallback = middleware.chain(to: responder)
         let routePath = path
 
@@ -1213,7 +1213,7 @@ extension Routes {
         }
     }
 
-    public func addRoute(method: Method, path: String, middleware: [Middleware], responder: Responder) {
+    public func add(method: Method, path: String, middleware: [Middleware], responder: Responder) {
         let action = middleware.chain(to: responder)
         let routePath = path
 
