@@ -1,8 +1,8 @@
-var count = 0
+private var uuidCount = 0
 
 private func uuid() -> String {
-    count += 1
-    return String(count)
+    uuidCount += 1
+    return String(uuidCount)
 }
 
 public final class SessionMiddleware: Middleware {

@@ -6,8 +6,8 @@ public enum TCPError : ErrorProtocol {
 extension TCPError : CustomStringConvertible {
     public var description: String {
         switch self {
-        case didSendDataWithError(let error, _): return "\(error)"
-        case didReceiveDataWithError(let error, _): return "\(error)"
+        case didSendDataWithError(let error, _): return String(error)
+        case didReceiveDataWithError(let error, _): return String(error)
         }
     }
 }

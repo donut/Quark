@@ -122,31 +122,31 @@ extension URI : CustomStringConvertible {
         var string = ""
 
         if let scheme = scheme {
-            string += "\(scheme)://"
+            string += String(scheme) + "://"
         }
 
         if let userInfo = userInfo {
-            string += "\(userInfo)@"
+            string += String(userInfo) + "@"
         }
 
         if let host = host {
-            string += "\(host)"
+            string += String(host)
         }
 
         if let port = port {
-            string += ":\(port)"
+            string += ":" + String(port)
         }
 
         if let path = path {
-            string += "\(path)"
+            string += String(path)
         }
 
         if let query = query {
-            string += "\(query)"
+            string += String(query)
         }
 
         if let fragment = fragment {
-            string += "#\(fragment)"
+            string += "#" + String(fragment)
         }
 
         return string

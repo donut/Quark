@@ -2,8 +2,10 @@ import CHTTPParser
 
 typealias Parser = UnsafeMutablePointer<http_parser>
 
-struct ParseError : ErrorProtocol {
-    let description: String
+extension http_errno : ErrorProtocol, CustomStringConvertible {
+    public var description: String {
+        return String(cString: http_errno_description(self))
+    }
 }
 
 extension Method {

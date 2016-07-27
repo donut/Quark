@@ -40,14 +40,14 @@ extension Trie {
 
         let key: String
         if let k = self.prefix {
-            key = "\(k)"
+            key = String(k)
         } else {
             key = "head"
         }
 
         let payload: String
         if let p = self.payload {
-            payload = ":\(p)"
+            payload = ":" + String(p)
         } else {
             payload = ""
         }
@@ -56,7 +56,7 @@ extension Trie {
             .map { $0.pretty(depth: depth + 1) }
             .reduce("", combine: { $0 + $1})
 
-        let pretty = "- \(key)\(payload)" + "\n" + "\(children)"
+        let pretty = "- \(key)\(payload)" + "\n" + String(children)
 
         let indentation = (0..<depth).reduce("", combine: {$0.0 + "  "})
 

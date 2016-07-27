@@ -37,13 +37,19 @@ public final class RequestParser : S4.RequestParser {
     let stream: Stream
     let context: RequestContext
     var parser = http_parser()
-    var request: Request?
+    var requests: [Request] = []
+    let bufferSize: Int
 
-    public init(stream: Stream) {
+    convenience public init(stream: Stream) {
+        self.init(stream: stream, bufferSize: 2048)
+    }
+
+    public init(stream: Stream, bufferSize: Int) {
         self.stream = stream
+        self.bufferSize = bufferSize
         self.context = RequestContext(allocatingCapacity: 1)
         self.context.initialize(with: RequestParserContext { request in
-            self.request = request
+            self.requests.insert(request, at: 0)
         })
 
         resetParser()
@@ -60,24 +66,16 @@ public final class RequestParser : S4.RequestParser {
 
     public func parse() throws -> Request {
         while true {
-            defer {
-                request = nil
+            if let request = requests.popLast() {
+                return request
             }
 
-            let data = try stream.receive(upTo: 2048)
+            let data = try stream.receive(upTo: bufferSize)
             let bytesParsed = http_parser_execute(&parser, &requestSettings, UnsafePointer(data.bytes), data.count)
 
             guard bytesParsed == data.count else {
-                resetParser()
-                let errorName = http_errno_name(http_errno(parser.http_errno))!
-                let errorDescription = http_errno_description(http_errno(parser.http_errno))!
-                let error = ParseError(description: "\(String(validatingUTF8: errorName)!): \(String(validatingUTF8: errorDescription)!)")
-                throw error
-            }
-
-            if let request = request {
-                resetParser()
-                return request
+                defer { resetParser() }
+                throw http_errno(parser.http_errno)
             }
         }
     }

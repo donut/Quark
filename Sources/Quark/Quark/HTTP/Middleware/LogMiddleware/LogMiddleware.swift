@@ -9,10 +9,10 @@ public struct LogMiddleware : Middleware {
         let response = try next.respond(to: request)
         var message = "================================================================================\n"
         message += "Request:\n\n"
-        message += debug ? "\(request.debugDescription)\n" : "\(request)\n"
+        message += (debug ? String(request.debugDescription) : String(request)) + "\n"
         message += "--------------------------------------------------------------------------------\n"
         message += "Response:\n\n"
-        message += debug ? "\(response.debugDescription)\n" : "\(response)\n"
+        message += (debug ? String(response.debugDescription) : String(response)) + "\n"
         message += "================================================================================\n"
         print(message)
         return response

@@ -27,7 +27,7 @@ public var configuration: StructuredData = nil {
             let data = try serializer.serialize(configuration)
             try file.write(data)
         } catch {
-            fatalError("\(error)")
+            fatalError(String(error))
         }
     }
 }

@@ -69,11 +69,8 @@ public final class ResponseParser : S4.ResponseParser {
             let bytesParsed = http_parser_execute(&parser, &responseSettings, UnsafePointer(data.bytes), data.count)
 
             guard bytesParsed == data.count else {
-                resetParser()
-                let errorName = http_errno_name(http_errno(parser.http_errno))!
-                let errorDescription = http_errno_description(http_errno(parser.http_errno))!
-                let error = ParseError(description: "\(String(validatingUTF8: errorName)!): \(String(validatingUTF8: errorDescription)!)")
-                throw error
+                defer { resetParser() }
+                throw http_errno(parser.http_errno)
             }
 
             if let response  = response {

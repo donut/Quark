@@ -321,7 +321,7 @@ extension String {
                 let unicodeA = UnicodeScalar(encodedBytes[i + 1])
                 let unicodeB = UnicodeScalar(encodedBytes[i + 2])
 
-                let hexString = "\(unicodeA)\(unicodeB)"
+                let hexString = String(unicodeA) + String(unicodeB)
 
                 guard let character = Int(hexString, radix: 16) else {
                     throw StringError.invalidString

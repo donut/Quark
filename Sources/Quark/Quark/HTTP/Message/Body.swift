@@ -225,3 +225,12 @@ extension Body {
         }
     }
 }
+
+extension Body : Equatable {}
+
+public func == (lhs: Body, rhs: Body) -> Bool {
+    switch (lhs, rhs) {
+        case let (.buffer(l), .buffer(r)) where l == r: return true
+        default: return false
+    }
+}
