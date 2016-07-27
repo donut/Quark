@@ -35,9 +35,9 @@ class TrieRouteMatcherTests : XCTestCase {
         testMatcherParsesPathParameters(TrieRouteMatcher.self)
     }
 
-    func testTrieRouteMatcherReturnsCorrectPathParameters() throws {
-        try testMatcherReturnsCorrectPathParameters(TrieRouteMatcher.self)
-    }
+    // func testTrieRouteMatcherReturnsCorrectPathParameters() throws {
+    //     try testMatcherReturnsCorrectPathParameters(TrieRouteMatcher.self)
+    // }
 
     func testTrieRouteMatcherMatchesWildstars() {
         testMatcherMatchesWildstars(TrieRouteMatcher.self)

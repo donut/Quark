@@ -11,7 +11,7 @@ class SessionMiddlewareTests : XCTestCase {
             XCTAssertNotNil(request.session)
             return Response()
         })
-        
+
         XCTAssertEqual(response.cookieHeaders.count, 1)
     }
 
@@ -39,7 +39,7 @@ class SessionMiddlewareTests : XCTestCase {
         var request3 = Request(headers: ["Cookies": response1.cookies.first!.value])
         request3.cookies.insert(Cookie(name: responseCookie.name, value: responseCookie.value))
         var request4: Request!
-        
+
         let _ = try middleware.respond(to: request3, chainingTo: BasicResponder { req in
             request4 = req
             return Response()
