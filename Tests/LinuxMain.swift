@@ -18,9 +18,13 @@ XCTMain([
     testCase(TCPTests.allTests),
     // HTTP
     testCase(RoutesTests.allTests),
+    testCase(RequestParserTests.allTests),
     // Core
+    // Reflection
     testCase(InternalTests.allTests),
     testCase(MappableTests.allTests),
     testCase(PerformanceTests.allTests),
     testCase(PublicTests.allTests),
+    // StructuredData
+    testCase(StructuredDataTests.allTests),
 ])

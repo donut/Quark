@@ -254,19 +254,21 @@ extension StructuredData {
                 keys.removeFirst()
 
                 if keys.isEmpty {
-                    if let existingStructuredData = self[first], newStructuredData = structuredData {
+                    if let existingStructuredData = self[first],
+                        let newStructuredData = structuredData,
+                        case .dictionary(let existingDictionary) = existingStructuredData,
+                        case .dictionary(let newDictionary) = newStructuredData {
                         var combinedDictionary: [String: StructuredData] = [:]
-                        if case .dictionary(let existingDictionary) = existingStructuredData, case .dictionary(let newDictionary) = newStructuredData {
-                            for (key, value) in existingDictionary {
-                                combinedDictionary[key] = value
-                            }
 
-                            for (key, value) in newDictionary {
-                                combinedDictionary[key] = value
-                            }
-
-                            dictionary[first] = .dictionary(combinedDictionary)
+                        for (key, value) in existingDictionary {
+                            combinedDictionary[key] = value
                         }
+
+                        for (key, value) in newDictionary {
+                            combinedDictionary[key] = value
+                        }
+
+                        dictionary[first] = .dictionary(combinedDictionary)
                     } else {
                         dictionary[first] = structuredData
                     }
