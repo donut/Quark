@@ -58,10 +58,10 @@ class GenericJSONStructuredDataParser<ByteSequence: Collection where ByteSequenc
     }
 
     func parse() throws -> StructuredData {
-        let JSON = try parseValue()
+        let data = try parseValue()
         skipWhitespaces()
         if cur == end {
-            return JSON
+            return data
         } else {
             throw JSONStructuredDataParseError.extraTokenError(
                 reason: "extra tokens found",
@@ -128,38 +128,41 @@ extension GenericJSONStructuredDataParser {
     private func parseString() throws -> StructuredData {
         assert(currentChar == Char(ascii: "\""), "points a double quote")
         advance()
-        var buffer: [CChar] = []
 
-        LOOP: while cur != end {
+        var buffer = [CChar]()
+
+        while cur != end && currentChar != Char(ascii: "\"") {
             switch currentChar {
             case Char(ascii: "\\"):
                 advance()
-                if cur == end {
+
+                guard cur != end else {
                     throw JSONStructuredDataParseError.invalidStringError(
-                        reason: "unexpected end of a string literal",
+                        reason: "missing double quote",
                         lineNumber: lineNumber,
                         columnNumber: columnNumber
                     )
                 }
 
-                if let c = parseEscapedChar() {
-                    for u in String(c).utf8 {
-                        buffer.append(CChar(bitPattern: u))
-                    }
-                } else {
+                guard let escapedChar = parseEscapedChar() else {
                     throw JSONStructuredDataParseError.invalidStringError(
-                        reason: "invalid escape sequence",
+                        reason: "missing double quote",
                         lineNumber: lineNumber,
                         columnNumber: columnNumber
                     )
                 }
-            case Char(ascii: "\""): break LOOP
-            default: buffer.append(CChar(bitPattern: currentChar))
+
+                String(escapedChar).utf8.forEach {
+                    buffer.append(CChar(bitPattern: $0))
+                }
+            default:
+                buffer.append(CChar(bitPattern: currentChar))
             }
+
             advance()
         }
 
-        if !expect("\"") {
+        guard expect("\"") else {
             throw JSONStructuredDataParseError.invalidStringError(
                 reason: "missing double quote",
                 lineNumber: lineNumber,
@@ -167,48 +170,68 @@ extension GenericJSONStructuredDataParser {
             )
         }
 
-        buffer.append(0)
-        let s = String(cString: buffer)
-        return .string(s)
+        buffer.append(0) // trailing nul
+        return .string(String(cString: buffer))
     }
 
     private func parseEscapedChar() -> UnicodeScalar? {
-        let c = UnicodeScalar(currentChar)
+        let character = UnicodeScalar(currentChar)
 
-        if c == "u" {
-            var length = 0
-            var value: UInt32 = 0
+        // 'u' indicates unicode
+        guard character == "u" else {
+            return unescapeMapping[character] ?? character
+        }
 
-            while let d = hexToDigit(nextChar) {
-                advance()
-                length += 1
+        guard let surrogateValue = parseEscapedUnicodeSurrogate() else {
+            return nil
+        }
 
-                if length > 8 {
-                    break
-                }
+        // two consecutive \u#### sequences represent 32 bit unicode characters
+        if nextChar == Char(ascii: "\\") && source[source.index(cur, offsetBy: 2)] == Char(ascii: "u") {
+            advance()
+            advance()
 
-                value = (value << 4) | d
-            }
-
-            if length < 2 {
+            guard let surrogatePairValue = parseEscapedUnicodeSurrogate() else {
                 return nil
             }
 
-            return UnicodeScalar(value)
-        } else {
-            let c = UnicodeScalar(currentChar)
-            return unescapeMapping[c] ?? c
+            let scalar = (UInt32(surrogateValue) << 10) + UInt32(surrogatePairValue) - 0x35fdc00
+            return UnicodeScalar(scalar)
         }
+
+        return UnicodeScalar(surrogateValue)
+    }
+
+    private func parseEscapedUnicodeSurrogate() -> UInt32? {
+        let requiredLength = 4
+
+        var length = 0
+        var value: UInt32 = 0
+        while let d = hexToDigit(nextChar) where length < requiredLength {
+            advance()
+            length += 1
+
+            value <<= 4
+            value |= d
+        }
+
+        guard length == requiredLength else { return nil }
+        return value
     }
 
     private func parseNumber() throws -> StructuredData {
         let sign = expect("-") ? -1.0 : 1.0
         var integer: Int64 = 0
+        var actualNumberStarted = false
 
         switch currentChar {
-        case Char(ascii: "0"): advance()
-        case Char(ascii: "1") ... Char(ascii: "9"):
+        case Char(ascii: "0") ... Char(ascii: "9"):
             while cur != end {
+                if currentChar == Char(ascii: "0") && !actualNumberStarted {
+                    advance()
+                    continue
+                }
+                actualNumberStarted = true
                 if let value = digitToInt(currentChar) {
                     integer = (integer * 10) + Int64(value)
                 } else {
@@ -218,7 +241,7 @@ extension GenericJSONStructuredDataParser {
             }
         default:
             throw JSONStructuredDataParseError.invalidStringError(
-                reason: "missing double quote",
+                reason: "invalid token in number",
                 lineNumber: lineNumber,
                 columnNumber: columnNumber
             )
@@ -261,10 +284,9 @@ extension GenericJSONStructuredDataParser {
         }
 
         var exponent: Int64 = 0
+        var expSign: Int64 = 1
 
         if expect("e") || expect("E") {
-            var expSign: Int64 = 1
-
             if expect("-") {
                 expSign = -1
             } else if expect("+") {}
@@ -293,11 +315,11 @@ extension GenericJSONStructuredDataParser {
             exponent *= expSign
         }
 
-        if hasFraction {
+        if hasFraction || expSign == -1 {
             return .double(sign * (Double(integer) + fraction) * pow(10, Double(exponent)))
-        } else {
-            return .int(Int(sign * Double(integer) * pow(10, Double(exponent))))
         }
+
+        return .int(Int(sign * Double(integer) * pow(10, Double(exponent))))
     }
 
     private func parseObject() throws -> StructuredData {
@@ -357,9 +379,9 @@ extension GenericJSONStructuredDataParser {
         var array: [StructuredData] = []
 
         LOOP: while cur != end && !expect("]") {
-            let JSON = try parseValue()
+            let data = try parseValue()
             skipWhitespaces()
-            array.append(JSON)
+            array.append(data)
 
             if expect(",") {
                 continue
@@ -387,9 +409,9 @@ extension GenericJSONStructuredDataParser {
             if target.utf8Start.pointee == currentChar {
                 advance()
                 return true
-            } else {
-                return false
             }
+
+            return false
         }
 
         let start = cur
@@ -503,22 +525,6 @@ let digitMapping: [UnicodeScalar:Int] = [
     "8": 8,
     "9": 9
 ]
-
-public func escapeAsJSON(_ source : String) -> String {
-    var s = "\""
-
-    for c in source.characters {
-        if let escapedSymbol = escapeMapping[c] {
-            s.append(escapedSymbol)
-        } else {
-            s.append(c)
-        }
-    }
-
-    s.append("\"")
-
-    return s
-}
 
 func digitToInt(_ byte: UInt8) -> Int? {
     return digitMapping[UnicodeScalar(byte)]
