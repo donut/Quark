@@ -2,23 +2,30 @@ import XCTest
 @testable import Quark
 
 class RedirectMiddlewareTests : XCTestCase {
-    let middleware = RedirectMiddleware(redirectTo: "/over-there", if: { $0.method == .get })
+    let redirect = RedirectMiddleware(redirectTo: "/over-there", if: { $0.method == .get })
 
     func testDoesRedirect() throws {
-        let getRequest = Request(method: .get)
+        let request = Request(method: .get)
 
-        let chain = BasicResponder { _ in XCTFail("Should have redirected"); return Response() }
-        let response = try middleware.respond(to: getRequest, chainingTo: chain)
+        let responder = BasicResponder { _ in
+            XCTFail("Should have redirected")
+            return Response()
+        }
+
+        let response = try redirect.respond(to: request, chainingTo: responder)
 
         XCTAssertEqual(response.status, .found)
         XCTAssertEqual(response.headers["location"], "/over-there")
     }
 
     func testDoesntRedirect() throws {
-        let postRequest = Request(method: .post)
+        let request = Request(method: .post)
 
-        let chain = BasicResponder { _ in return Response(status: .ok) }
-        let response = try middleware.respond(to: postRequest, chainingTo: chain)
+        let responder = BasicResponder { _ in
+            return Response(status: .ok)
+        }
+
+        let response = try redirect.respond(to: request, chainingTo: responder)
 
         XCTAssertEqual(response.status, .ok)
         XCTAssertNotEqual(response.headers["location"], "/over-there")
