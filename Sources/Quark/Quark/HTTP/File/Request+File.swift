@@ -1,5 +1,5 @@
-extension Response {
-    public init(status: Status = .ok, headers: Headers = [:], filePath: String, fileType: FileProtocol.Type) throws {
+extension Request {
+    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], filePath: String, fileType: FileProtocol.Type) throws {
         do {
             var filePath = filePath
             let file: FileProtocol
@@ -16,7 +16,7 @@ extension Response {
                 file = try fileType.init(path: filePath + "html", mode: .read)
             }
 
-            self.init(status: status, headers: headers, body: file.stream)
+            self.init(method: method, uri: uri, headers: headers, body: file.stream)
 
             if let fileExtension = file.fileExtension, mediaType = mediaType(forFileExtension: fileExtension) {
                 self.contentType = mediaType

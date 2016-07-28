@@ -1,13 +1,13 @@
 extension Request {
-    public typealias DidUpgrade = (Response, Stream) throws -> Void
+    public typealias UpgradeConnection = (Response, Stream) throws -> Void
 
-    public var didUpgrade: DidUpgrade? {
+    public var upgradeConnection: UpgradeConnection? {
         get {
-            return storage["request-connection-upgrade"] as? DidUpgrade
+            return storage["request-connection-upgrade"] as? UpgradeConnection
         }
 
-        set(didUpgrade) {
-            storage["request-connection-upgrade"] = didUpgrade
+        set(upgradeConnection) {
+            storage["request-connection-upgrade"] = upgradeConnection
         }
     }
 }
@@ -25,7 +25,7 @@ extension Request {
         self.headers["Content-Length"] = body.count.description
     }
 
-    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: Stream) {
+    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: ReceivingStream) {
         self.init(
             method: method,
             uri: uri,
@@ -48,90 +48,44 @@ extension Request {
 
         self.headers["Transfer-Encoding"] = "chunked"
     }
+}
 
-    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: AsyncStream) {
-        self.init(
-            method: method,
-            uri: uri,
-            version: Version(major: 1, minor: 1),
-            headers: headers,
-            body: .asyncReceiver(body)
-        )
-
-        self.headers["Transfer-Encoding"] = "chunked"
-    }
-
-    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: (AsyncSendingStream, ((Void) throws -> Void) -> Void) -> Void) {
-        self.init(
-            method: method,
-            uri: uri,
-            version: Version(major: 1, minor: 1),
-            headers: headers,
-            body: .asyncSender(body)
-        )
-
-        self.headers["Transfer-Encoding"] = "chunked"
-    }
-
-    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: Stream, didUpgrade: DidUpgrade?) {
+extension Request {
+    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: DataRepresentable) {
         self.init(
             method: method,
             uri: uri,
             headers: headers,
-            body: body
-        )
-
-        self.didUpgrade = didUpgrade
-    }
-
-    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: Data = Data(), didUpgrade: DidUpgrade?) {
-        self.init(
-            method: method,
-            uri: uri,
-            headers: headers,
-            body: body
-        )
-
-        self.didUpgrade = didUpgrade
-    }
-
-    public init(method: Method = .get, uri: URI = URI(path: "/"), headers: Headers = [:], body: DataConvertible, didUpgrade: DidUpgrade? = nil) {
-        self.init(
-            method: method,
-            uri: uri,
-            headers: headers,
-            body: body.data,
-            didUpgrade: didUpgrade
+            body: body.data
         )
     }
+}
 
-    public init(method: Method = .get, uri: String, headers: Headers = [:], body: Data = Data(), didUpgrade: DidUpgrade? = nil) throws {
+extension Request {
+    public init(method: Method = .get, uri: String, headers: Headers = [:], body: Data = []) throws {
         self.init(
             method: method,
             uri: try URI(uri),
             headers: headers,
-            body: body,
-            didUpgrade: didUpgrade
+            body: body
         )
     }
 
-    public init(method: Method = .get, uri: String, headers: Headers = [:], body: DataConvertible, didUpgrade: DidUpgrade? = nil) throws {
-        try self.init(
-            method: method,
-            uri: uri,
-            headers: headers,
-            body: body.data,
-            didUpgrade: didUpgrade
-        )
-    }
-
-    public init(method: Method = .get, uri: String, headers: Headers = [:], body: Stream, didUpgrade: DidUpgrade? = nil) throws {
+    public init(method: Method = .get, uri: String, headers: Headers = [:], body: ReceivingStream) throws {
         self.init(
             method: method,
             uri: try URI(uri),
             headers: headers,
-            body: body,
-            didUpgrade: didUpgrade
+            body: body
+        )
+    }
+
+    public init(method: Method = .get, uri: String, headers: Headers = [:], body: (SendingStream) throws -> Void) throws {
+        self.init(
+            method: method,
+            uri: try URI(uri),
+            headers: headers,
+            body: body
         )
     }
 }

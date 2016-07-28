@@ -14,10 +14,10 @@ public struct FileResponder : Responder {
             throw ClientError.methodNotAllowed
         }
 
-        guard let path = request.path else {
+        guard let filepath = request.path else {
             throw ServerError.internalServerError
         }
 
-        return try Response(status: .ok, headers: headers, filePath: self.path + path, fileType: fileType)
+        return try Response(status: .ok, headers: headers, filePath: self.path + filepath, fileType: fileType)
     }
 }

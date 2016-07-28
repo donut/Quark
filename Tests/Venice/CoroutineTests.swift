@@ -16,7 +16,7 @@ class CoroutineTests : XCTestCase {
     }
 
     func testCo() {
-        co(self.worker(count: 3, n: 7))
+        coroutine(self.worker(count: 3, n: 7))
         co(self.worker(count: 1, n: 11))
         co(self.worker(count: 2, n: 5))
         nap(for: 100.milliseconds)

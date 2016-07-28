@@ -1,13 +1,13 @@
 extension Response {
-    public typealias DidUpgrade = (Request, Stream) throws -> Void
+    public typealias UpgradeConnection = (Request, Stream) throws -> Void
 
-    public var didUpgrade: DidUpgrade? {
+    public var upgradeConnection: UpgradeConnection? {
         get {
-            return storage["response-connection-upgrade"] as? DidUpgrade
+            return storage["response-connection-upgrade"] as? UpgradeConnection
         }
 
-        set(didUpgrade) {
-            storage["response-connection-upgrade"] = didUpgrade
+        set(upgradeConnection) {
+            storage["response-connection-upgrade"] = upgradeConnection
         }
     }
 }
@@ -25,7 +25,7 @@ extension Response {
         self.headers["Content-Length"] = body.count.description
     }
 
-    public init(status: Status = .ok, headers: Headers = [:], body: Stream) {
+    public init(status: Status = .ok, headers: Headers = [:], body: ReceivingStream) {
         self.init(
             version: Version(major: 1, minor: 1),
             status: status,
@@ -48,57 +48,14 @@ extension Response {
 
         self.headers["Transfer-Encoding"] = "chunked"
     }
+}
 
-    public init(status: Status = .ok, headers: Headers = [:], body: AsyncStream) {
-        self.init(
-            version: Version(major: 1, minor: 1),
-            status: status,
-            headers: headers,
-            cookieHeaders: [],
-            body: .asyncReceiver(body)
-        )
-
-        self.headers["Transfer-Encoding"] = "chunked"
-    }
-
-    public init(status: Status = .ok, headers: Headers = [:], body: (AsyncSendingStream, ((Void) throws -> Void) -> Void) -> Void) {
-        self.init(
-            version: Version(major: 1, minor: 1),
-            status: status,
-            headers: headers,
-            cookieHeaders: [],
-            body: .asyncSender(body)
-        )
-
-        self.headers["Transfer-Encoding"] = "chunked"
-    }
-
-    public init(status: Status = .ok, headers: Headers = [:], body: Stream, didUpgrade: DidUpgrade?) {
+extension Response {
+    public init(status: Status = .ok, headers: Headers = [:], body: DataConvertible) {
         self.init(
             status: status,
             headers: headers,
-            body: body
-        )
-
-        self.didUpgrade = didUpgrade
-    }
-
-    public init(status: Status = .ok, headers: Headers = [:], body: Data = Data(), didUpgrade: DidUpgrade?) {
-        self.init(
-            status: status,
-            headers: headers,
-            body: body
-        )
-
-        self.didUpgrade = didUpgrade
-    }
-
-    public init(status: Status = .ok, headers: Headers = [:], body: DataConvertible, didUpgrade: DidUpgrade? = nil) {
-        self.init(
-            status: status,
-            headers: headers,
-            body: body.data,
-            didUpgrade: didUpgrade
+            body: body.data
         )
     }
 }

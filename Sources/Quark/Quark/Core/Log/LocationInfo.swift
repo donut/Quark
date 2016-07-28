@@ -5,7 +5,7 @@ public struct LocationInfo {
     public let function: String
 }
 
-extension LocationInfo: CustomStringConvertible {
+extension LocationInfo : CustomStringConvertible {
     public var description: String {
         return "\(file):\(function):\(line):\(column)"
     }

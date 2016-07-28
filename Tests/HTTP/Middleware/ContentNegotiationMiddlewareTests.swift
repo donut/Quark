@@ -15,7 +15,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.content, ["foo": "bar"])
-            return Response(contentDictionary: ["fuu": "baz"])
+            return Response(content: ["fuu": "baz"])
         }
 
         let response = try contentNegotiation.respond(to: request, chainingTo: responder)
@@ -37,7 +37,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.content, ["foo": "bar"])
-            return Response(contentDictionary: ["fuu": "baz"])
+            return Response(content: ["fuu": "baz"])
         }
 
         let response = try contentNegotiation.respond(to: request, chainingTo: responder)
@@ -57,7 +57,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.content, ["foo": "bar"])
-            return Response(contentDictionary: ["fuu": "baz"])
+            return Response(content: ["fuu": "baz"])
         }
 
         let response = try contentNegotiation.respond(to: request, chainingTo: responder)
@@ -76,7 +76,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.content, ["foo": "bar"])
-            return Response(contentDictionary: ["fuu": "baz"])
+            return Response(content: ["fuu": "baz"])
         }
 
         let response = try contentNegotiation.respond(to: request, chainingTo: responder)
@@ -98,7 +98,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.content, ["foo": "bar"])
-            return Response(contentDictionary: ["fuu": "baz"])
+            return Response(content: ["fuu": "baz"])
         }
 
         let response = try contentNegotiation.respond(to: request, chainingTo: responder)
@@ -118,7 +118,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.content, ["foo": "bar"])
-            return Response(contentDictionary: ["fuu": "baz"])
+            return Response(content: ["fuu": "baz"])
         }
 
         let response = try contentNegotiation.respond(to: request, chainingTo: responder)
@@ -128,7 +128,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
     }
 
     func testClientRequestJSONResponse() throws {
-        let request = Request(contentDictionary: ["foo": "bar"])
+        let request = Request(content: ["foo": "bar"])
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.headers["Content-Type"], "application/json; charset=utf-8")
@@ -151,7 +151,7 @@ class ContentNegotiationMiddlewareTests : XCTestCase {
     }
 
     func testClientRequestURLEncodedFormResponse() throws {
-        let request = Request(contentDictionary: ["foo": "bar"])
+        let request = Request(content: ["foo": "bar"])
 
         let responder = BasicResponder { request in
             XCTAssertEqual(request.headers["Content-Type"], "application/json; charset=utf-8")
