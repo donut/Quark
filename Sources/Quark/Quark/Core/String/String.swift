@@ -348,7 +348,7 @@ extension String {
         while !finished {
             let decodingResult = decoder.decode(&iterator)
             switch decodingResult {
-            case .scalarValue(let char): string.append(char)
+            case .scalarValue(let char): string.append(Character(char))
             case .emptyInput: finished = true
             case .error:
                 throw StringError.utf8EncodingFailed
@@ -366,7 +366,7 @@ extension String {
 
         for codeUnit in self.utf8 {
             if allowed.contains(codeUnit) {
-                string.append(UnicodeScalar(codeUnit))
+                string.append(Character(UnicodeScalar(codeUnit)))
             } else {
                 string.append("%")
                 string.append(codeUnit.hexadecimal())

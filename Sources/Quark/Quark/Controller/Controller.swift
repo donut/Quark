@@ -35,7 +35,7 @@ public extension Controller {
     }
 }
 
-public struct DefaultController<M where M : StructuredDataInitializable, M : StructuredDataFallibleRepresentable> : Controller {
+public struct DefaultController<M> : Controller where M : StructuredDataInitializable, M : StructuredDataFallibleRepresentable {
     public typealias Model = M
     public let repository: Repository<Model>
 

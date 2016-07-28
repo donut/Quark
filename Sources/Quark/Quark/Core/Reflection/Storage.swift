@@ -3,9 +3,10 @@ func mutableStorageForInstance(_ instance: inout Any) -> UnsafeMutablePointer<UI
 }
 
 func storageForInstance(_ instance: inout Any) -> UnsafePointer<UInt8> {
-    return withUnsafePointer(&instance) { pointer in
+    return withUnsafePointer(to: &instance) { pointer in
+        // TODO: fix warning
         if instance is AnyObject {
-            return UnsafePointer(bitPattern: UnsafePointer<Int>(pointer).pointee)!
+            return UnsafePointer(bitPattern: UnsafePointer<Int>(pointer).pointee )!
         } else if sizeofValue(instance) <= 3 * sizeof(Int.self) {
             return UnsafePointer(pointer)
         } else {
@@ -19,7 +20,9 @@ func mutableStorageForInstance<T>(_ instance: inout T) -> UnsafeMutablePointer<U
 }
 
 func storageForInstance<T>(_ instance: inout T) -> UnsafePointer<UInt8> {
-    return withUnsafePointer(&instance) { pointer in
+
+    return withUnsafePointer(to: &instance) { pointer in
+        // TODO: fix warning
         if instance is AnyObject {
             return UnsafePointer(bitPattern: UnsafePointer<Int>(pointer).pointee)!
         } else {

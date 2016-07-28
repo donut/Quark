@@ -739,7 +739,7 @@ extension StructuredData : CustomStringConvertible {
 
         func indent() -> String {
             let spaceCount = indentLevel * 4
-            return String(repeating: Character(" "), count: spaceCount)
+            return String(repeating: " ", count: spaceCount)
         }
 
         return serialize(self)

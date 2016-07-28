@@ -238,7 +238,7 @@ extension File {
 
             let entry: UnsafeMutablePointer<dirent> = file
 
-            if let entryName = withUnsafeMutablePointer(&entry.pointee.d_name, { (ptr) -> String? in
+            if let entryName = withUnsafeMutablePointer(to: &entry.pointee.d_name, { (ptr) -> String? in
                 let entryPointer = unsafeBitCast(ptr, to: UnsafePointer<CChar>.self)
                 return String(validatingUTF8: entryPointer)
             }) {

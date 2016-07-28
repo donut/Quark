@@ -20,11 +20,11 @@ public struct Trie<Element : Comparable, Payload> {
     }
 }
 
-public func ==<Element, Payload where Element : Comparable>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool {
+public func ==<Element, Payload>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool where Element : Comparable {
     return lhs.prefix == rhs.prefix
 }
 
-public func <<Element, Payload where Element : Comparable>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool {
+public func <<Element, Payload>(lhs: Trie<Element, Payload>, rhs: Trie<Element, Payload>) -> Bool where Element : Comparable {
     switch (lhs.prefix, rhs.prefix) {
         case (.none, .none): return false
         case (.none, .some): return true
@@ -70,11 +70,11 @@ extension Trie {
 }
 
 extension Trie {
-    mutating func insert<SequenceType : Sequence where SequenceType.Iterator.Element == Element>(_ sequence: SequenceType, payload: Payload? = nil) {
+    mutating func insert<SequenceType : Sequence>(_ sequence: SequenceType, payload: Payload? = nil) where SequenceType.Iterator.Element == Element {
         insert(sequence.makeIterator(), payload: payload)
     }
 
-    mutating func insert<Iterator : IteratorProtocol where Iterator.Element == Element>(_ iterator: Iterator, payload: Payload? = nil) {
+    mutating func insert<Iterator : IteratorProtocol>(_ iterator: Iterator, payload: Payload? = nil) where Iterator.Element == Element {
 
         var iterator = iterator
 
@@ -106,11 +106,11 @@ extension Trie {
 }
 
 extension Trie {
-    func findLast<SequenceType : Sequence where SequenceType.Iterator.Element == Element>(_ sequence: SequenceType) -> Trie<Element, Payload>? {
+    func findLast<SequenceType : Sequence>(_ sequence: SequenceType) -> Trie<Element, Payload>? where SequenceType.Iterator.Element == Element {
         return findLast(sequence.makeIterator())
     }
 
-    func findLast<Iterator : IteratorProtocol where Iterator.Element == Element>(_ iterator: Iterator) -> Trie<Element, Payload>? {
+    func findLast<Iterator : IteratorProtocol>(_ iterator: Iterator) -> Trie<Element, Payload>? where Iterator.Element == Element {
 
         var iterator = iterator
 
@@ -146,20 +146,20 @@ extension Trie {
 }
 
 extension Trie {
-    func findPayload<SequenceType : Sequence where SequenceType.Iterator.Element == Element>(_ sequence: SequenceType) -> Payload? {
+    func findPayload<SequenceType : Sequence>(_ sequence: SequenceType) -> Payload? where SequenceType.Iterator.Element == Element {
         return findPayload(sequence.makeIterator())
     }
-    func findPayload<Iterator : IteratorProtocol where Iterator.Element == Element>(_ iterator: Iterator) -> Payload? {
+    func findPayload<Iterator : IteratorProtocol>(_ iterator: Iterator) -> Payload? where Iterator.Element == Element {
         return findLast(iterator)?.payload
     }
 }
 
 extension Trie {
-    func contains<SequenceType : Sequence where SequenceType.Iterator.Element == Element>(_ sequence: SequenceType) -> Bool {
+    func contains<SequenceType : Sequence>(_ sequence: SequenceType) -> Bool where SequenceType.Iterator.Element == Element {
         return contains(sequence.makeIterator())
     }
 
-    func contains<Iterator : IteratorProtocol where Iterator.Element == Element>(_ iterator: Iterator) -> Bool {
+    func contains<Iterator : IteratorProtocol>(_ iterator: Iterator) -> Bool where Iterator.Element == Element {
         return findLast(iterator) != nil
     }
 }

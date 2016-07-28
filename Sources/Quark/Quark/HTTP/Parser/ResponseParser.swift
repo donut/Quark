@@ -56,7 +56,7 @@ public final class ResponseParser : S4.ResponseParser {
 
     func resetParser() {
         http_parser_init(&parser, HTTP_RESPONSE)
-        parser.data = UnsafeMutablePointer<Void>(context)
+        parser.data = UnsafeMutableRawPointer(context)
     }
 
     public func parse() throws -> Response {
@@ -85,7 +85,7 @@ public final class ResponseParser : S4.ResponseParser {
 }
 
 func onResponseStatus(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
-    return ResponseContext(parser!.pointee.data).withPointee {
+    return parser!.pointee.data.assumingMemoryBound(to: ResponseContext.self).pointee.withPointee {
         guard let reasonPhrase = String(pointer: data!, length: length) else {
             return 1
         }
@@ -96,7 +96,7 @@ func onResponseStatus(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int
 }
 
 func onResponseHeaderField(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
-    return ResponseContext(parser!.pointee.data).withPointee {
+    return parser!.pointee.data.assumingMemoryBound(to: ResponseContext.self).pointee.withPointee {
         guard let headerName = String(pointer: data!, length: length) else {
             return 1
         }
@@ -116,7 +116,7 @@ func onResponseHeaderField(_ parser: Parser?, data: UnsafePointer<Int8>?, length
 }
 
 func onResponseHeaderValue(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
-    return ResponseContext(parser!.pointee.data).withPointee {
+    return parser!.pointee.data.assumingMemoryBound(to: ResponseContext.self).pointee.withPointee {
         guard let headerValue = String(pointer: data!, length: length) else {
             return 1
         }
@@ -138,7 +138,7 @@ func onResponseHeaderValue(_ parser: Parser?, data: UnsafePointer<Int8>?, length
 }
 
 func onResponseHeadersComplete(_ parser: Parser?) -> Int32 {
-    return ResponseContext(parser!.pointee.data).withPointee {
+    return parser!.pointee.data.assumingMemoryBound(to: ResponseContext.self).pointee.withPointee {
         if $0.buildingCookieValue != "" {
             $0.cookieHeaders.insert($0.buildingCookieValue)
             $0.buildingCookieValue = ""
@@ -155,7 +155,7 @@ func onResponseHeadersComplete(_ parser: Parser?) -> Int32 {
 }
 
 func onResponseBody(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
-    return ResponseContext(parser!.pointee.data).withPointee {
+    return parser!.pointee.data.assumingMemoryBound(to: ResponseContext.self).pointee.withPointee {
         let buffer = UnsafeBufferPointer<UInt8>(start: UnsafePointer(data), count: length)
         $0.body += Data(Array(buffer))
         return 0
@@ -163,7 +163,7 @@ func onResponseBody(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) 
 }
 
 func onResponseMessageComplete(_ parser: Parser?) -> Int32 {
-    return ResponseContext(parser!.pointee.data).withPointee {
+    return parser!.pointee.data.assumingMemoryBound(to: ResponseContext.self).pointee.withPointee {
         let response = Response(
             version: $0.version,
             status: Status(statusCode: $0.statusCode, reasonPhrase: $0.reasonPhrase),

@@ -1,4 +1,4 @@
-func relativePointer<T, U, V where U : Integer>(base: UnsafePointer<T>, offset: U) -> UnsafePointer<V> {
+func relativePointer<T, U, V>(base: UnsafePointer<T>, offset: U) -> UnsafePointer<V> where U : Integer {
     return UnsafePointer(UnsafePointer<Int8>(base).advanced(by: Int(integer: offset)))
 }
 

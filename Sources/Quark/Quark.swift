@@ -123,7 +123,7 @@ private func loadConfigurationFile() throws -> StructuredData {
 }
 
 private func loadCommandLineArguments() throws -> StructuredData {
-    let arguments = Process.arguments.suffix(from: 1)
+    let arguments = CommandLine.arguments.suffix(from: 1)
     var parameters: StructuredData = [:]
 
     var currentParameter = ""

@@ -82,7 +82,7 @@ public final class FallibleChannel<T> : Sequence {
         }
     }
 
-    func send(_ value: T, clause: UnsafeMutablePointer<Void>, index: Int) {
+    func send(_ value: T, clause: UnsafeMutableRawPointer, index: Int) {
         if !closed {
             let result = ChannelResult<T>.value(value)
             buffer.append(result)
@@ -99,7 +99,7 @@ public final class FallibleChannel<T> : Sequence {
         }
     }
 
-    func send(_ error: Error, clause: UnsafeMutablePointer<Void>, index: Int) {
+    func send(_ error: Error, clause: UnsafeMutableRawPointer, index: Int) {
         if !closed {
             let result = ChannelResult<T>.error(error)
             buffer.append(result)
@@ -134,7 +134,7 @@ public final class FallibleChannel<T> : Sequence {
         return getResultFromBuffer()
     }
 
-    func registerReceive(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func registerReceive(_ clause: UnsafeMutableRawPointer, index: Int) {
         mill_choose_in(clause, channel, Int32(index))
     }
 

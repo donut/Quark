@@ -12,6 +12,6 @@ script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
-  - TOOLCHAINS=org.swift.3020160725a xcodebuild ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES -project Quark.xcodeproj -scheme Quark -sdk macosx10.12 -destination arch=x86_64 -configuration Debug -enableCodeCoverage YES test | xcpretty -c
+  - TOOLCHAINS=org.swift.3020160728a xcodebuild ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES -project Quark.xcodeproj -scheme Quark -sdk macosx10.12 -destination arch=x86_64 -configuration Debug -enableCodeCoverage YES test | xcpretty -c
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -1,6 +1,6 @@
 func buffer(instance: inout Any) -> UnsafeBufferPointer<UInt8> {
     let size = sizeofValue(instance)
-    let pointer: UnsafePointer<UInt8> = withUnsafePointer(&instance) { pointer in
+    let pointer: UnsafePointer<UInt8> = withUnsafePointer(to: &instance) { pointer in
         if size <= 3 * sizeof(Int.self) {
             return UnsafePointer(pointer)
         } else {

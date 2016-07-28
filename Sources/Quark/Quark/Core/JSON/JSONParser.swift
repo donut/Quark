@@ -40,7 +40,7 @@ public struct JSONParser {
     }
 }
 
-class GenericJSONParser<ByteSequence : Collection where ByteSequence.Iterator.Element == UInt8> {
+class GenericJSONParser<ByteSequence : Collection> where ByteSequence.Iterator.Element == UInt8 {
     typealias Source = ByteSequence
     typealias Char = Source.Iterator.Element
 

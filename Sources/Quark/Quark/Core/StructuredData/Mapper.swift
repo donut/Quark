@@ -26,7 +26,7 @@ extension Mapper {
         throw MapperError.noStructuredData(key: key)
     }
 
-    public func map<T: RawRepresentable where T.RawValue: StructuredDataInitializable>(from key: String) throws -> T {
+    public func map<T: RawRepresentable>(from key: String) throws -> T where T.RawValue: StructuredDataInitializable {
         guard let rawValue = try structuredData[key].flatMap({ try T.RawValue(structuredData: $0) }) else {
             throw MapperError.cantInitFromRawValue
         }
@@ -42,12 +42,12 @@ extension Mapper {
         return try structuredData.flatMapThrough(key) { try $0.get() as T }
     }
 
-    public func map<T where T: StructuredDataInitializable>(arrayFrom key: String) throws -> [T] {
+    public func map<T>(arrayFrom key: String) throws -> [T] where T: StructuredDataInitializable {
         return try structuredData.flatMapThrough(key) { try? T(structuredData: $0) }
     }
 
-    public func map<T: RawRepresentable where
-                    T.RawValue: StructuredDataInitializable>(arrayFrom key: String) throws -> [T] {
+    public func map<T: RawRepresentable>(arrayFrom key: String) throws -> [T] where
+        T.RawValue: StructuredDataInitializable {
         return try structuredData.flatMapThrough(key) {
             return (try? T.RawValue(structuredData: $0)).flatMap({ T(rawValue: $0) })
         }
@@ -70,7 +70,7 @@ extension Mapper {
         return nil
     }
 
-    public func map<T: RawRepresentable where T.RawValue: StructuredDataInitializable>(optionalFrom key: String) -> T? {
+    public func map<T: RawRepresentable>(optionalFrom key: String) -> T? where T.RawValue: StructuredDataInitializable {
         do {
             if let rawValue = try structuredData[key].flatMap({ try T.RawValue(structuredData: $0) }),
                 let value = T(rawValue: rawValue) {
@@ -88,12 +88,12 @@ extension Mapper {
         return try? structuredData.flatMapThrough(key) { try $0.get() as T }
     }
 
-    public func map<T where T: StructuredDataInitializable>(optionalArrayFrom key: String) -> [T]? {
+    public func map<T>(optionalArrayFrom key: String) -> [T]? where T: StructuredDataInitializable {
         return try?  structuredData.flatMapThrough(key) { try? T(structuredData: $0) }
     }
 
-    public func map<T: RawRepresentable where
-                    T.RawValue: StructuredDataInitializable>(optionalArrayFrom key: String) -> [T]? {
+    public func map<T: RawRepresentable>(optionalArrayFrom key: String) -> [T]? where
+        T.RawValue: StructuredDataInitializable {
         return try? structuredData.flatMapThrough(key) {
             return (try? T.RawValue(structuredData: $0)).flatMap({ T(rawValue: $0) })
         }

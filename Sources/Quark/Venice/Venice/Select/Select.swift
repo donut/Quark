@@ -1,7 +1,7 @@
 import CLibvenice
 
 protocol SelectCase {
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int)
+    func register(_ clause: UnsafeMutableRawPointer, index: Int)
     func execute()
 }
 
@@ -14,7 +14,7 @@ final class ChannelReceiveCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.registerReceive(clause, index: index)
     }
 
@@ -34,7 +34,7 @@ final class ReceivingChannelReceiveCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.registerReceive(clause, index: index)
     }
 
@@ -54,7 +54,7 @@ final class FallibleChannelReceiveCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.registerReceive(clause, index: index)
     }
 
@@ -74,7 +74,7 @@ final class FallibleReceivingChannelReceiveCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.registerReceive(clause, index: index)
     }
 
@@ -96,7 +96,7 @@ final class ChannelSendCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.send(value, clause: clause, index: index)
     }
 
@@ -116,7 +116,7 @@ final class SendingChannelSendCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.send(value, clause: clause, index: index)
     }
 
@@ -136,7 +136,7 @@ final class FallibleChannelSendCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.send(value, clause: clause, index: index)
     }
 
@@ -156,7 +156,7 @@ final class FallibleSendingChannelSendCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.send(value, clause: clause, index: index)
     }
 
@@ -176,7 +176,7 @@ final class FallibleChannelSendErrorCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.send(error, clause: clause, index: index)
     }
 
@@ -196,7 +196,7 @@ final class FallibleSendingChannelSendErrorCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.send(error, clause: clause, index: index)
     }
 
@@ -214,7 +214,7 @@ final class TimeoutCase<T> : SelectCase {
         self.closure = closure
     }
 
-    func register(_ clause: UnsafeMutablePointer<Void>, index: Int) {
+    func register(_ clause: UnsafeMutableRawPointer, index: Int) {
         channel.registerReceive(clause, index: index)
     }
 
@@ -315,7 +315,7 @@ public class SelectCaseBuilder {
 private func select(_ builder: SelectCaseBuilder) {
     mill_choose_init("select")
 
-    var clauses: [UnsafeMutablePointer<Void>] = []
+    var clauses: [UnsafeMutableRawPointer] = []
 
     for (index, selectCase) in builder.cases.enumerated() {
         let clause = malloc(mill_clauselen())!

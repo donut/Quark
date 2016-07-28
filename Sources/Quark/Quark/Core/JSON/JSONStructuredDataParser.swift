@@ -40,7 +40,7 @@ public struct JSONStructuredDataParser : StructuredDataParser {
     }
 }
 
-class GenericJSONStructuredDataParser<ByteSequence: Collection where ByteSequence.Iterator.Element == UInt8> {
+class GenericJSONStructuredDataParser<ByteSequence: Collection> where ByteSequence.Iterator.Element == UInt8 {
     typealias Source = ByteSequence
     typealias Char = Source.Iterator.Element
 

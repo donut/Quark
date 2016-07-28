@@ -1044,7 +1044,7 @@ type of the raw boxed value (Array, Set, NSArray, NSSet, ...).
 
 - returns: A MustacheBox that wraps *array*.
 */
-public func Box<C: Collection where C.Iterator.Element: MustacheBoxable, C.IndexDistance == Int>(set: C?) -> MustacheBox {
+public func Box<C: Collection>(set: C?) -> MustacheBox where C.Iterator.Element: MustacheBoxable, C.IndexDistance == Int {
     if let set = set {
         return set.mustacheBox(withSetValue: set, box: { Box(boxable: $0) })
     } else {
@@ -1095,7 +1095,7 @@ type of the raw boxed value (Array, Set, NSArray, NSSet, ...).
 
 - returns: A MustacheBox that wraps *array*.
 */
-public func Box<C: BidirectionalCollection where C.Iterator.Element: MustacheBoxable, C.IndexDistance == Int>(array: C?) -> MustacheBox {
+public func Box<C: BidirectionalCollection>(array: C?) -> MustacheBox where C.Iterator.Element: MustacheBoxable, C.IndexDistance == Int {
     if let array = array {
         return array.mustacheBox(withArrayValue: array, box: { Box(boxable: $0) })
     } else {
@@ -1146,7 +1146,7 @@ type of the raw boxed value (Array, Set, NSArray, NSSet, ...).
 
 - returns: A MustacheBox that wraps *array*.
 */
-public func Box<C: BidirectionalCollection, T where C.Iterator.Element == Optional<T>, T: MustacheBoxable, C.IndexDistance == Int>(array: C?) -> MustacheBox {
+public func Box<C: BidirectionalCollection, T>(array: C?) -> MustacheBox where C.Iterator.Element == Optional<T>, T: MustacheBoxable, C.IndexDistance == Int {
     if let array = array {
         return array.mustacheBox(withArrayValue: array, box: { Box(boxable: $0) })
     } else {

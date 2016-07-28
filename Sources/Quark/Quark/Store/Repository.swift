@@ -14,7 +14,7 @@ public final class Repository<Model> : RepositoryProtocol {
     private let erasedUpdate: (id: String, model: Model) throws -> Record<Model>
     private let erasedRemove: (id: String) throws -> Record<Model>
 
-    public init<R: RepositoryProtocol where R.Model == Model>(_ record: R) {
+    public init<R: RepositoryProtocol>(_ record: R) where R.Model == Model {
         self.erasedFetchAll = record.fetchAll
         self.erasedFetch = record.fetch
         self.erasedSave = record.save
