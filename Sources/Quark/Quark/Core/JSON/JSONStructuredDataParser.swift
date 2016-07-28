@@ -452,3 +452,78 @@ extension GenericJSONStructuredDataParser {
         }
     }
 }
+
+let unescapeMapping: [UnicodeScalar: UnicodeScalar] = [
+    "t": "\t",
+    "r": "\r",
+    "n": "\n"
+]
+
+let escapeMapping: [Character: String] = [
+    "\r": "\\r",
+    "\n": "\\n",
+    "\t": "\\t",
+    "\\": "\\\\",
+    "\"": "\\\"",
+
+    "\u{2028}": "\\u2028",
+    "\u{2029}": "\\u2029",
+
+    "\r\n": "\\r\\n"
+]
+
+let hexMapping: [UnicodeScalar: UInt32] = [
+    "0": 0x0,
+    "1": 0x1,
+    "2": 0x2,
+    "3": 0x3,
+    "4": 0x4,
+    "5": 0x5,
+    "6": 0x6,
+    "7": 0x7,
+    "8": 0x8,
+    "9": 0x9,
+    "a": 0xA, "A": 0xA,
+    "b": 0xB, "B": 0xB,
+    "c": 0xC, "C": 0xC,
+    "d": 0xD, "D": 0xD,
+    "e": 0xE, "E": 0xE,
+    "f": 0xF, "F": 0xF
+]
+
+let digitMapping: [UnicodeScalar:Int] = [
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9
+]
+
+public func escapeAsJSON(_ source : String) -> String {
+    var s = "\""
+
+    for c in source.characters {
+        if let escapedSymbol = escapeMapping[c] {
+            s.append(escapedSymbol)
+        } else {
+            s.append(c)
+        }
+    }
+
+    s.append("\"")
+
+    return s
+}
+
+func digitToInt(_ byte: UInt8) -> Int? {
+    return digitMapping[UnicodeScalar(byte)]
+}
+
+func hexToDigit(_ byte: UInt8) -> UInt32? {
+    return hexMapping[UnicodeScalar(byte)]
+}
