@@ -23,8 +23,6 @@ public struct ContentMapperMiddleware : Middleware {
             request.storage[type.key] = target
         } catch StructuredDataError.incompatibleType {
             throw ClientError.badRequest
-        } catch {
-            throw error
         }
 
         return try next.respond(to: request)

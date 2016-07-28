@@ -31,13 +31,11 @@ public func <<Element, Payload where Element : Comparable>(lhs: Trie<Element, Pa
 extension Trie : Comparable { }
 
 extension Trie {
-
     var description: String {
         return pretty(depth: 0)
     }
 
     func pretty(depth: Int) -> String {
-
         let key: String
         if let k = self.prefix {
             key = String(k)
