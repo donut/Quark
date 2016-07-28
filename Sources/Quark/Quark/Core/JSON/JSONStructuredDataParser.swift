@@ -63,12 +63,32 @@ class GenericJSONStructuredDataParser<ByteSequence: Collection where ByteSequenc
         if cur == end {
             return data
         } else {
-            throw JSONStructuredDataParseError.extraTokenError(
-                reason: "extra tokens found",
-                lineNumber: lineNumber,
-                columnNumber: columnNumber
-            )
+            throw extraTokenError(reason: "extra tokens found")
         }
+    }
+
+    func unexpectedTokenError(reason: String) -> ErrorProtocol {
+        return JSONStructuredDataParseError.unexpectedTokenError(reason: reason, lineNumber: lineNumber, columnNumber: columnNumber)
+    }
+
+    func insufficientTokenError(reason: String) -> ErrorProtocol {
+        return JSONStructuredDataParseError.insufficientTokenError(reason: reason, lineNumber: lineNumber, columnNumber: columnNumber)
+    }
+
+    func extraTokenError(reason: String) -> ErrorProtocol {
+        return JSONStructuredDataParseError.extraTokenError(reason: reason, lineNumber: lineNumber, columnNumber: columnNumber)
+    }
+
+    func nonStringKeyError(reason: String) -> ErrorProtocol {
+        return JSONStructuredDataParseError.nonStringKeyError(reason: reason, lineNumber: lineNumber, columnNumber: columnNumber)
+    }
+
+    func invalidStringError(reason: String) -> ErrorProtocol {
+        return JSONStructuredDataParseError.invalidStringError(reason: reason, lineNumber: lineNumber, columnNumber: columnNumber)
+    }
+
+    func invalidNumberError(reason: String) -> ErrorProtocol {
+        return JSONStructuredDataParseError.invalidNumberError(reason: reason, lineNumber: lineNumber, columnNumber: columnNumber)
     }
 }
 
@@ -78,11 +98,7 @@ extension GenericJSONStructuredDataParser {
     private func parseValue() throws -> StructuredData {
         skipWhitespaces()
         if cur == end {
-            throw JSONStructuredDataParseError.insufficientTokenError(
-                reason: "unexpected end of tokens",
-                lineNumber: lineNumber,
-                columnNumber: columnNumber
-            )
+            throw insufficientTokenError(reason: "unexpected end of tokens")
         }
 
         switch currentChar {
@@ -93,11 +109,7 @@ extension GenericJSONStructuredDataParser {
         case Char(ascii: "\""): return try parseString()
         case Char(ascii: "{"): return try parseObject()
         case Char(ascii: "["): return try parseArray()
-        case (let c): throw JSONStructuredDataParseError.unexpectedTokenError(
-            reason: "unexpected token: \(c)",
-            lineNumber: lineNumber,
-            columnNumber: columnNumber
-        )
+        case (let c): throw unexpectedTokenError(reason: "unexpected token: \(c)")
         }
     }
 
@@ -117,11 +129,7 @@ extension GenericJSONStructuredDataParser {
         if expect(target) {
             return iftrue()
         } else {
-            throw JSONStructuredDataParseError.unexpectedTokenError(
-                reason: "expected \"\(target)\" but \(currentSymbol)",
-                lineNumber: lineNumber,
-                columnNumber: columnNumber
-            )
+            throw unexpectedTokenError(reason: "expected \"\(target)\" but \(currentSymbol)")
         }
     }
 
@@ -137,19 +145,11 @@ extension GenericJSONStructuredDataParser {
                 advance()
 
                 guard cur != end else {
-                    throw JSONStructuredDataParseError.invalidStringError(
-                        reason: "missing double quote",
-                        lineNumber: lineNumber,
-                        columnNumber: columnNumber
-                    )
+                    throw invalidStringError(reason: "missing double quote")
                 }
 
                 guard let escapedChar = parseEscapedChar() else {
-                    throw JSONStructuredDataParseError.invalidStringError(
-                        reason: "missing double quote",
-                        lineNumber: lineNumber,
-                        columnNumber: columnNumber
-                    )
+                    throw invalidStringError(reason: "missing double quote")
                 }
 
                 String(escapedChar).utf8.forEach {
@@ -163,11 +163,7 @@ extension GenericJSONStructuredDataParser {
         }
 
         guard expect("\"") else {
-            throw JSONStructuredDataParseError.invalidStringError(
-                reason: "missing double quote",
-                lineNumber: lineNumber,
-                columnNumber: columnNumber
-            )
+            throw invalidStringError(reason: "missing double quote")
         }
 
         buffer.append(0) // trailing nul
@@ -240,19 +236,11 @@ extension GenericJSONStructuredDataParser {
                 advance()
             }
         default:
-            throw JSONStructuredDataParseError.invalidStringError(
-                reason: "invalid token in number",
-                lineNumber: lineNumber,
-                columnNumber: columnNumber
-            )
+            throw invalidStringError(reason: "invalid token in number")
         }
 
         if integer != Int64(Double(integer)) {
-            throw JSONStructuredDataParseError.invalidNumberError(
-                reason: "too large number",
-                lineNumber: lineNumber,
-                columnNumber: columnNumber
-            )
+            throw invalidNumberError(reason: "too large number")
         }
 
         var fraction: Double = 0.0
@@ -275,11 +263,7 @@ extension GenericJSONStructuredDataParser {
             }
 
             if fractionLength == 0 {
-                throw JSONStructuredDataParseError.invalidNumberError(
-                    reason: "insufficient fraction part in number",
-                    lineNumber: lineNumber,
-                    columnNumber: columnNumber
-                )
+                throw invalidNumberError(reason: "insufficient fraction part in number")
             }
         }
 
@@ -305,11 +289,7 @@ extension GenericJSONStructuredDataParser {
             }
 
             if exponentLength == 0 {
-                throw JSONStructuredDataParseError.invalidNumberError(
-                    reason: "insufficient exponent part in number",
-                    lineNumber: lineNumber,
-                    columnNumber: columnNumber
-                )
+                throw invalidNumberError(reason: "insufficient exponent part in number")
             }
 
             exponent *= expSign
@@ -336,11 +316,7 @@ extension GenericJSONStructuredDataParser {
                 skipWhitespaces()
 
                 if !expect(":") {
-                    throw JSONStructuredDataParseError.unexpectedTokenError(
-                        reason: "missing colon (:)",
-                        lineNumber: lineNumber,
-                        columnNumber: columnNumber
-                    )
+                    throw unexpectedTokenError(reason: "missing colon (:)")
                 }
 
                 skipWhitespaces()
@@ -353,18 +329,10 @@ extension GenericJSONStructuredDataParser {
                 } else if expect("}") {
                     break LOOP
                 } else {
-                    throw JSONStructuredDataParseError.unexpectedTokenError(
-                        reason: "missing comma (,)",
-                        lineNumber: lineNumber,
-                        columnNumber: columnNumber
-                    )
+                    throw unexpectedTokenError(reason: "missing comma (,)")
                 }
             default:
-                throw JSONStructuredDataParseError.nonStringKeyError(
-                    reason: "unexpected value for object key",
-                    lineNumber: lineNumber,
-                    columnNumber: columnNumber
-                )
+                throw nonStringKeyError(reason: "unexpected value for object key")
             }
         }
 
@@ -388,11 +356,7 @@ extension GenericJSONStructuredDataParser {
             } else if expect("]") {
                 break LOOP
             } else {
-                throw JSONStructuredDataParseError.unexpectedTokenError(
-                    reason: "missing comma (,) (token: \(currentSymbol))",
-                    lineNumber: lineNumber,
-                    columnNumber: columnNumber
-                )
+                throw unexpectedTokenError(reason: "missing comma (,) (token: \(currentSymbol))")
             }
         }
 
