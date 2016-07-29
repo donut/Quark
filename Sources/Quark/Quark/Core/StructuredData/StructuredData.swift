@@ -1,5 +1,6 @@
 public enum StructuredDataError : ErrorProtocol {
     case incompatibleType
+    case outOfBounds
     case valueNotFound
     case notStructuredDataInitializable(Any.Type)
     case notStructuredDataRepresentable(Any.Type)
@@ -379,72 +380,181 @@ extension StructuredData {
     }
 }
 
-// MARK: Getters
+// MARK: IndexPath
 
-extension StructuredData {
-    public func get<T>() throws -> T {
-        switch self {
-        case .bool(let value as T): return value
-        case .int(let value as T): return value
-        case .double(let value as T): return value
-        case .string(let value as T): return value
-        case .data(let value as T): return value
-        case .array(let value as T): return value
-        case .dictionary(let value as T): return value
-        default: throw StructuredDataError.incompatibleType
-        }
-    }
+public enum IndexPathValue {
+    case index(Int)
+    case key(String)
+}
 
-    public func get<T>(at index: Int) throws -> T {
-        guard let value = self[index] else {
-            throw StructuredDataError.valueNotFound
-        }
-        return try value.get()
-    }
+public protocol IndexPathElement {
+    var indexPathValue: IndexPathValue { get }
+}
 
-    public func get<T>(at key: String) throws -> T {
-        guard let value = self[key] else {
-            throw StructuredDataError.valueNotFound
+extension IndexPathElement {
+    var constructEmptyContainer: StructuredData {
+        switch indexPathValue {
+        case .index: return []
+        case .key: return [:]
         }
-        return try value.get()
     }
 }
 
-// MARK: Setters
+extension Int : IndexPathElement {
+    public var indexPathValue: IndexPathValue {
+        return .index(self)
+    }
+}
+
+extension String : IndexPathElement {
+    public var indexPathValue: IndexPathValue {
+        return .key(self)
+    }
+}
+
+// MARK: Get
 
 extension StructuredData {
-    public mutating func set<T : StructuredDataRepresentable>(value: T?, at index: Int) throws {
-        switch self {
-        case .array(let array):
-            var array = array
-            if index >= 0 && index < array.count {
-                array[index] = value?.structuredData ?? .null
-                self = .array(array)
+    public func get<T>(at indexPath: IndexPathElement...) throws -> T {
+        if indexPath.isEmpty {
+            switch self {
+            case .bool(let value as T): return value
+            case .int(let value as T): return value
+            case .double(let value as T): return value
+            case .string(let value as T): return value
+            case .data(let value as T): return value
+            case .array(let value as T): return value
+            case .dictionary(let value as T): return value
+            default: throw StructuredDataError.incompatibleType
             }
-        default:
-            throw StructuredDataError.incompatibleType
         }
+        return try get(at: indexPath).get()
     }
 
-    public mutating func set<T : StructuredDataRepresentable>(value: T?, at key: String) throws {
-        switch self {
-        case .dictionary(let dictionary):
-            var dictionary = dictionary
-            dictionary[key] = value?.structuredData ?? .null
-            self = .dictionary(dictionary)
-        default:
-            throw StructuredDataError.incompatibleType
-        }
+    public func get(at indexPath: IndexPathElement...) throws -> StructuredData {
+        return try get(at: indexPath)
     }
 
-    public mutating func removeValue(at key: String) throws {
-        switch self {
-        case .dictionary(let dictionary):
-            var dictionary = dictionary
+    public func get(at indexPath: [IndexPathElement]) throws -> StructuredData {
+        var value: StructuredData = self
+
+        for element in indexPath {
+            switch element.indexPathValue {
+            case .index(let index):
+                let array = try value.asArray()
+                if array.indices.contains(index) {
+                    value = array[index]
+                } else {
+                    throw StructuredDataError.outOfBounds
+                }
+
+            case .key(let key):
+                let dictionary = try value.asDictionary()
+                if let newValue = dictionary[key] {
+                    value = newValue
+                } else {
+                    throw StructuredDataError.valueNotFound
+                }
+            }
+        }
+        
+        return value
+    }
+}
+
+// MARK: Set
+
+extension StructuredData {
+    public mutating func set<T : StructuredDataRepresentable>(value: T, at indexPath: IndexPathElement...) throws {
+        try set(value: value, at: indexPath)
+    }
+
+    public mutating func set<T : StructuredDataRepresentable>(value: T, at indexPath: [IndexPathElement]) throws {
+        try set(value: value, merging: true, at: indexPath)
+    }
+
+    private mutating func set<T : StructuredDataRepresentable>(value: T, merging: Bool, at indexPath: [IndexPathElement]) throws {
+        var indexPath = indexPath
+
+        guard let first = indexPath.first else {
+            return self = value.structuredData
+        }
+
+        indexPath.removeFirst()
+
+        if indexPath.isEmpty {
+            switch first.indexPathValue {
+            case .index(let index):
+                if case .array(var array) = self {
+                    if !array.indices.contains(index) {
+                        throw StructuredDataError.outOfBounds
+                    }
+                    array[index] = value.structuredData
+                    self = .array(array)
+                } else {
+                    throw StructuredDataError.incompatibleType
+                }
+            case .key(let key):
+                if case .dictionary(var dictionary) = self {
+                    let newValue = value.structuredData
+                    if let existingDictionary = dictionary[key]?.asDictionary,
+                        newDictionary = newValue.asDictionary where merging {
+                        var combinedDictionary: [String: StructuredData] = [:]
+
+                        for (key, value) in existingDictionary {
+                            combinedDictionary[key] = value
+                        }
+    
+                        for (key, value) in newDictionary {
+                            combinedDictionary[key] = value
+                        }
+    
+                        dictionary[key] = .dictionary(combinedDictionary)
+                    } else {
+                        dictionary[key] = newValue
+                    }
+                    self = .dictionary(dictionary)
+                } else {
+                    throw StructuredDataError.incompatibleType
+                }
+            }
+        } else {
+            var next = (try? self.get(at: first)) ?? first.constructEmptyContainer
+            try next.set(value: value, at: indexPath)
+            try self.set(value: next, at: [first])
+        }
+    }
+}
+
+// MARK: Remove
+
+extension StructuredData {
+    public mutating func remove(at indexPath: IndexPathElement...) throws {
+        try self.remove(at: indexPath)
+    }
+
+    public mutating func remove(at indexPath: [IndexPathElement]) throws {
+        var indexPath = indexPath
+
+        guard let first = indexPath.first else {
+            return self = .null
+        }
+
+        indexPath.removeFirst()
+
+        if indexPath.isEmpty {
+            guard case .dictionary(var dictionary) = self, .key(let key) = first.indexPathValue else {
+                throw StructuredDataError.incompatibleType
+            }
+
             dictionary[key] = nil
             self = .dictionary(dictionary)
-        default:
-            throw StructuredDataError.incompatibleType
+        } else {
+            guard var next = try? self.get(at: first) else {
+                throw StructuredDataError.valueNotFound
+            }
+            try next.remove(at: indexPath)
+            try self.set(value: next, merging: false, at: [first])
         }
     }
 }
@@ -452,73 +562,20 @@ extension StructuredData {
 // MARK: Subscripts
 
 extension StructuredData {
-    public subscript(index: Int) -> StructuredData? {
+    public subscript(indexPath: IndexPathElement...) -> StructuredData? {
         get {
-            guard let array = asArray where array.indices.contains(index) else {
-                return nil
-            }
-            return array[index]
+            return try? self.get(at: indexPath)
         }
 
-        set(structuredData) {
-            if case .array(let array) = self {
-                var array = array
-                if index >= 0 && index < array.count {
-                    array[index] = structuredData ?? .null
-                    self = .array(array)
-                }
-            }
-        }
-    }
-
-    public subscript(keyPath: String) -> StructuredData? {
-        get {
-            let keys = keyPath.split(separator: ".")
-            var value: StructuredData?
-
-            for key in keys {
-                if let v = value {
-                    value = v.asDictionary?[key]
+        set(value) {
+            do {
+                if let value = value {
+                    try self.set(value: value, at: indexPath)
                 } else {
-                    value = self.asDictionary?[key]
+                    try self.remove(at: indexPath)
                 }
-            }
-
-            return value
-        }
-
-        set(structuredData) {
-            if case .dictionary(let dictionary) = self {
-                var dictionary = dictionary
-                var keys = keyPath.split(separator: ".")
-                let first = keys.first!
-                keys.removeFirst()
-
-                if keys.isEmpty {
-                    if let existingStructuredData = self[first],
-                        let newStructuredData = structuredData,
-                        case .dictionary(let existingDictionary) = existingStructuredData,
-                        case .dictionary(let newDictionary) = newStructuredData {
-                        var combinedDictionary: [String: StructuredData] = [:]
-
-                        for (key, value) in existingDictionary {
-                            combinedDictionary[key] = value
-                        }
-
-                        for (key, value) in newDictionary {
-                            combinedDictionary[key] = value
-                        }
-
-                        dictionary[first] = .dictionary(combinedDictionary)
-                    } else {
-                        dictionary[first] = structuredData
-                    }
-                    self = .dictionary(dictionary)
-                } else {
-                    var next = self[first] ?? [:]
-                    next[keys.joined(separator: ".")] = structuredData
-                    self[first] = next
-                }
+            } catch {
+                fatalError(String(error))
             }
         }
     }

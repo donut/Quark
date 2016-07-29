@@ -38,14 +38,20 @@ public final class ResponseParser : S4.ResponseParser {
     let stream: Stream
     let context: ResponseContext
     var parser = http_parser()
-    var response: Response?
+    var responses: [Response] = []
+    let bufferSize: Int
 
-    public init(stream: Stream) {
+    convenience public init(stream: Stream) {
+        self.init(stream: stream, bufferSize: 2048)
+    }
+
+    public init(stream: Stream, bufferSize: Int) {
         self.stream = stream
+        self.bufferSize = bufferSize
         self.context = ResponseContext(allocatingCapacity: 1)
         self.context.initialize(with: ResponseParserContext { response in
-            self.response = response
-            })
+            self.responses.insert(response, at: 0)
+        })
 
         resetParser()
     }
@@ -61,21 +67,26 @@ public final class ResponseParser : S4.ResponseParser {
 
     public func parse() throws -> Response {
         while true {
-            defer {
-                response = nil
+            if let response = responses.popLast() {
+                return response
             }
 
-            let data = try stream.receive(upTo: 2048)
+            let data = try stream.receive(upTo: bufferSize)
+
+            if data.isEmpty {
+                if let response = responses.popLast() {
+                    return response
+                } else {
+                    defer { resetParser() }
+                    throw http_errno(parser.http_errno)
+                }
+            }
+
             let bytesParsed = http_parser_execute(&parser, &responseSettings, UnsafePointer(data.bytes), data.count)
 
             guard bytesParsed == data.count else {
                 defer { resetParser() }
                 throw http_errno(parser.http_errno)
-            }
-
-            if let response  = response {
-                resetParser()
-                return response
             }
         }
     }

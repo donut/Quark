@@ -1,14 +1,6 @@
 import XCTest
 @testable import Quark
 
-let boolData: StructuredData = true
-let intData: StructuredData = 1
-let doubleData: StructuredData = 1.5
-let stringData: StructuredData = "string"
-let arrayData: StructuredData = [true, 1.5]
-let dictData: StructuredData = ["bool": false, "double": 1.5]
-let nullData: StructuredData = nil
-
 class StructuredDataTests : XCTestCase {
     func testCreation() {
         let nullValue: Bool? = nil
@@ -693,55 +685,33 @@ class StructuredDataTests : XCTestCase {
         XCTAssertNotEqual(a, b)
     }
 
-    func testGet() {
-        let bool: Bool? = try? boolData.get()
-        XCTAssertEqual(bool, true)
+    func testIndexPath() throws {
+        var data: StructuredData
 
-        let double: Double? = try? doubleData.get()
-        XCTAssertEqual(double, 1.5)
+        data = [["foo"]]
+        XCTAssertEqual(try data.get(at: 0, 0), "foo")
+        try data.set(value: "bar", at: 0, 0)
+        XCTAssertEqual(try data.get(at: 0, 0), "bar")
 
-        let int: Int? = try? intData.get()
-        XCTAssertEqual(int, 1)
+        data = [["foo": "bar"]]
+        XCTAssertEqual(try data.get(at: 0, "foo"), "bar")
+        try data.set(value: "baz", at: 0, "foo")
+        XCTAssertEqual(try data.get(at: 0, "foo"), "baz")
 
-        let nint: Int? = try? doubleData.get()
-        XCTAssertNil(nint)
+        data = ["foo": ["bar"]]
+        XCTAssertEqual(try data.get(at: "foo", 0), "bar")
+        try data.set(value: "baz", at: "foo", 0)
+        XCTAssertEqual(try data.get(at: "foo", 0), "baz")
 
-        let uint: UInt? = try? doubleData.get()
-        XCTAssertNil(uint)
-
-        let string: String? = try? stringData.get()
-        XCTAssertEqual(string, "string")
-
-        let array: [StructuredData]? = try? arrayData.get()
-        XCTAssertNotNil(array)
-
-        let dict: [String: StructuredData]? = try? dictData.get()
-        XCTAssertNotNil(dict)
-    }
-
-    func testSubscriptByIndex() {
-        XCTAssertEqual(arrayData[0], true)
-        XCTAssertEqual(arrayData[1], 1.5)
-        XCTAssertEqual(boolData[0], nil)
-
-        var array = arrayData
-        array[0] = "string"
-        array[1] = nil
-
-        XCTAssertEqual(array[0], "string")
-        XCTAssertEqual(array[1], .null)
-    }
-
-    func testSubscriptByKey() {
-        XCTAssertEqual(dictData["bool"], false)
-        XCTAssertEqual(dictData["double"], 1.5)
-
-        var dict = dictData
-        dict["string"] = "string"
-        dict["bool"] = true
-
-        XCTAssertEqual(dict["bool"], true)
-        XCTAssertEqual(dict["string"], "string")
+        data = ["foo": ["bar": "baz"]]
+        XCTAssertEqual(try data.get(at: "foo", "bar"), "baz")
+        try data.set(value: "buh", at: "foo", "bar")
+        XCTAssertEqual(try data.get(at: "foo", "bar"), "buh")
+        try data.set(value: "uhu", at: "foo", "yoo")
+        XCTAssertEqual(try data.get(at: "foo", "bar"), "buh")
+        XCTAssertEqual(try data.get(at: "foo", "yoo"), "uhu")
+        try data.remove(at: "foo", "bar")
+        XCTAssertEqual(data, ["foo": ["yoo": "uhu"]])
     }
 }
 
@@ -750,9 +720,7 @@ extension StructuredDataTests {
         return [
            ("testCreation", testCreation),
            ("testConversion", testConversion),
-           ("testGet", testGet),
-           ("testSubscriptByIndex", testSubscriptByIndex),
-           ("testSubscriptByKey", testSubscriptByKey),
+           ("testIndexPath", testIndexPath),
         ]
     }
 }

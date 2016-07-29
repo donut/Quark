@@ -84,7 +84,7 @@ class RequestParserTests : XCTestCase {
             let stream = Drain(for: data)
             let parser = RequestParser(stream: stream)
             _ = try parser.parse()
-            XCTFail("Invalid URI should fail.")
+            XCTFail("Invalid HTTP version should fail.")
         } catch {
             called = true
         }
