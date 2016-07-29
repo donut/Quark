@@ -39,16 +39,16 @@ public func configure<C : Configuration>(_ configure: (C) throws -> ResponderRep
 
         var middleware: [Middleware] = []
 
-        if configuration["server.log"]?.boolValue == true {
+        if configuration["server.log"]?.asBool == true {
             middleware.append(LogMiddleware())
         }
 
         middleware.append(SessionMiddleware())
         middleware.append(ContentNegotiationMiddleware(mediaTypes: [JSON.self, URLEncodedForm.self]))
 
-        let host = configuration["server.host"]?.stringValue ?? "127.0.0.1"
-        let port = configuration["server.port"]?.intValue ?? 8080
-        let reusePort = configuration["server.reusePort"]?.boolValue ?? false
+        let host = configuration["server.host"]?.asString ?? "127.0.0.1"
+        let port = configuration["server.port"]?.asInt ?? 8080
+        let reusePort = configuration["server.reusePort"]?.asBool ?? false
 
         try Server(
             host: host,
@@ -73,7 +73,7 @@ private func loadConfiguration() throws -> StructuredData {
         throw QuarkError.invalidConfiguration(description: "Configuration from command line arguments is not in dictionary format.")
     }
 
-    if let workingDirectory = commandLineArguments["workingDirectory"]?.stringValue {
+    if let workingDirectory = commandLineArguments["workingDirectory"]?.asString {
         try File.changeWorkingDirectory(path: workingDirectory)
     }
 
