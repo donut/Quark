@@ -94,10 +94,7 @@ public final class ResponseParser : S4.ResponseParser {
 
 func onResponseStatus(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     return ResponseContext(parser!.pointee.data).withPointee {
-        guard let reasonPhrase = String(pointer: data!, length: length) else {
-            return 1
-        }
-
+        let reasonPhrase = String(cString: data!, length: length)
         $0.reasonPhrase += reasonPhrase
         return 0
     }
@@ -105,9 +102,7 @@ func onResponseStatus(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int
 
 func onResponseHeaderField(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     return ResponseContext(parser!.pointee.data).withPointee {
-        guard let headerName = String(pointer: data!, length: length) else {
-            return 1
-        }
+        let headerName = String(cString: data!, length: length)
 
         if $0.currentHeaderName != "" {
             $0.currentHeaderName = ""
@@ -125,9 +120,7 @@ func onResponseHeaderField(_ parser: Parser?, data: UnsafePointer<Int8>?, length
 
 func onResponseHeaderValue(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     return ResponseContext(parser!.pointee.data).withPointee {
-        guard let headerValue = String(pointer: data!, length: length) else {
-            return 1
-        }
+        let headerValue = String(cString: data!, length: length)
 
         if $0.currentHeaderName == "" {
             $0.currentHeaderName = CaseInsensitiveString($0.buildingHeaderName)

@@ -109,8 +109,8 @@ private func loadConfigurationFile() throws -> StructuredData {
 
     arguments += ["Configuration.swift"]
 
-    // Xcode's PATH doesn't include swiftenv shims.
-    if let xpc = environment["XPC_SERVICE_NAME"] where xpc.contains("com.apple.dt.Xcode") {
+    // Xcode's PATH doesn't include swiftenv shims. Let's include it mannualy.
+    if let xpc = environment["XPC_SERVICE_NAME"] where xpc.contains(substring: "com.apple.dt.Xcode") {
         environment["PATH"] = environment["HOME"]! + "/.swiftenv/shims:" + environment["PATH"]!
     }
 
@@ -131,9 +131,9 @@ private func loadCommandLineArguments() throws -> StructuredData {
 
     for argument in arguments {
         if shouldParseParameter {
-            if argument.starts(with: "--") {
+            if argument.hasPrefix("--") {
                 currentParameter = String(Array(argument.characters).suffix(from: 2))
-            } else if argument.starts(with: "-") {
+            } else if argument.hasPrefix("-") {
                 let flag = String(Array(argument.characters).suffix(from: 1))
                 parameters[flag] = true
                 continue
@@ -142,7 +142,7 @@ private func loadCommandLineArguments() throws -> StructuredData {
             }
             shouldParseParameter = false
         } else { // parse value
-            if argument.starts(with: "--") {
+            if argument.hasPrefix("--") {
                 throw QuarkError.invalidArgument(description: "\(currentParameter) is missing the value. Parameters should be provided in the format --parameter value.")
             }
             parameters[currentParameter] = parse(value: argument)
@@ -219,7 +219,7 @@ private func convertEnvironmentVariableKeyToCamelCase(_ variableKey: String) -> 
     }
 
     for i in 1 ..< words.count {
-        key += words[i].capitalized()
+        key += words[i].capitalizedWord()
     }
 
     return key

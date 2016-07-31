@@ -4,99 +4,127 @@ public enum URIError : ErrorProtocol {
     case invalidURI
 }
 
-extension URI.UserInfo : Hashable, CustomStringConvertible {
-    public var hashValue: Int {
-        return description.hashValue
-    }
-
-    public var description: String {
-        return "\(username):\(password)"
-    }
-}
-
 extension URI {
     public init(_ string: String) throws {
-        let u = parse_uri(string)
+        let parsedURI = parse_uri(string)
 
-        if u.error == 1 {
+        if parsedURI.error == 1 {
             throw URIError.invalidURI
         }
 
-        if u.field_set & 1 != 0 {
-            let string = URI.getSubstring(string, start: u.scheme_start, end: u.scheme_end)
+        if parsedURI.field_set & 1 != 0 {
+            let string = substring(from: string, start: parsedURI.scheme_start, end: parsedURI.scheme_end)
             scheme = try String(percentEncoded: string)
         } else {
             scheme = nil
         }
 
-        if u.field_set & 2 != 0 {
-            let string = URI.getSubstring(string, start: u.host_start, end: u.host_end)
+        if parsedURI.field_set & 2 != 0 {
+            let string = substring(from: string, start: parsedURI.host_start, end: parsedURI.host_end)
             host = try String(percentEncoded: string)
         } else {
             host = nil
         }
 
-        if u.field_set & 4 != 0 {
-            port = Int(u.port)
+        if parsedURI.field_set & 4 != 0 {
+            port = Int(parsedURI.port)
         } else {
             port = nil
         }
 
-        if u.field_set & 8 != 0 {
-            let string = URI.getSubstring(string, start: u.path_start, end: u.path_end)
+        if parsedURI.field_set & 8 != 0 {
+            let string = substring(from: string, start: parsedURI.path_start, end: parsedURI.path_end)
             path = try String(percentEncoded: string)
         } else {
             path = nil
         }
 
-        if u.field_set & 16 != 0 {
-            query = URI.getSubstring(string, start: u.query_start, end: u.query_end)
+        if parsedURI.field_set & 16 != 0 {
+            query = substring(from: string, start: parsedURI.query_start, end: parsedURI.query_end)
         } else {
             query = nil
         }
 
-        if u.field_set & 32 != 0 {
-            let string = URI.getSubstring(string, start: u.fragment_start, end: u.fragment_end)
+        if parsedURI.field_set & 32 != 0 {
+            let string = substring(from: string, start: parsedURI.fragment_start, end: parsedURI.fragment_end)
             fragment = try String(percentEncoded: string)
         } else {
             fragment = nil
         }
 
-        if u.field_set & 64 != 0 {
-            let userInfoString = URI.getSubstring(string, start: u.user_info_start, end: u.user_info_end)
-            userInfo = URI.parse(userInfoString: userInfoString)
+        if parsedURI.field_set & 64 != 0 {
+            let userInfoString = substring(from: string, start: parsedURI.user_info_start, end: parsedURI.user_info_end)
+            userInfo = try parse(userInfo: userInfoString)
         } else {
             userInfo = nil
         }
 
-        if scheme == nil && host == nil && port == nil && path == nil && query == nil && fragment == nil && userInfo == nil {
+        if scheme == nil &&
+            host == nil &&
+            port == nil &&
+            path == nil &&
+            query == nil &&
+            fragment == nil &&
+            userInfo == nil {
             throw URIError.invalidURI
         }
     }
+}
 
-    @inline(__always) private static func getSubstring(_ string: String, start: UInt16, end: UInt16) -> String {
-        return string[string.index(string.startIndex, offsetBy: Int(start)) ..< string.index(string.startIndex, offsetBy: Int(end))]
+private func substring(from source: String, start: UInt16, end: UInt16) -> String {
+    return source[source.index(source.startIndex, offsetBy: Int(start)) ..< source.index(source.startIndex, offsetBy: Int(end))]
+}
+
+private func parse(userInfo: String) throws -> URI.UserInfo? {
+    let userInfoElements = userInfo.split(separator: ":")
+
+    if userInfoElements.count == 2 {
+        let username = try String(percentEncoded: userInfoElements[0])
+        let password = try String(percentEncoded: userInfoElements[1])
+
+        return URI.UserInfo(username: username, password: password)
     }
 
-    @inline(__always) private static func parse(userInfoString: String) -> URI.UserInfo? {
-        let userInfoElements = userInfoString.split(separator: ":")
-        if userInfoElements.count == 2 {
-            if let
-                username = try? String(percentEncoded: userInfoElements[0]),
-                password = try? String(percentEncoded: userInfoElements[1]) {
-                    return URI.UserInfo(
-                        username: username,
-                        password: password
-                    )
+    throw URIError.invalidURI
+}
+
+extension URI {
+    public var queryDictionary: [String: String] {
+        get {
+            var queries: [String: String] = [:]
+
+            let queryTuples = query?.split(separator: "&") ?? []
+
+            for tuple in queryTuples {
+                let queryElements = tuple.split(separator: "=", omittingEmptySubsequences: false)
+                if queryElements.count == 1 {
+                    if let key = try? String(percentEncoded: queryElements[0]) {
+                        queries[key] = ""
+                    }
+                } else if queryElements.count == 2 {
+                    if let
+                        key = try? String(percentEncoded: queryElements[0]),
+                        value = try? String(percentEncoded: queryElements[1]) {
+                        queries[key] = value
+                    }
+                }
             }
+
+            return queries
         }
 
-        return nil
+        set(queryDictionary) {
+            self.query = queryDictionary.map({
+                $0.percentEncoded(allowing: UTF8.uriQueryAllowed) + "=" + $1.percentEncoded(allowing: UTF8.uriQueryAllowed)
+            }).joined(separator: "&")
+        }
     }
 
-    @inline(__always) private static func parse(queryString: String) -> [String: [String?]] {
+    public var queryComplexDictionary: [String: [String?]] {
         var queries: [String: [String?]] = [:]
-        let queryTuples = queryString.split(separator: "&")
+
+        let queryTuples = query?.split(separator: "&") ?? []
+
         for tuple in queryTuples {
             let queryElements = tuple.split(separator: "=", omittingEmptySubsequences: false)
             if queryElements.count == 1 {
@@ -113,6 +141,7 @@ extension URI {
                 }
             }
         }
+
         return queries
     }
 }
@@ -122,7 +151,7 @@ extension URI : CustomStringConvertible {
         var string = ""
 
         if let scheme = scheme {
-            string += String(scheme) + "://"
+            string += scheme + "://"
         }
 
         if let userInfo = userInfo {
@@ -130,7 +159,7 @@ extension URI : CustomStringConvertible {
         }
 
         if let host = host {
-            string += String(host)
+            string += host
         }
 
         if let port = port {
@@ -138,15 +167,15 @@ extension URI : CustomStringConvertible {
         }
 
         if let path = path {
-            string += String(path)
+            string += path
         }
 
-        if let query = query {
-            string += String(query)
+        if let query = query, decodedQuery = try? String(percentEncoded: query) {
+            string += "?" + decodedQuery
         }
 
         if let fragment = fragment {
-            string += "#" + String(fragment)
+            string += "#" + fragment
         }
 
         return string
@@ -154,35 +183,35 @@ extension URI : CustomStringConvertible {
 }
 
 extension URI {
-    public func percentEncoded() throws -> String {
+    public func percentEncoded() -> String {
         var string = ""
 
         if let scheme = scheme {
-            string += "\(scheme)://"
+            string += scheme + "://"
         }
 
-        if let userInfo = userInfo {
-            string += "\(userInfo)@"
+        if let userInfo = userInfo?.percentEncoded() {
+            string += userInfo + "@"
         }
 
-        if let host = host {
-            string += "\(host)"
+        if let host = host?.percentEncoded(allowing: UTF8.uriHostAllowed) {
+            string += host
         }
 
         if let port = port {
-            string += ":\(port)"
+            string += ":" + String(port)
         }
 
-        if let path = path {
-            string += "\(path)"
+        if let path = path?.percentEncoded(allowing: UTF8.uriQueryAllowed) {
+            string += path
         }
 
-        if let query = try query?.percentEncoded(allowing: .uriQueryAllowed) {
-            string += "\(query)"
+        if let query = query {
+            string += "?" + query
         }
 
-        if let fragment = fragment {
-            string += "#\(fragment)"
+        if let fragment = fragment?.percentEncoded(allowing: UTF8.uriFragmentAllowed) {
+            string += "#" + fragment
         }
 
         return string
@@ -197,6 +226,21 @@ extension URI : Hashable {
 
 public func == (lhs: URI, rhs: URI) -> Bool {
     return lhs.hashValue == rhs.hashValue
+}
+
+extension URI.UserInfo : Hashable, CustomStringConvertible {
+    public var hashValue: Int {
+        return description.hashValue
+    }
+
+    public var description: String {
+        return username + ":" + password
+    }
+
+    public func percentEncoded() -> String {
+        return username.percentEncoded(allowing: UTF8.uriUserAllowed) + ":"
+            + password.percentEncoded(allowing: UTF8.uriUserAllowed)
+    }
 }
 
 public func == (lhs: URI.UserInfo, rhs: URI.UserInfo) -> Bool {

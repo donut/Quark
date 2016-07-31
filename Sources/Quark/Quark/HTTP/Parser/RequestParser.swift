@@ -83,10 +83,7 @@ public final class RequestParser : S4.RequestParser {
 
 func onRequestURL(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     return RequestContext(parser!.pointee.data).withPointee {
-        guard let uri = String(pointer: data!, length: length) else {
-            return 1
-        }
-
+        let uri = String(cString: data!, length: length)
         $0.currentURI += uri
         return 0
     }
@@ -94,9 +91,7 @@ func onRequestURL(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) ->
 
 func onRequestHeaderField(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     return RequestContext(parser!.pointee.data).withPointee {
-        guard let headerName = String(pointer: data!, length: length) else {
-            return 1
-        }
+        let headerName = String(cString: data!, length: length)
 
         if $0.currentHeaderName != "" {
             $0.currentHeaderName = ""
@@ -109,9 +104,7 @@ func onRequestHeaderField(_ parser: Parser?, data: UnsafePointer<Int8>?, length:
 
 func onRequestHeaderValue(_ parser: Parser?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     return RequestContext(parser!.pointee.data).withPointee {
-        guard let headerValue = String(pointer: data!, length: length) else {
-            return 1
-        }
+        let headerValue = String(cString: data!, length: length)
 
         if $0.currentHeaderName == "" {
             $0.currentHeaderName = CaseInsensitiveString($0.buildingHeaderName)

@@ -320,88 +320,94 @@ extension File {
 //     func split(separator: Character, maxSplits: Int = .max, omittingEmptySubsequences: Bool = true) -> [String] {
 //         return characters.split(separator: separator, maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences).map(String.init)
 //     }
+//
+//    public func starts(with prefix: String) -> Bool {
+//        return prefix == String(self.characters.prefix(prefix.characters.count))
+//    }
+//
+//    public func ends(with suffix: String) -> Bool {
+//        return suffix == String(self.characters.suffix(suffix.characters.count))
+//    }
+//}
 
-//     func dropLastPathComponent() -> String {
-//         let fixedSelf = fixSlashes()
+extension String {
+     func dropLastPathComponent() -> String {
+         let fixedSelf = fixSlashes()
 
-//         if fixedSelf == "/" {
-//             return fixedSelf
-//         }
+         if fixedSelf == "/" {
+             return fixedSelf
+         }
 
-//         switch fixedSelf.startOfLastPathComponent {
+         switch fixedSelf.startOfLastPathComponent {
 
-//         // relative path, single component
-//         case fixedSelf.startIndex:
-//             return ""
+         // relative path, single component
+         case fixedSelf.startIndex:
+             return ""
 
-//         // absolute path, single component
-//         case fixedSelf.index(after: startIndex):
-//             return "/"
+         // absolute path, single component
+         case fixedSelf.index(after: startIndex):
+             return "/"
 
-//         // all common cases
-//         case let startOfLast:
-//             return String(fixedSelf.characters.prefix(upTo: fixedSelf.index(before: startOfLast)))
-//         }
-//     }
+         // all common cases
+         case let startOfLast:
+             return String(fixedSelf.characters.prefix(upTo: fixedSelf.index(before: startOfLast)))
+         }
+     }
 
-//     func fixSlashes(compress: Bool = true, stripTrailing: Bool = true) -> String {
-//         if self == "/" {
-//             return self
-//         }
+     func fixSlashes(compress: Bool = true, stripTrailing: Bool = true) -> String {
+         if self == "/" {
+             return self
+         }
 
-//         var result = self
+         var result = self
 
-//         if compress {
-//             result.withMutableCharacters { characterView in
-//                 let startPosition = characterView.startIndex
-//                 var endPosition = characterView.endIndex
-//                 var currentPosition = startPosition
+         if compress {
+             result.withMutableCharacters { characterView in
+                 let startPosition = characterView.startIndex
+                 var endPosition = characterView.endIndex
+                 var currentPosition = startPosition
 
-//                 while currentPosition < endPosition {
-//                     if characterView[currentPosition] == "/" {
-//                         var afterLastSlashPosition = currentPosition
-//                         while afterLastSlashPosition < endPosition && characterView[afterLastSlashPosition] == "/" {
-//                             afterLastSlashPosition = characterView.index(after: afterLastSlashPosition)
-//                         }
-//                         if afterLastSlashPosition != characterView.index(after: currentPosition) {
-//                             characterView.replaceSubrange(currentPosition ..< afterLastSlashPosition, with: ["/"])
-//                             endPosition = characterView.endIndex
-//                         }
-//                         currentPosition = afterLastSlashPosition
-//                     } else {
-//                         currentPosition = characterView.index(after: currentPosition)
-//                     }
-//                 }
-//             }
-//         }
+                 while currentPosition < endPosition {
+                     if characterView[currentPosition] == "/" {
+                         var afterLastSlashPosition = currentPosition
+                         while afterLastSlashPosition < endPosition && characterView[afterLastSlashPosition] == "/" {
+                             afterLastSlashPosition = characterView.index(after: afterLastSlashPosition)
+                         }
+                         if afterLastSlashPosition != characterView.index(after: currentPosition) {
+                             characterView.replaceSubrange(currentPosition ..< afterLastSlashPosition, with: ["/"])
+                             endPosition = characterView.endIndex
+                         }
+                         currentPosition = afterLastSlashPosition
+                     } else {
+                         currentPosition = characterView.index(after: currentPosition)
+                     }
+                 }
+             }
+         }
 
-//         if stripTrailing && result.ends(with: "/") {
-//             result.remove(at: result.characters.index(before: result.characters.endIndex))
-//         }
+         if stripTrailing && result.hasSuffix("/") {
+             result.remove(at: result.characters.index(before: result.characters.endIndex))
+         }
 
-//         return result
-//     }
+         return result
+     }
 
-//     var startOfLastPathComponent: String.CharacterView.Index {
-//         precondition(!ends(with: "/") && characters.count > 1)
+     var startOfLastPathComponent: String.CharacterView.Index {
+         precondition(!hasSuffix("/") && characters.count > 1)
 
-//         let characterView = characters
-//         let startPos = characterView.startIndex
-//         let endPosition = characterView.endIndex
-//         var currentPosition = endPosition
+         let characterView = characters
+         let startPos = characterView.startIndex
+         let endPosition = characterView.endIndex
+         var currentPosition = endPosition
 
-//         while currentPosition > startPos {
-//             let previousPosition = characterView.index(before: currentPosition)
-//             if characterView[previousPosition] == "/" {
-//                 break
-//             }
-//             currentPosition = previousPosition
-//         }
+         while currentPosition > startPos {
+             let previousPosition = characterView.index(before: currentPosition)
+             if characterView[previousPosition] == "/" {
+                 break
+             }
+             currentPosition = previousPosition
+         }
 
-//         return currentPosition
-//     }
-
-//     func ends(with suffix: String) -> Bool {
-//         return suffix == String(self.characters.suffix(suffix.characters.count))
-//     }
-// }
+         return currentPosition
+     }
+ }

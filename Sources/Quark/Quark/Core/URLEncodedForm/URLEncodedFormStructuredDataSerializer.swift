@@ -25,7 +25,7 @@ public struct URLEncodedFormStructuredDataSerializer : StructuredDataSerializer 
             }
             string += String(key) + "="
             let value = try structuredData.asString(converting: true)
-            string += try value.percentEncoded(allowing: .uriQueryAllowed)
+            string += value.percentEncoded(allowing: .uriQueryAllowed)
         }
 
         return string
