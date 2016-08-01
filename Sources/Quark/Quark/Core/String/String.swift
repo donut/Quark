@@ -77,6 +77,18 @@ extension String {
 	}
 }
 
+#if os(Linux)
+    extension String {
+        public func hasPrefix(_ prefix: String) -> Bool {
+            return prefix == String(self.characters.prefix(prefix.characters.count))
+        }
+
+        public func hasSuffix(_ suffix: String) -> Bool {
+            return suffix == String(self.characters.suffix(suffix.characters.count))
+        }
+    }
+#endif
+
 extension String.CharacterView {
     func index(of sequence: String.CharacterView) -> String.CharacterView.Index? {
         let seqString = String(sequence)
