@@ -10,8 +10,6 @@ class EnvironmentTests : XCTestCase {
         XCTAssertEqual(environment["foo"], "bar")
         environment["foo"] = nil
         XCTAssertNil(environment["foo"])
-
-        print(buildConfiguration)
     }
 }
 

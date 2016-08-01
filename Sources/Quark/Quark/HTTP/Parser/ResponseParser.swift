@@ -72,16 +72,6 @@ public final class ResponseParser : S4.ResponseParser {
             }
 
             let data = try stream.receive(upTo: bufferSize)
-
-            if data.isEmpty {
-                if let response = responses.popLast() {
-                    return response
-                } else {
-                    defer { resetParser() }
-                    throw http_errno(parser.http_errno)
-                }
-            }
-
             let bytesParsed = http_parser_execute(&parser, &responseSettings, UnsafePointer(data.bytes), data.count)
 
             guard bytesParsed == data.count else {

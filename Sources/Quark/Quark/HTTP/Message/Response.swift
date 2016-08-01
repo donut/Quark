@@ -74,7 +74,7 @@ extension Response {
             var cookies = Set<AttributedCookie>()
 
             for header in cookieHeaders {
-                if let cookie = AttributedCookie.parse(header) {
+                if let cookie = AttributedCookie(header) {
                     cookies.insert(cookie)
                 }
             }

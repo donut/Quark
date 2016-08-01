@@ -64,7 +64,7 @@ public final class SessionMiddleware: Middleware {
 extension Request {
     public var session: Session {
         guard let session = storage[SessionMiddleware.cookieName] as? Session else {
-            fatalError("SessionMiddleware should be applied to the chain. Quark guarantees that so this error should never happen within Quark.")
+            fatalError("SessionMiddleware should be applied to the chain. Quark guarantees it, so this error should never happen within Quark.")
         }
         return session
     }

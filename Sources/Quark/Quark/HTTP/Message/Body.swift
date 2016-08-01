@@ -50,7 +50,7 @@ extension Body {
      Converts the body's contents into a closure
      that accepts a `SendingStream`.
      */
-    public mutating func becomeSender(timingOut deadline: Double = .never) -> ((SendingStream) throws -> Void) {
+    public mutating func becomeSender(timingOut deadline: Double = .never) throws -> ((SendingStream) throws -> Void) {
         switch self {
         case .buffer(let data):
             let closure: ((SendingStream) throws -> Void) = { sender in
@@ -68,10 +68,7 @@ extension Body {
         case .sender(let sender):
             return sender
         default:
-            let closure: ((SendingStream) throws -> Void) = { _ in
-                throw BodyError.inconvertibleType
-            }
-            return closure
+            throw BodyError.inconvertibleType
         }
     }
 }

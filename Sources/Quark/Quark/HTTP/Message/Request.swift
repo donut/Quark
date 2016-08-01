@@ -130,7 +130,7 @@ extension Request {
 
     public var cookies: Set<Cookie> {
         get {
-            return headers["Cookie"].flatMap(Cookie.parse) ?? []
+            return headers["Cookie"].flatMap({Set<Cookie>(cookieHeader: $0)}) ?? []
         }
 
         set(cookies) {
@@ -183,7 +183,7 @@ extension Request {
 
 extension Request : CustomStringConvertible {
     public var requestLineDescription: String {
-        return "\(method) \(uri) HTTP/\(version.major).\(version.minor)\n"
+        return String(method) + " " + String(uri) + " HTTP/" + String(version.major) + "." + String(version.minor) + "\n"
     }
 
     public var description: String {
