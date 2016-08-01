@@ -564,6 +564,16 @@ extension StructuredData {
 extension StructuredData {
     public subscript(indexPath: IndexPathElement...) -> StructuredData? {
         get {
+            return self[indexPath]
+        }
+
+        set(value) {
+            self[indexPath] = value
+        }
+    }
+
+    public subscript(indexPath: [IndexPathElement]) -> StructuredData? {
+        get {
             return try? self.get(at: indexPath)
         }
 

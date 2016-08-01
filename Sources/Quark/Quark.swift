@@ -32,24 +32,23 @@ public var configuration: StructuredData = nil {
     }
 }
 
-public func configure<C : Configuration>(_ configure: (C) throws -> ResponderRepresentable) {
+public func configure<Config : Configuration>(_ configure: (Config) throws -> ResponderRepresentable) {
     do {
         let configuration = try loadConfiguration()
-        let responder = try configure(C(structuredData: configuration))
+        let responder = try configure(Config(structuredData: configuration))
 
         var middleware: [Middleware] = []
-
-        if configuration["server.log"]?.asBool == true {
+        
+        if configuration["server", "log"]?.asBool == true {
             middleware.append(LogMiddleware())
         }
 
         middleware.append(SessionMiddleware())
         middleware.append(ContentNegotiationMiddleware(mediaTypes: [JSON.self, URLEncodedForm.self]))
 
-        let host = configuration["server.host"]?.asString ?? "127.0.0.1"
-        let port = configuration["server.port"]?.asInt ?? 8080
-        let reusePort = configuration["server.reusePort"]?.asBool ?? false
-
+        let host = configuration["server", "host"]?.asString ?? "127.0.0.1"
+        let port = configuration["server", "port"]?.asInt ?? 8080
+        let reusePort = configuration["server", "reusePort"]?.asBool ?? false
         try Server(
             host: host,
             port: port,
@@ -82,22 +81,23 @@ private func loadConfiguration() throws -> StructuredData {
     }
 
     for (key, value) in configurationFile {
-        configuration[key] = value
+        try configuration.set(value: value, at: key)
     }
 
     for (key, value) in commandLineArguments {
-        configuration[key] = value
+        let indexPath = key.split(separator: ".").map({$0 as IndexPathElement})
+        try configuration.set(value: value, at: indexPath)
     }
 
     for (key, value) in environmentVariables {
-        configuration[key] = value
+        try configuration.set(value: value, at: key)
     }
 
     return configuration
 }
 
 private func loadConfigurationFile() throws -> StructuredData {
-    let libraryDirectory = ".build/debug"
+    let libraryDirectory = ".build/" + buildConfiguration.buildPath
     let moduleName = "Quark"
     var arguments = ["swiftc"]
     arguments += ["--driver-mode=swift"]
@@ -110,7 +110,7 @@ private func loadConfigurationFile() throws -> StructuredData {
     arguments += ["Configuration.swift"]
 
     // Xcode's PATH doesn't include swiftenv shims. Let's include it mannualy.
-    if let xpc = environment["XPC_SERVICE_NAME"] where xpc.contains(substring: "com.apple.dt.Xcode") {
+    if let xpc = environment["XPC_SERVICE_NAME"] where xpc.contains(substring: "Xcode") {
         environment["PATH"] = environment["HOME"]! + "/.swiftenv/shims:" + environment["PATH"]!
     }
 
@@ -223,6 +223,36 @@ private func convertEnvironmentVariableKeyToCamelCase(_ variableKey: String) -> 
     }
 
     return key
+}
+
+public enum BuildConfiguration {
+    case debug
+    case release
+    case fast
+
+    private static func currentConfiguration(suppressingWarning: Bool) -> BuildConfiguration {
+        if suppressingWarning && _isDebugAssertConfiguration() {
+            return .debug
+        }
+        if suppressingWarning && _isFastAssertConfiguration() {
+            return .fast
+        }
+        return .release
+    }
+}
+
+extension BuildConfiguration {
+    var buildPath: String {
+        switch self {
+        case .debug: return "debug"
+        case .release: return "release"
+        case .fast: return "release"
+        }
+    }
+}
+
+public var buildConfiguration: BuildConfiguration {
+    return BuildConfiguration.currentConfiguration(suppressingWarning: true)
 }
 
 // TODO: refactor this

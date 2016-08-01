@@ -26,19 +26,6 @@ extension StructuredData : StructuredDataInitializable {
     }
 }
 
-extension Optional : StructuredDataInitializable {
-    public init(structuredData: StructuredData) throws {
-        switch structuredData {
-        case .null: self = .none
-        default:
-            guard let initializable = Wrapped.self as? StructuredDataInitializable.Type else {
-                throw StructuredDataError.notStructuredDataInitializable(Wrapped.self)
-            }
-            self = try initializable.init(structuredData: structuredData) as? Wrapped
-        }
-    }
-}
-
 extension Bool : StructuredDataInitializable {
     public init(structuredData: StructuredData) throws {
         guard case .bool(let bool) = structuredData else {
@@ -81,6 +68,19 @@ extension Data : StructuredDataInitializable {
             throw StructuredDataError.cannotInitialize(type: Data.self, from: try structuredData.get().dynamicType)
         }
         self = data
+    }
+}
+
+extension Optional : StructuredDataInitializable {
+    public init(structuredData: StructuredData) throws {
+        guard let initializable = Wrapped.self as? StructuredDataInitializable.Type else {
+            throw StructuredDataError.notStructuredDataInitializable(Wrapped.self)
+        }
+        if case .null = structuredData {
+            self = .none
+        } else {
+            self = try initializable.init(structuredData: structuredData) as? Wrapped
+        }
     }
 }
 

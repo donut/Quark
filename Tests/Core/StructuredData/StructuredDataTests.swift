@@ -675,8 +675,12 @@ class StructuredDataTests : XCTestCase {
     }
 
     func testStringInterpolationLiteral() {
-        let data: StructuredData = "\(1969)+\(4.20)"
+        var data: StructuredData = "\(1969)+\(4.20)"
         XCTAssertEqual(data, .string("1969+4.2"))
+        data = StructuredData(unicodeScalarLiteral: "foo")
+        XCTAssertEqual(data, .string("foo"))
+        data = StructuredData(extendedGraphemeClusterLiteral: "foo")
+        XCTAssertEqual(data, .string("foo"))
     }
 
     func testEquality() {
@@ -713,6 +717,98 @@ class StructuredDataTests : XCTestCase {
         try data.remove(at: "foo", "bar")
         XCTAssertEqual(data, ["foo": ["yoo": "uhu"]])
     }
+
+    func testStructuredDataInitializable() throws {
+        struct Bar : StructuredDataInitializable {
+            let bar: String
+        }
+        struct Foo : StructuredDataInitializable {
+            let foo: Bar
+        }
+        struct Baz {
+            let baz: String
+        }
+        struct Fuu : StructuredDataInitializable {
+            let fuu: Baz
+        }
+        struct Fou : StructuredDataInitializable {
+            let fou: String?
+        }
+
+        XCTAssertEqual(try Bar(structuredData: ["bar": "bar"]).bar, "bar")
+        XCTAssertThrowsError(try Bar(structuredData: "bar"))
+        XCTAssertThrowsError(try Bar(structuredData: ["bar": nil]))
+        XCTAssertEqual(try Foo(structuredData: ["foo": ["bar": "bar"]]).foo.bar, "bar")
+        XCTAssertThrowsError(try Fuu(structuredData: ["fuu": ["baz": "baz"]]))
+        XCTAssertEqual(try Fou(structuredData: [:]).fou, nil)
+
+        XCTAssertEqual(try StructuredData(structuredData: nil), nil)
+        XCTAssertEqual(try Bool(structuredData: true), true)
+        XCTAssertThrowsError(try Bool(structuredData: nil))
+        XCTAssertEqual(try Double(structuredData: 4.2), 4.2)
+        XCTAssertThrowsError(try Double(structuredData: nil))
+        XCTAssertEqual(try Int(structuredData: 4), 4)
+        XCTAssertThrowsError(try Int(structuredData: nil))
+        XCTAssertEqual(try String(structuredData: "foo"), "foo")
+        XCTAssertThrowsError(try String(structuredData: nil))
+        XCTAssertEqual(try Data(structuredData: .data("foo")), Data("foo"))
+        XCTAssertThrowsError(try Data(structuredData: nil))
+        XCTAssertEqual(try Optional<Int>(structuredData: nil), nil)
+        XCTAssertEqual(try Optional<Int>(structuredData: 1969), 1969)
+        XCTAssertThrowsError(try Optional<Baz>(structuredData: nil))
+
+        XCTAssertEqual(try Array<Int>(structuredData: [1969]), [1969])
+        XCTAssertThrowsError(try Array<Int>(structuredData: nil))
+        XCTAssertThrowsError(try Array<Baz>(structuredData: []))
+
+        XCTAssertEqual(try Dictionary<String, Int>(structuredData: ["foo": 1969]), ["foo": 1969])
+        XCTAssertThrowsError(try Dictionary<String, Int>(structuredData: nil))
+        XCTAssertThrowsError(try Dictionary<Int, Int>(structuredData: [:]))
+        XCTAssertThrowsError(try Dictionary<String, Baz>(structuredData: [:]))
+    }
+
+    func testStructuredDataRepresentable() throws {
+        struct Bar : StructuredDataFallibleRepresentable {
+            let bar: String
+        }
+        struct Foo : StructuredDataFallibleRepresentable {
+            let foo: Bar
+        }
+        struct Baz {
+            let baz: String
+        }
+        struct Fuu : StructuredDataFallibleRepresentable {
+            let fuu: Baz
+        }
+
+        XCTAssertEqual(try Foo(foo: Bar(bar: "bar")).asStructuredData(), ["foo": ["bar": "bar"]])
+        XCTAssertThrowsError(try Fuu(fuu: Baz(baz: "baz")).asStructuredData())
+        XCTAssertEqual(StructuredData(1969).structuredData, 1969)
+        XCTAssertEqual(true.structuredData, true)
+        XCTAssertEqual(4.2.structuredData, 4.2)
+        XCTAssertEqual(1969.structuredData, 1969)
+        XCTAssertEqual("foo".structuredData, "foo")
+        XCTAssertEqual(Data("foo").structuredData, .data("foo"))
+        let optional: Int? = nil
+        XCTAssertEqual(optional.structuredData, nil)
+        XCTAssertEqual(Int?(1969).structuredData, 1969)
+        XCTAssertEqual([1969].structuredData, [1969])
+        XCTAssertEqual([1969].structuredDataArray, [.int(1969)])
+        XCTAssertEqual(["foo": 1969].structuredData, ["foo": 1969])
+        XCTAssertEqual(["foo": 1969].structuredDataDictionary, ["foo": .int(1969)])
+        XCTAssertEqual(try optional.asStructuredData(), nil)
+        XCTAssertEqual(try Int?(1969).asStructuredData(), 1969)
+        let fuuOptional: Baz? = nil
+        XCTAssertThrowsError(try fuuOptional.asStructuredData())
+        XCTAssertEqual(try [1969].asStructuredData(), [1969])
+        let fuuArray: [Baz] = []
+        XCTAssertThrowsError(try fuuArray.asStructuredData())
+        XCTAssertEqual(try ["foo": 1969].asStructuredData(), ["foo": 1969])
+        let fuuDictionaryA: [Int: Foo] = [:]
+        XCTAssertThrowsError(try fuuDictionaryA.asStructuredData())
+        let fuuDictionaryB: [String: Baz] = [:]
+        XCTAssertThrowsError(try fuuDictionaryB.asStructuredData())
+    }
 }
 
 extension StructuredDataTests {
@@ -720,7 +816,12 @@ extension StructuredDataTests {
         return [
            ("testCreation", testCreation),
            ("testConversion", testConversion),
+           ("testDescription", testDescription),
+           ("testStringInterpolationLiteral", testStringInterpolationLiteral),
+           ("testEquality", testEquality),
            ("testIndexPath", testIndexPath),
+           ("testStructuredDataInitializable", testStructuredDataInitializable),
+           ("testStructuredDataRepresentable", testStructuredDataRepresentable),
         ]
     }
 }

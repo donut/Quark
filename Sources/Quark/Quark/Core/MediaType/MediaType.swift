@@ -93,7 +93,7 @@ extension MediaType : Hashable {
 }
 
 public func == (lhs: MediaType, rhs: MediaType) -> Bool {
-    return lhs.type == rhs.type && lhs.subtype == rhs.subtype
+    return lhs.hashValue == lhs.hashValue
 }
 
 let fileExtensionMediaTypeMapping: [String: String] = [
