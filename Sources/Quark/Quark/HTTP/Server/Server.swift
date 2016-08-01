@@ -5,6 +5,7 @@ public struct Server {
     public let serializer: S4.ResponseSerializer.Type
     public let middleware: [Middleware]
     public let responder: Responder
+    public let failure: (ErrorProtocol) -> Void
 
     public let bufferSize: Int = 2048
 
@@ -14,7 +15,8 @@ public struct Server {
         parser: S4.RequestParser.Type,
         serializer: S4.ResponseSerializer.Type,
         middleware: [Middleware],
-        responder: Responder
+        responder: Responder,
+        failure: (ErrorProtocol) -> Void = Server.logError
         ) throws {
         self.host = host
         self.port = port
@@ -22,6 +24,7 @@ public struct Server {
         self.serializer = serializer
         self.middleware = middleware
         self.responder = responder
+        self.failure = failure
     }
 }
 
@@ -70,7 +73,7 @@ extension Server {
         }
     }
 
-    public static func log(error: ErrorProtocol) -> Void {
+    public static func logError(error: ErrorProtocol) -> Void {
         print("Error: \(error)")
     }
 

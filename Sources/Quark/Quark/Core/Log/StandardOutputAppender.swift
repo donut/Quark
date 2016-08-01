@@ -30,7 +30,6 @@ public class StandardOutputAppender : Appender {
             logMessage += ":" + String(error)
         }
 
-        lastMessage = logMessage
         print(logMessage)
     }
 }

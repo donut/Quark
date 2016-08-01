@@ -1,60 +1,58 @@
 import XCTest
 @testable import Quark
 
-class RouterTests : XCTestCase {
-    func testNestedRoutersWithParameters() {
-        // let innerRouter = Router { route in
-        //     route.get("/:location/of/zewo") { request in
-        //         return Response(status: .ok)
-        //     }
-        // }
+enum TestRouterError : ErrorProtocol {
+    case error
+}
 
-        // let router = Router("/:greeting") { route in
-        //     route.compose("/:adjective", router: innerRouter)
-        // }
+struct EmptyRouter : Router {}
 
-        // let request = try! Request(method: .get, uri: "/hello/beautiful/world/of/zewo")
-        // let response = try! router.respond(to: request)
-        // XCTAssertEqual(response.statusCode, 200)
+struct CustomRouter : Router {
+    func custom(routes: Routes) {
+        routes.get("/") { _ in
+            return Response()
+        }
+    }
+}
+
+struct CustomRecoverRouter : Router {
+    func custom(routes: Routes) {
+        routes.get("/") { _ in
+            throw TestRouterError.error
+        }
     }
 
-    func testNestedRouterWithSamePaths() throws {
-        // let router1 = Router { route in
-        //     route.get("/path") { _ in return Response(body: "route 1") }
-        // }
-        // let router2 = Router { route in
-        //     route.post("/path") { _ in return Response(body: "route 2") }
-        // }
-        // let mainRouter = Router { route in
-        //     route.compose(router: router1)
-        //     route.compose(router: router2)
-        // }
+    func recover(error: ErrorProtocol) throws -> Response {
+        return Response()
+    }
+}
 
-        // let request1 = try Request(method: .get, uri: "/path")
-        // let request2 = try Request(method: .post, uri: "/path")
-        // let response1 = try mainRouter.respond(to: request1)
-        // let response2 = try mainRouter.respond(to: request2)
+class RouterTests : XCTestCase {
+    func testEmptyRouter() throws {
+        let router = EmptyRouter()
+        let request = Request()
+        let response = try router.router.respond(to: request)
+        XCTAssertEqual(response.status, .notFound)
+    }
 
-        // XCTAssertEqual(response1.status.statusCode, 200)
-        // XCTAssertEqual(response2.status.statusCode, 200)
+    func testCustomRouter() throws {
+        let router = CustomRouter()
+        let request = Request()
+        let response = try router.router.respond(to: request)
+        XCTAssertEqual(response.status, .ok)
+    }
 
-        // guard
-        //     case let .buffer(body1) = response1.body,
-        //     case let .buffer(body2) = response2.body
-        //     else {
-        //     return
-        // }
-
-        // XCTAssertEqual(body1, "route 1")
-        // XCTAssertEqual(body2, "route 2")
+    func testCustomRecoverRouter() throws {
+        let router = CustomRecoverRouter()
+        let request = Request()
+        let response = try router.router.respond(to: request)
+        XCTAssertEqual(response.status, .ok)
     }
 }
 
 extension RouterTests {
     static var allTests: [(String, (RouterTests) -> () throws -> Void)] {
         return [
-            ("testNestedRoutersWithParameters", testNestedRoutersWithParameters),
-            ("testNestedRouterWithSamePaths", testNestedRouterWithSamePaths)
         ]
     }
 }

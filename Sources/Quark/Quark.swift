@@ -17,8 +17,6 @@ extension QuarkError : CustomStringConvertible {
     }
 }
 
-public typealias Configuration = StructuredDataInitializable
-
 public var configuration: StructuredData = nil {
     willSet(configuration) {
         do {
@@ -32,51 +30,78 @@ public var configuration: StructuredData = nil {
     }
 }
 
-public func configure<Config : Configuration>(_ configure: (Config) throws -> ResponderRepresentable) {
-    do {
-        let configuration = try loadConfiguration()
-        let responder = try configure(Config(structuredData: configuration))
+public typealias Configuration = StructuredDataInitializable
 
-        var middleware: [Middleware] = []
-        
-        if configuration["server", "log"]?.asBool == true {
-            middleware.append(LogMiddleware())
-        }
+public protocol ConfigurableServer {
+    init(middleware: [Middleware], responder: Responder, configuration: StructuredData) throws
+    func start() throws
+}
 
-        middleware.append(SessionMiddleware())
-        middleware.append(ContentNegotiationMiddleware(mediaTypes: [JSON.self, URLEncodedForm.self]))
-
+extension Server : ConfigurableServer {
+    public init(middleware: [Middleware], responder: Responder, configuration: StructuredData) throws {
         let host = configuration["server", "host"]?.asString ?? "127.0.0.1"
         let port = configuration["server", "port"]?.asInt ?? 8080
         let reusePort = configuration["server", "reusePort"]?.asBool ?? false
-        try Server(
+
+        try self.init(
             host: host,
             port: port,
             reusePort: reusePort,
             middleware: middleware,
             responder: responder
-        ).start()
+        )
+    }
+}
+
+public func configure<Config : Configuration>(configurationFile: String = "Configuration.swift", server: ConfigurableServer.Type = Server.self, configure: (Config) throws -> ResponderRepresentable) {
+    do {
+        let configuration = try loadConfiguration(configurationFile: configurationFile)
+        let responder = try configure(Config(structuredData: configuration))
+        try config(server: server, responder: responder.responder, configuration: configuration)
     } catch {
         print(error)
     }
 }
 
-private func loadConfiguration() throws -> StructuredData {
+private func config(server: ConfigurableServer.Type, responder: Responder, configuration: StructuredData) throws {
+    var middleware: [Middleware] = []
+
+    if configuration["server", "log"]?.asBool == true {
+        middleware.append(LogMiddleware())
+    }
+
+    middleware.append(SessionMiddleware())
+    middleware.append(ContentNegotiationMiddleware(mediaTypes: [JSON.self, URLEncodedForm.self]))
+
+    try server.init(
+        middleware: middleware,
+        responder: responder,
+        configuration: configuration
+    ).start()
+}
+
+private func loadConfiguration(configurationFile: String) throws -> StructuredData {
     var configuration: StructuredData = [:]
 
-    guard case .dictionary(let environmentVariables) = try loadEnvironmentVariables() else {
+    guard case .dictionary(let environmentVariables) = try load(environmentVariables: environment.variables) else {
         throw QuarkError.invalidConfiguration(description: "Configuration from environment variables is not in dictionary format.")
     }
 
-    guard case .dictionary(let commandLineArguments) = try loadCommandLineArguments() else {
+#if Xcode
+    let arguments: [String] = []
+#else
+    let arguments = Array(Process.arguments.suffix(from: 1))
+#endif
+
+    guard case .dictionary(let commandLineArguments) = try load(commandLineArguments: arguments) else {
         throw QuarkError.invalidConfiguration(description: "Configuration from command line arguments is not in dictionary format.")
     }
 
-    if let workingDirectory = commandLineArguments["workingDirectory"]?.asString {
+    if let workingDirectory = commandLineArguments["workingDirectory"]?.asString ?? environmentVariables["workingDirectory"]?.asString {
         try File.changeWorkingDirectory(path: workingDirectory)
     }
 
-    guard case .dictionary(let configurationFile) = try loadConfigurationFile() else {
+    guard case .dictionary(let configurationFile) = try load(configurationFile: configurationFile) else {
         throw QuarkError.invalidConfiguration(description: "Configuration from file is not in dictionary format.")
     }
 
@@ -96,23 +121,23 @@ private func loadConfiguration() throws -> StructuredData {
     return configuration
 }
 
-private func loadConfigurationFile() throws -> StructuredData {
+private func load(configurationFile: String) throws -> StructuredData {
     let libraryDirectory = ".build/" + buildConfiguration.buildPath
     let moduleName = "Quark"
     var arguments = ["swiftc"]
     arguments += ["--driver-mode=swift"]
     arguments += ["-I", libraryDirectory, "-L", libraryDirectory, "-l\(moduleName)"]
 
-    #if os(OSX)
-        arguments += ["-target", "x86_64-apple-macosx10.10"]
-    #endif
+#if os(OSX)
+    arguments += ["-target", "x86_64-apple-macosx10.10"]
+#endif
 
-    arguments += ["Configuration.swift"]
+    arguments += [configurationFile]
 
+#if Xcode
     // Xcode's PATH doesn't include swiftenv shims. Let's include it mannualy.
-    if let xpc = environment["XPC_SERVICE_NAME"] where xpc.contains(substring: "Xcode") {
-        environment["PATH"] = environment["HOME"]! + "/.swiftenv/shims:" + environment["PATH"]!
-    }
+    environment["PATH"] = (environment["HOME"] ?? "") + "/.swiftenv/shims:" + (environment["PATH"] ?? "")
+#endif
 
     try system(arguments)
 
@@ -122,14 +147,13 @@ private func loadConfigurationFile() throws -> StructuredData {
     return try parser.parse(data)
 }
 
-private func loadCommandLineArguments() throws -> StructuredData {
-    let arguments = Process.arguments.suffix(from: 1)
+private func load(commandLineArguments: [String]) throws -> StructuredData {
     var parameters: StructuredData = [:]
 
     var currentParameter = ""
     var shouldParseParameter = true
 
-    for argument in arguments {
+    for argument in commandLineArguments {
         if shouldParseParameter {
             if argument.hasPrefix("--") {
                 currentParameter = String(Array(argument.characters).suffix(from: 2))
@@ -157,10 +181,10 @@ private func loadCommandLineArguments() throws -> StructuredData {
     return parameters
 }
 
-private func loadEnvironmentVariables() throws -> StructuredData {
+private func load(environmentVariables: [String: String]) throws -> StructuredData {
     var variables: StructuredData = [:]
 
-    for (key, value) in environment.variables {
+    for (key, value) in environmentVariables {
         let key = convertEnvironmentVariableKeyToCamelCase(key)
         variables[key] = parse(value: value)
     }
@@ -257,80 +281,73 @@ public var buildConfiguration: BuildConfiguration {
 
 // TODO: refactor this
 
-public func getenvString(_ key: String) -> String? {
-    let out = getenv(key)
-    return out == nil ? nil : String(validatingUTF8: out!)  //FIXME locale may not be UTF8
-}
-
-public enum Error: ErrorProtocol {
+public enum SpawnError : ErrorProtocol {
     case exitStatus(Int32, [String])
-    case exitSignal
 }
 
-extension Error: CustomStringConvertible {
+extension SpawnError : CustomStringConvertible {
     public var description: String {
         switch self {
         case .exitStatus(let code, let args):
             return "exit(\(code)): \(args)"
-
-        case .exitSignal:
-            return "Child process exited with signal"
         }
     }
 }
 
-public func system(_ arguments: [String], environment: [String:String] = [:]) throws {
-    // make sure subprocess output doesn't get interleaved with our own
+public func system(_ arguments: [String]) throws {
     fflush(stdout)
-
     do {
-        let pid = try posix_spawnp(arguments[0], args: arguments, environment: environment)
-        let exitStatus = try waitpid(pid)
+        let pid = try spawn(arguments[0], args: arguments)
+        let exitStatus = try wait(pid: pid)
         guard exitStatus == 0 else {
-            throw Error.exitStatus(exitStatus, arguments)
+            throw SpawnError.exitStatus(exitStatus, arguments)
         }
-    } catch let underlyingError as SystemError {
-        throw underlyingError
+    } catch let error as SystemError {
+        throw error
     }
 }
 
 @available(*, unavailable)
 public func system() {}
 
+func spawn(_ path: String, args: [String]) throws -> pid_t {
+    let argv: [UnsafeMutablePointer<CChar>?] = args.map {
+        $0.withCString(strdup)
+    }
 
-#if os(OSX)
-    typealias swiftpm_posix_spawn_file_actions_t = posix_spawn_file_actions_t?
-#else
-    typealias swiftpm_posix_spawn_file_actions_t = posix_spawn_file_actions_t
-#endif
+    defer {
+        for case let a? in argv {
+            free(a)
+        }
+    }
 
-/// Convenience wrapper for posix_spawn.
-func posix_spawnp(_ path: String, args: [String], environment: [String: String] = [:], fileActions: swiftpm_posix_spawn_file_actions_t? = nil) throws -> pid_t {
-    let argv: [UnsafeMutablePointer<CChar>?] = args.map{ $0.withCString(strdup) }
-    defer { for case let arg? in argv { free(arg) } }
+    var envs: [String: String] = [:]
 
-    var environment = environment
 #if Xcode
     let keys = ["SWIFT_EXEC", "HOME", "PATH", "TOOLCHAINS", "DEVELOPER_DIR", "LLVM_PROFILE_FILE"]
 #else
     let keys = ["SWIFT_EXEC", "HOME", "PATH", "SDKROOT", "TOOLCHAINS", "DEVELOPER_DIR", "LLVM_PROFILE_FILE"]
 #endif
+
     for key in keys {
-        if environment[key] == nil {
-            environment[key] = getenvString(key)
+        if envs[key] == nil {
+            envs[key] = environment[key]
         }
     }
 
-    let env: [UnsafeMutablePointer<CChar>?] = environment.map{ "\($0.0)=\($0.1)".withCString(strdup) }
-    defer { for case let arg? in env { free(arg) } }
+    let env: [UnsafeMutablePointer<CChar>?] = envs.map {
+        "\($0.0)=\($0.1)".withCString(strdup)
+    }
+
+    defer {
+        for case let e? in env {
+            free(e)
+        }
+    }
 
     var pid = pid_t()
-    let rv: Int32
-    if var fileActions = fileActions {
-        rv = posix_spawnp(&pid, argv[0], &fileActions, nil, argv + [nil], env + [nil])
-    } else {
-        rv = posix_spawnp(&pid, argv[0], nil, nil, argv + [nil], env + [nil])
-    }
+    let rv = posix_spawnp(&pid, argv[0], nil, nil, argv + [nil], env + [nil])
+
     if rv != 0 {
         try ensureLastOperationSucceeded()
     }
@@ -338,34 +355,19 @@ func posix_spawnp(_ path: String, args: [String], environment: [String: String] 
     return pid
 }
 
-
-private func _WSTATUS(_ status: CInt) -> CInt {
-    return status & 0x7f
-}
-
-private func WIFEXITED(_ status: CInt) -> Bool {
-    return _WSTATUS(status) == 0
-}
-
-private func WEXITSTATUS(_ status: CInt) -> CInt {
-    return (status >> 8) & 0xff
-}
-
-
-/// convenience wrapper for waitpid
-func waitpid(_ pid: pid_t) throws -> Int32 {
+func wait(pid: pid_t) throws -> Int32 {
     while true {
         var exitStatus: Int32 = 0
         let rv = waitpid(pid, &exitStatus, 0)
 
         if rv != -1 {
-            if WIFEXITED(exitStatus) {
-                return WEXITSTATUS(exitStatus)
+            if exitStatus & 0x7f == 0 {
+                return (exitStatus >> 8) & 0xff
             } else {
                 try ensureLastOperationSucceeded()
             }
         } else if errno == EINTR {
-            continue  // see: man waitpid
+            continue
         } else {
             try ensureLastOperationSucceeded()
         }

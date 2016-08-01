@@ -10,28 +10,16 @@ extension Server {
         )
     }
 
-    public init(host: String = "0.0.0.0", port: Int = 8080, reusePort: Bool = false, parser: S4.RequestParser.Type = RequestParser.self, serializer: S4.ResponseSerializer.Type = ResponseSerializer.self, middleware: [Middleware], responder: ResponderRepresentable) throws {
-        try self.init(
-            host: host,
-            port: port,
-            reusePort: reusePort,
-            parser: parser,
-            serializer: serializer,
-            middleware: middleware,
-            responder: responder.responder
-        )
-    }
-
-    public func start(_ failure: (ErrorProtocol) -> Void = Server.log) throws {
+    public func start() throws {
         printHeader()
         while true {
             let stream = try host.accept(timingOut: .never)
-            co { do { try self.process(stream: stream) } catch { failure(error) } }
+            co { do { try self.process(stream: stream) } catch { self.failure(error) } }
         }
     }
 
-    public func startInBackground(_ failure: (ErrorProtocol) -> Void = Server.log) {
-        co { do { try self.start() } catch { failure(error) } }
+    public func startInBackground() {
+        co { do { try self.start() } catch { self.failure(error) } }
     }
 }
 
